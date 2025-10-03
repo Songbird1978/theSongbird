@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'alexBrush';
+    src: url('./alexBrush/AlexBrush-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'courierPrime';
+    src: url('./courierPrime/CourierPrime-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'allRoundGothic';
+    src: url('./allRoundGothic/Fontspring-DEMO-allroundgothic-book.otf') format('opentype');
+}

@@ -1,0 +1,49 @@
+/* startscreen.css */
+.startScreenContainer {
+    height: 100vh;
+    width: 100vw;
+    background-color: #0f1e12;
+    /* or an image background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+}
+
+.leafInto {
+    width: 150px;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.leafInto:hover {
+    transform: scale(1.2) rotate(-3deg);
+}
+
+.callToAction {
+    margin-top: 20px;
+    font-family: 'Cursive';
+    color: antiquewhite;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+
+.loadingText {
+    font-size: 1.6rem;
+    color: antiquewhite;
+    font-family: 'Cursive';
+    letter-spacing: 1px;
+}
+
+.loadingImage {
+    width: 150px;
+    filter: hue-rotate(280deg) saturate(0.8);
+    /* green tint */
+    box-shadow: 0 0 40px rgba(100, 255, 100, 0.6);
+    /* greenish glow */
+    border-radius: 50%;
+    /* if your logo is circular-ish */
+
+}

@@ -1,0 +1,128 @@
+.secretGardenContainer {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+.secretGardenBush {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+
+}
+
+.leavesLeftDiv,
+.leavesRightDiv {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.leavesLeft,
+.leavesRight {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.leavesFullDiv,
+.secretGardenDoorSqu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+
+}
+
+.leavesFull {
+    pointer-events: none;
+    z-index: 800;
+}
+
+.leavesFull,
+.secretGardenDoorSqu {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+
+.leaf {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 1000;
+    bottom: 10px;
+    left: 10px;
+    cursor: pointer;
+    pointer-events: auto;
+    background-image: url('../../assets/leaf.png');
+    background-size: 80%;
+    background-position: rotate(90deg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    transform: rotate(-10deg);
+    border: transparent;
+    overflow: visible;
+}
+
+.buttonTextHome {
+    transform: rotate(-35deg);
+    margin-top: -60px;
+    margin-left: 36px;
+    position: absolute;
+    font-family: cursive;
+    font-weight: bold;
+    color: antiquewhite;
+    font-size: 0.8rem;
+    height: 150px;
+    width: 150px;
+    z-index: 1100;
+    text-wrap: wrap;
+}
+
+
+
+.leavesFullDiv {
+    z-index: 800;
+
+}
+
+.leavesLeftDiv {
+    z-index: 900;
+
+}
+
+.leavesRightDiv {
+    z-index: 850;
+
+}
+
+.secretGardenDoorSqu {
+    z-index: 700;
+
+}
+
+.secretGardenBush,
+.leavesLeftDiv,
+.leavesRightDiv,
+.leavesFullDiv,
+.leavesFull,
+.secretGardenDoorSqu {
+    pointer-events: none !important;
+}

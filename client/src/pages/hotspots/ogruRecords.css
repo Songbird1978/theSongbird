@@ -1,0 +1,174 @@
+.ogruContainer {
+    display: flex;
+    width: 100vw;
+    height: auto;
+    background-image: url('../../assets/ogruRecords.png');
+    background-size: cover;
+    background-repeat: none;
+    background-attachment: fixed;
+    justify-content: center;
+}
+
+.magicLeafDiv {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    margin-top: 10%;
+    margin-bottom: -40%;
+    align-items: flex-end;
+    height: 50%;
+}
+
+.magicLeafBack {
+    color: antiquewhite;
+    font-family: allRoundGothic;
+    margin-top: 5px;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    z-index: 1000;
+    cursor: pointer;
+    pointer-events: auto;
+    background-image: url('../../assets/leaf.png');
+    background-size: 80%;
+    background-position: rotate(90deg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    transform: rotate(-10deg);
+    border: transparent;
+    overflow: visible;
+}
+
+.buttonBackText {
+    position: absolute;
+    z-index: 3000;
+    color: antiquewhite;
+    font-family: courier;
+}
+
+.backdrop {
+    display: flex;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 33px;
+    width: 70%;
+    height: auto;
+    overflow: scroll;
+    background-color: rgba(234, 229, 222, 0.805);
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.ogruTitle,
+.topicTitle {
+    font-family: 'allRoundGothic';
+    color: rgba(104, 62, 62, 0.8);
+    font-size: 5em;
+}
+
+.ogruText {
+    font-family: 'courierPrime';
+    color: rgb(54, 34, 34);
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.mainText {
+    text-align: justify;
+}
+
+.cursor {
+    display: inline-block;
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.ogruOptionCard {
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    margin-top: 20px;
+    opacity: 80%;
+    text-align: center;
+    text-justify: auto;
+    cursor: pointer;
+}
+
+.ogruCardContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.optionTitle {
+    font-family: 'allRoundGothic';
+    color: rgb(19, 10, 10);
+
+}
+
+.optionText {
+    font-family: 'allRoundGothic';
+    color: rgb(19, 10, 10);
+
+}
+
+.greetings {
+    margin-bottom: 10%;
+}
+
+
+.topicContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.topicTitle {
+    text-align: left;
+    width: 100%;
+}
+
+.topicText {
+    text-align: justify;
+}
+
+/* media queries */
+
+@media (max-width: 767px) {
+    .ogruOptionCard {
+        width: 150px;
+        height: 150px;
+        align-self: center;
+    }
+}
+
+@media (max-width: 700px) {
+    .ogruCardContainer {
+        width: 100%;
+        flex-direction: column;
+        justify-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .ogruTitle {
+        font-size: 2em;
+    }
+
+    .ogruText {
+        font-size: 1em;
+        text-align: center;
+    }
+}
+
+.page {
+    display: flex;
+}
