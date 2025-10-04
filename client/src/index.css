@@ -3,6 +3,11 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    height: 100vh;
+    height: 100dvh;
     overflow: scroll;
+    transform-style: preserve-3d;
+    perspective: 1px;
+    perspective-origin: 0 0;
 
 }

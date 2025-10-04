@@ -1,7 +1,7 @@
 .ogruContainer {
     display: flex;
     width: 100vw;
-    height: auto;
+    height: 100%;
     background-image: url('../../assets/ogruRecords.png');
     background-size: cover;
     background-repeat: none;
@@ -64,7 +64,7 @@
 .topicTitle {
     font-family: 'allRoundGothic';
     color: rgba(104, 62, 62, 0.8);
-    font-size: 5em;
+    font-size: 3.5rem;
 }
 
 .ogruText {
@@ -98,6 +98,7 @@
     text-align: center;
     text-justify: auto;
     cursor: pointer;
+    border: none;
 }
 
 .ogruCardContainer {
@@ -131,7 +132,7 @@
 }
 
 .topicTitle {
-    text-align: left;
+    text-align: center;
     width: 100%;
 }
 

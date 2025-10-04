@@ -152,7 +152,7 @@ function Greetings() {
 
 function OgruOptionCard({ label, color, p, colorTwo, onClick }) {
     return (
-        <motion.div
+        <motion.button
             className="ogruOptionCard"
             style={{ backgroundColor: color }}
             onClick={onClick}
@@ -162,7 +162,7 @@ function OgruOptionCard({ label, color, p, colorTwo, onClick }) {
         >
             <motion.h1 className="optionTitle">{label}</motion.h1>
             <motion.p className="optionText">{p}</motion.p>
-        </motion.div>
+        </motion.button>
     );
 }
 

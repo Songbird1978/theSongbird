@@ -20,7 +20,7 @@ function TownScene() {
     };
 
     return (
-        <motion.div
+        <motion.button
             className="page"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -41,7 +41,7 @@ function TownScene() {
 
                 </div>
             </div >
-        </motion.div>
+        </motion.button>
     );
 }
 
