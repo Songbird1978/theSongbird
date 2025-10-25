@@ -35,12 +35,16 @@ const optionCards = [
     },
 ];
 
-function OgruRecords(text) {
+function OgruRecords() {
     const [clicked, setClicked] = useState();
+    const [complete, setComplete] = useState(false);
+   
 
     //const navigate = useNavigate();
+    console.log("current state of typing", complete);
 
     return (
+        
         <motion.div
             className="page"
             initial={{ opacity: 0 }}
@@ -55,7 +59,8 @@ function OgruRecords(text) {
                     transition={{ duration: 1.5, ease: "easeIn" }}
                     animate={{ y: 0, height: "auto" }}
                 >
-                    <Greetings />
+                    <Greetings setComplete={setComplete} />
+                 {complete && (
                     <motion.div className="ogruCardContainer">
                         {optionCards.map(
                             ({ id, label, color, colorTwo, p }) => (
@@ -82,6 +87,7 @@ function OgruRecords(text) {
                             )
                         )}
                     </motion.div>
+                 )}
                     <motion.div id="contentSection" className="optionPage">
                         <AnimatePresence mode="wait">
                             {clicked === "ogru" && (
@@ -131,7 +137,9 @@ function OgruRecords(text) {
     );
 }
 
-function Greetings() {
+function Greetings({ setComplete }) {
+ 
+
     return (
         <>
             <motion.div className="greetings">
@@ -141,9 +149,14 @@ function Greetings() {
                         " Good day to you. ",
                         " What would you like to do? ",
                     ]}
+                    
                     speed={100}
                     pauseBetween={2000}
                     className="ogruText"
+                    onComplete={() => {
+                        setComplete(true)
+                    }} // trigger when typing is complete
+                    
                 />
             </motion.div>
         </>

@@ -15,9 +15,10 @@ export default function Typewriter({
 
     useEffect(() => {
         if (currentLineIndex >= lines.length) {
-            if (onComplete) onComplete();
+            if (onComplete) onComplete()
             return;
         }
+        
 
         const line = lines[currentLineIndex];
         let charIndex = 0;

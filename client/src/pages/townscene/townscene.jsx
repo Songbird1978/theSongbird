@@ -29,7 +29,7 @@ function TownScene() {
         >
             <div className="townContainer">
                 <div className="townWrapper">
-                    <img src={town} alt="Town" className="town" />
+                    <img src={town} alt="Town" className="town" usemap="#townmapç" />
                     {hotspots.map(({ id, label, position }) => (
                         <HotspotButton key={id} label={label} position={position}
                             onClick={() => {

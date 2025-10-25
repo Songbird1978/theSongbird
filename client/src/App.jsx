@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/home/home.jsx';
 import StartScreen from './pages/startScreen/startScreen.jsx';
 import Townscene from './pages/townscene/townscene.jsx';
