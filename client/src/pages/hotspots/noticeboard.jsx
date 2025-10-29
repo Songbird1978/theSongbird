@@ -36,6 +36,8 @@ export default function Noticeboard() {
         const video = videoRef.current;
         if (video) {
             video.play();
+        } else {
+            setHasPlayed(true);
         }
     }, []);
 

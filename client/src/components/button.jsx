@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import leafImg from '../assets/leaf.png';
+import leafImg from '../assets/redLeaf.png';
 import '../pages/hotspots/ogruRecords.jsx';
 import '../pages/home/home.css';
 

@@ -128,7 +128,7 @@ function OgruRecords() {
                     <motion.div className="magicLeafDiv">
                         <Button
                             className="magicLeafBack"
-                            text="To the Town"
+                            text="Exit"
                         ></Button>
                     </motion.div>
                 </motion.div>

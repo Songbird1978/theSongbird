@@ -64,39 +64,37 @@
 
 .leaf {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 10rem;
+    height: 10rem;
     z-index: 1000;
-    bottom: 10px;
-    left: 10px;
+    bottom: -5rem;
+    left: ;
     cursor: pointer;
     pointer-events: auto;
-    background-image: url('../../assets/leaf.png');
+    background-image: url('../../assets/redLeaf.png');
     background-size: 80%;
-    background-position: rotate(90deg);
+    background-position: rotate(80deg);
     background-color: transparent;
     background-repeat: no-repeat;
-    transform: rotate(-10deg);
+    transform: rotate(25deg);
     border: transparent;
     overflow: visible;
 }
 
 .buttonTextHome {
-    transform: rotate(-35deg);
-    margin-top: -60px;
-    margin-left: 36px;
+    transform: rotate(-50deg);
+    margin-top: -75px;
+    margin-left: 70px;
     position: absolute;
     font-family: cursive;
     font-weight: bold;
     color: antiquewhite;
-    font-size: 0.8rem;
+    font-size: 1rem;
     height: 150px;
     width: 150px;
     z-index: 1100;
     text-wrap: wrap;
 }
-
-
 
 .leavesFullDiv {
     z-index: 800;

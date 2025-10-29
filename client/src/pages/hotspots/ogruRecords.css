@@ -24,8 +24,8 @@
     font-family: allRoundGothic;
     margin-top: 5px;
     justify-content: center;
-    width: 150px;
-    height: 150px;
+    width: 15rem;
+    height: 15rem;
     z-index: 1000;
     cursor: pointer;
     pointer-events: auto;

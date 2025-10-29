@@ -4,7 +4,7 @@ import leavesLeft from "../../assets/leaves2NoBgL.png";
 import leavesRight from "../../assets/leaves2NoBgFlipR.png";
 import leavesFull from "../../assets/leavesFull.png";
 import secretGardenDoorSquare from "../../assets/secretGardenDoorSquare.png";
-import leaf from "../../assets/leaf.png";
+import redLeaf from "../../assets/redLeaf.png";
 import TownScene from "../townscene/townscene.jsx";
 import "../home/home.css";
 import rustleSound from '../../assets/rustle.mp3';
@@ -43,7 +43,7 @@ function Home() {
         >
             <div className="secretGardenContainer">
                 <motion.button
-                    src={leaf}
+                    src={redLeaf}
                     alt="leaf button"
                     className="leaf"
                     onClick={handleClick}
