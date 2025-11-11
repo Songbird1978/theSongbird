@@ -2,7 +2,16 @@
     height: 100%;
     width: 100%;
     position: relative;
-    overflow-x: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+}
+
+.townContainer:active {
+    cursor: grabbing;
 }
 
 .townWrapper {

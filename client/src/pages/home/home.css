@@ -67,8 +67,8 @@
     width: 10rem;
     height: 10rem;
     z-index: 1000;
-    bottom: -5rem;
-    left: ;
+    bottom: -1rem;
+    left: 2rem;
     cursor: pointer;
     pointer-events: auto;
     background-image: url('../../assets/redLeaf.png');
@@ -82,9 +82,9 @@
 }
 
 .buttonTextHome {
-    transform: rotate(-50deg);
-    margin-top: -75px;
-    margin-left: 70px;
+    transform: rotate(-60deg);
+    margin-top: -60px;
+    margin-left: 40px;
     position: absolute;
     font-family: cursive;
     font-weight: bold;

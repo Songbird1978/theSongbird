@@ -28,7 +28,6 @@ function App() {
             <Route path="/noticeboard" element={<Noticeboard />} />
             <Route path="/songbirdDesigns" element={<SongbirdDesigns />} />
             <Route path="/songbirdSites" element={<SongbirdSites />} />
-
           </Routes>
         </AnimatePresence>
       </div>

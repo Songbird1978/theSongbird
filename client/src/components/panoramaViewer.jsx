@@ -1,0 +1,83 @@
+import React, { useRef, useEffect } from 'react';
+
+const PanoramaViewer = ({ src, alt = "Panorama" }) => {
+const containerRef = useRef(null);
+
+useEffect(() => {
+    const container = containerRef.current;
+    let isDragging = false;
+    let startX; 
+    let scrollStart;
+
+    const isTouchDevice = 
+    "ontouchstatrt" in window || navigator.maxTouchPoints > 0;
+
+    if (!isTouchDevice) {
+        const handleMouseDown = (e) => {
+            isDragging = true; 
+            startX = e.pageX - container.offsetLeft;
+            scrollStart = container.scrollLeft;
+        };
+
+        const handleMouseLeave = () => (isDragging = false);
+        const handleMouseUp = () => (isDragging = false);
+
+        const handleMouseMove = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - container.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            container.scrollLeft = scrollStart - walk;
+        };
+
+        container.addEventListener("mouseodnw", handleMouseDown);
+        container.addEventListener("mouseLeave", handleMouseLeave);
+        container.addEventListener("mouseup", handleMouseUp);
+        container.addEventListener("mousemove", handleMouseMove);
+
+        return () => {
+            container.removeEventListener("mouseodnw", handleMouseDown);
+            container.removeEventListener("mouseLeave", handleMouseLeave);
+            container.removeEventListener("mouseup", handleMouseUp);
+            container.removeEventListener("mousemove", handleMouseMove); 
+        };
+    }
+}, []);
+
+useEffect(() => {
+    const container = containerRef.current;
+
+    const handleKeyDown = (e) => {
+        const step = 100;
+        switch (e.key) {
+            case "ArrowLeft":
+            case "a":
+            case "A":
+                container.scrollLeft -+ step;
+                break;
+            case "ArrowRight":
+            case "d":
+             case "D":
+                container.scrollLeft += step;
+                break;
+            case "Home":
+                container.scrollLeft = 0;
+                break;
+            case "End":
+                container.scrollLeft = container.scrollWidth;
+                break;
+            default:
+                break;
+        }
+    };
+
+
+    container.addEventListener("keydown", handleKeyDown);
+    container.focus();
+
+    return () => container.removeEventListener("keydown", handleKeyDown);
+}, {});
+
+return
+
+}
