@@ -3,6 +3,7 @@ import './townscene.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PanoramaViewer from '../../components/panoramaViewer.jsx';
 
 const hotspots = [
     { id: 'ogruRecords', label: 'Ogru Records', position: '8%' },
@@ -28,8 +29,8 @@ function TownScene() {
             transition={{ duration: 0.5 }}
         >
             <div className="townContainer">
-                <div className="townWrapper">
-                    <img src={town} alt="Town" className="town" usemap="#townmapç" />
+                <PanoramaViewer src={town} className="townWrapper">
+                    <img src={town} alt="Explore the town" className="town" usemap="#townmap" />
                     {hotspots.map(({ id, label, position }) => (
                         <HotspotButton key={id} label={label} position={position}
                             onClick={() => {
@@ -39,7 +40,7 @@ function TownScene() {
                         />
                     ))}
 
-                </div>
+                </PanoramaViewer>
             </div >
         </motion.button>
     );

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-const PanoramaViewer = ({ src, alt = "Panorama" }) => {
+const PanoramaViewer = ({ src, alt = "explore the Panorama" }) => {
 const containerRef = useRef(null);
 
 useEffect(() => {
@@ -10,7 +10,7 @@ useEffect(() => {
     let scrollStart;
 
     const isTouchDevice = 
-    "ontouchstatrt" in window || navigator.maxTouchPoints > 0;
+    "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
     if (!isTouchDevice) {
         const handleMouseDown = (e) => {
@@ -30,13 +30,13 @@ useEffect(() => {
             container.scrollLeft = scrollStart - walk;
         };
 
-        container.addEventListener("mouseodnw", handleMouseDown);
+        container.addEventListener("mousedown", handleMouseDown);
         container.addEventListener("mouseLeave", handleMouseLeave);
         container.addEventListener("mouseup", handleMouseUp);
         container.addEventListener("mousemove", handleMouseMove);
 
         return () => {
-            container.removeEventListener("mouseodnw", handleMouseDown);
+            container.removeEventListener("mousedown", handleMouseDown);
             container.removeEventListener("mouseLeave", handleMouseLeave);
             container.removeEventListener("mouseup", handleMouseUp);
             container.removeEventListener("mousemove", handleMouseMove); 
@@ -57,7 +57,7 @@ useEffect(() => {
                 break;
             case "ArrowRight":
             case "d":
-             case "D":
+            case "D":
                 container.scrollLeft += step;
                 break;
             case "Home":
@@ -76,8 +76,32 @@ useEffect(() => {
     container.focus();
 
     return () => container.removeEventListener("keydown", handleKeyDown);
-}, {});
+}, []);
 
-return
+return (
+    <div ref={containerRef}
+    tabIndex={0}
+    style={{
+        width: "100%",
+        height: "100vh",
+        overflowX: "auto",
+        overflowY: "hidden",
+        whiteSpace: "nowrap",
+        scrollBehaviour: "smooth",
+        WebkitOverflowScrolling: "touch",
+        cursor: "grab",
+        outline: "none", //hide focus outline
+    }} className="panorama-container">
+        <img src={src} 
+        alt={alt} 
+        style={{ 
+            height: "100%",
+            width: "auto",
+            display: "inline-block",
+            userSelect: "none",
+        }} />
+    </div>
+);
+};
 
-}
+export default PanoramaViewer;
