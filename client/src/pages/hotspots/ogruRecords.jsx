@@ -1,6 +1,7 @@
 import "./hotspots.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useNavigate } from "react";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./ogruRecords.css";
 import "../../fonts/fonts.css";
 import Ogru from "./ogru.jsx";
@@ -10,6 +11,7 @@ import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
 import "../townscene/townscene.css";
 import "../home/home.css";
+//import TownScene from '../townscene/townscene.jsx';
 
 const optionCards = [
     {
@@ -40,8 +42,7 @@ function OgruRecords() {
     const [complete, setComplete] = useState(false);
    
 
-    //const navigate = useNavigate();
-    console.log("current state of typing", complete);
+    const navigate = useNavigate(); 
 
     return (
         
@@ -125,12 +126,15 @@ function OgruRecords() {
                             )}
                         </AnimatePresence>
                     </motion.div>
-                    <motion.div className="magicLeafDiv">
+                    <div className="magicLeafDiv">
                         <Button
                             className="magicLeafBack"
+                            id="magicLeafText"
                             text="Exit"
+                            to={'/townscene'}
+                        style={{ cursor: "pointer" }}
                         ></Button>
-                    </motion.div>
+                    </div>
                 </motion.div>
             </div>
         </motion.div>
@@ -151,7 +155,7 @@ function Greetings({ setComplete }) {
                     ]}
                     
                     speed={100}
-                    pauseBetween={2000}
+                    pauseBetween={1000}
                     className="ogruText"
                     onComplete={() => {
                         setComplete(true)

@@ -1,19 +1,17 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import leafImg from '../assets/redLeaf.png';
 import '../pages/hotspots/ogruRecords.jsx';
 import '../pages/home/home.css';
 
 
 
 
-const AnimatedLeafButton = ({ to, text }) => {
+const AnimatedLeafButton = ({ to, text, className, id }) => {
     const navigate = useNavigate();
 
     return (
         <motion.button
-            src={leafImg}
-            className="magicLeafBack"
+            className={className}
             //whileHover={{ scale: 1.2, rotate: -5 }}
             whileHover={{
                 scale: [1, 1.1, 1],
@@ -32,7 +30,7 @@ const AnimatedLeafButton = ({ to, text }) => {
             }}
             transition={{ type: "spring", stiffness: 300 }}
         >
-            <p className="buttonTextHome" text={text}>
+            <p id={id} text={text}>
                 {text}
             </p>
         </motion.button>

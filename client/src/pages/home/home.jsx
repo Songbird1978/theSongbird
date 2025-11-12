@@ -55,7 +55,7 @@ function Home() {
                     className="leaf"
                     onClick={handleClick}
                     whileHover={{
-                        scale: [1, 1.1, 1],
+                        scale: [1.3, 1.5, 1.2],
                         rotate: [0, 5, -5, 0],
                         transition: {
                             duration: 2, repeat: Infinity

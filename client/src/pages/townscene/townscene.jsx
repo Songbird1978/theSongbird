@@ -1,6 +1,5 @@
 import town from '../../assets/townStreetEdited.png';
 import './townscene.css';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PanoramaViewer from '../../components/panoramaViewer.jsx';
@@ -14,11 +13,12 @@ const hotspots = [
 
 function TownScene() {
 
-    const navigate = useNavigate();
+const [revealed, setRevealed] = useState(false);
 
-    const handleNavigation = (destination) => {
-        navigate(`/${destination}`);
-    };
+const handleReveal = () => {
+    setRevealed(true);
+};
+
 
     const variants = {
         initial: { opacity: 0, x: 200 },
@@ -33,16 +33,11 @@ function TownScene() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-        >
-           
+        >       
                 <PanoramaViewer src={town} className="townContainer">
                    
                     {hotspots.map(({ id, label, position }) => (
                         <HotspotButton key={id} label={label} position={position}
-                            onClick={() => {
-                                console.log({ label }, "was clicked");
-                                handleNavigation(id);
-                            }}
                         />
                     ))}
                 </PanoramaViewer>
@@ -55,10 +50,10 @@ function HotspotButton({ label, position, onClick }) {
     const [hasAppeared, setHasAppeared] = useState(false);
 
     const buttonVariants = {
-        initial: { opacity: 0, y: -300, rotate: -10, scale: 0.8 },
+        initial: { opacity: 0, y: -300, rotate: -10, scale: 1.2 },
         visible: {
             opacity: 1,
-            y: [-300, 80],
+            y: [-300, 200],
             rotate: [-40, 20],
             transition: {
                 duration: 1.6,
@@ -74,9 +69,14 @@ function HotspotButton({ label, position, onClick }) {
         <motion.div
             style={{ position: 'absolute', top: '50%', left: position, zIndex: 200 }}
             className="hotspot"
+            role="button"
+            tabIndex="true"
+            whileFocus={{ backgroundColor: 'rgba(24, 239, 67, 0.256)'}}
+            whileHover={{ backgroundColor: 'rgba(24, 239, 67, 0.256)'}}
             onMouseEnter={() => {
                 console.log('Hovered', label)
                 setHasAppeared(true)
+                
             }}
         >
             <AnimatePresence>
@@ -84,7 +84,7 @@ function HotspotButton({ label, position, onClick }) {
                     <motion.button
                         className="leafButton"
                         whileHover={{
-                            scale: [1, 1.2, 1],
+                            scale: [1.2, 1.5, 1.2],
                             rotate: [0, 5, -5, 0],
                             transition: {
                                 duration: 2, repeat: Infinity
@@ -102,6 +102,7 @@ function HotspotButton({ label, position, onClick }) {
                         </p>
                     </motion.button>
                 )}
+
             </AnimatePresence>
         </motion.div >
 

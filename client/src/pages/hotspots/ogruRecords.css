@@ -13,37 +13,43 @@
     display: flex;
     justify-content: center;
     padding: 30px;
-    margin-top: 10%;
-    margin-bottom: -40%;
-    align-items: flex-end;
+    margin-top: 30%;
+    align-items: center;
     height: 50%;
+
 }
 
 .magicLeafBack {
     color: antiquewhite;
     font-family: allRoundGothic;
-    margin-top: 5px;
     justify-content: center;
     width: 15rem;
     height: 15rem;
-    z-index: 1000;
+    z-index: 3000;
     cursor: pointer;
-    pointer-events: auto;
+    pointer-events: auto !important;
     background-image: url('../../assets/leaf.png');
-    background-size: 80%;
     background-position: rotate(90deg);
     background-color: transparent;
     background-repeat: no-repeat;
+    background-size: contain;
     transform: rotate(-10deg);
     border: transparent;
     overflow: visible;
+
 }
 
-.buttonBackText {
-    position: absolute;
-    z-index: 3000;
+#magicLeafText {
+    
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-left: 5rem;
+    margin-bottom: 6rem;
+    font-size: 1.5rem;
+    transform: rotate(-40deg);
     color: antiquewhite;
-    font-family: courier;
+    width: 50%;
 }
 
 .backdrop {
@@ -142,7 +148,7 @@
 
 /* media queries */
 
-@media (max-width: 767px) {
+@media (max-width: 900px) {
     .ogruOptionCard {
         width: 150px;
         height: 150px;
@@ -168,6 +174,19 @@
         font-size: 1em;
         text-align: center;
     }
+    #magicLeafText {
+    
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        margin-left: 5rem;
+        margin-bottom: 11rem;
+        font-size: 1.4rem;
+        transform: rotate(-40deg);
+        color: rgba(24, 239, 67, 0.256);
+        width: 50%;
+    }
+
 }
 
 .page {
