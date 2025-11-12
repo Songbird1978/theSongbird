@@ -14,11 +14,6 @@
     cursor: grabbing;
 }
 
-.townWrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
 
 .town {
     position: absolute;
@@ -28,6 +23,7 @@
     height: 100vh;
     object-fit: cover;
     pointer-events: none;
+    z-index: 300;
 }
 
 .hotspot {

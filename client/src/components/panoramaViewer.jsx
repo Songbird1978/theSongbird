@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-const PanoramaViewer = ({ src, alt = "explore the Panorama" }) => {
+const PanoramaViewer = ({ src, alt = "explore the Panorama", children }) => {
 const containerRef = useRef(null);
 
 useEffect(() => {
@@ -79,9 +79,11 @@ useEffect(() => {
 }, []);
 
 return (
-    <div ref={containerRef}
+    <div 
+    ref={containerRef}
     tabIndex={0}
     style={{
+        position: 'relative',
         width: "100%",
         height: "100vh",
         overflowX: "auto",
@@ -91,15 +93,42 @@ return (
         WebkitOverflowScrolling: "touch",
         cursor: "grab",
         outline: "none", //hide focus outline
-    }} className="panorama-container">
-        <img src={src} 
-        alt={alt} 
-        style={{ 
+    }} 
+    className="panorama-container"
+    >
+        <div 
+        className="panorama-wrapper"
+        style={{
+            position: 'relative',
+            display: 'inline-block',
             height: "100%",
-            width: "auto",
-            display: "inline-block",
-            userSelect: "none",
-        }} />
+        }}
+        >
+            <img 
+            src={src} 
+            alt={alt} 
+            style={{ 
+                height: "100%",
+                width: "auto",
+                display: "inline-block",
+                userSelect: "none",
+                }} 
+            />
+            <div
+            className="hotspot-layer"
+            style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: 400,
+                pointerevents: 'auto',
+            }}
+            >
+            {children}
+            </div>
+        </div> 
     </div>
 );
 };

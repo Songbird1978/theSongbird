@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
 import leavesLeft from "../../assets/leaves2NoBgL.png";
 import leavesRight from "../../assets/leaves2NoBgFlipR.png";
@@ -14,6 +15,12 @@ import birdSound from '../../assets/birds.mp3';
 
 function Home() {
     const [exitIndex, setExitIndex] = useState(0);
+
+    const navigate = useNavigate();
+
+    const handleNavigation = (destination) => {
+        navigate(`/${destination}`);
+    };
 
 
     const handleClick = () => {
@@ -63,7 +70,7 @@ function Home() {
                     </p>
                 </motion.button>
 
-                {exitIndex >= 1 && <TownScene />}
+               {/*{exitIndex >= 1 && <TownScene />}    could use this if you want to stay on the garden - otherwise - navigate to the townscene*/ }
 
                 {/* Left and Right Leaves */}
 
@@ -161,9 +168,11 @@ function Home() {
                             key="door"
                             className="secretGardenDoorSqu"
                             initial={{ opacity: 1, scale: 1 }}
+                            whileHover={{ scale: 1.05 }}
                             exit={{ opacity: 0, scale: 1.3 }}
                             transition={{ duration: 2, ease: "easeInOut" }}
                             onClick={handleClick}
+                            onAnimationComplete={() => handleNavigation("townscene")}
                         >
                             <img
                                 src={secretGardenDoorSquare}

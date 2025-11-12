@@ -20,17 +20,23 @@ function TownScene() {
         navigate(`/${destination}`);
     };
 
+    const variants = {
+        initial: { opacity: 0, x: 200 },
+        animate: { opacity: 1, x: 0, transition: { duration: 1.2, ease: "easeOut" }},
+        exit: { opacity: 0, x: -200, transition: { duration: 1}},
+    };
+
     return (
-        <motion.button
+        <motion.div
             className="page"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="townContainer">
-                <PanoramaViewer src={town} className="townWrapper">
-                    <img src={town} alt="Explore the town" className="town" usemap="#townmap" />
+           
+                <PanoramaViewer src={town} className="townContainer">
+                   
                     {hotspots.map(({ id, label, position }) => (
                         <HotspotButton key={id} label={label} position={position}
                             onClick={() => {
@@ -39,10 +45,8 @@ function TownScene() {
                             }}
                         />
                     ))}
-
                 </PanoramaViewer>
-            </div >
-        </motion.button>
+        </motion.div>
     );
 }
 
