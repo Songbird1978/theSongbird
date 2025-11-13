@@ -6,7 +6,6 @@ import leavesRight from "../../assets/leaves2NoBgFlipR.png";
 import leavesFull from "../../assets/leavesFull.png";
 import secretGardenDoorSquare from "../../assets/secretGardenDoorSquare.png";
 import redLeaf from "../../assets/redLeaf.png";
-import TownScene from "../townscene/townscene.jsx";
 import "../home/home.css";
 import rustleSound from '../../assets/rustle.mp3';
 import rustleQuietHover from '../../assets/rustleQuietHover.mp3';
@@ -18,10 +17,7 @@ function Home() {
 
     const navigate = useNavigate();
 
-    const handleNavigation = (destination) => {
-        navigate(`/${destination}`);
-    };
-
+  
 
     const handleClick = () => {
         setExitIndex((prev) => prev + 1);
@@ -172,7 +168,8 @@ function Home() {
                             exit={{ opacity: 0, scale: 1.3 }}
                             transition={{ duration: 2, ease: "easeInOut" }}
                             onClick={handleClick}
-                            onAnimationComplete={() => handleNavigation("townscene")}
+                            onAnimationComplete={() => {
+                                navigate("/townscene")}}
                         >
                             <img
                                 src={secretGardenDoorSquare}
