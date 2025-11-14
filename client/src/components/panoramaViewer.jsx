@@ -1,8 +1,52 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const PanoramaViewer = ({ src, alt = "explore the Panorama", children }) => {
 const containerRef = useRef(null);
+const imgRef = useRef(null);
+const contentRef = useRef(null);
+const [imagewidth, setImageWidth] = useState(0);
 
+
+//measure image width 
+useEffect(() => {
+    const img = imgRef.current;
+    if (!img) return;
+    if (img.complete) setImageWidth(img.naturalWidth);
+    else img.onload = () => setImageWidth(img.naturalWidth);
+    console.log("panorama img width = ", imagewidth);
+}, [src]);
+
+useEffect(() => {
+    const img = imgRef.current;
+    const content = contentRef.current;
+    if (!img || !content) return;
+
+    // measure screen width / calculate 
+const updateWidth = () => {
+    if (!img.naturalWidth || !img.naturalHeight) {
+        return;
+    }
+    const displayedHeight = window.innerHeight; 
+    const aspectRatio = img.naturalWidth / img.naturalHeight;
+    const displayedWidth = Math.round(displayedHeight * aspectRatio);
+    content.style.width = `${displayedWidth}px`;
+};
+
+if (img.complete && img.naturalWidth) {
+    updateWidth();
+} else {
+    const onLoad = () => updateWidth();
+    img.addEventListener("load", onLoad);
+    return () => img.removeEventListener("load", onLoad);
+}
+
+window.addEventListener("resize", updateWidth);
+return () => window.removeEventListener("resize", updateWidth);
+
+}, [src]);
+
+
+//dragging to explore
 useEffect(() => {
     const container = containerRef.current;
     let isDragging = false;
@@ -44,6 +88,8 @@ useEffect(() => {
     }
 }, []);
 
+//keystrokes to explore 
+
 useEffect(() => {
     const container = containerRef.current;
 
@@ -83,21 +129,23 @@ return (
     ref={containerRef}
     tabIndex={0}
     style={{
-        position: 'relative',
-        width: "100%",
         height: "100vh",
+        width: "100vw",
         overflowX: "auto",
         overflowY: "hidden",
+        display: 'flex',
         whiteSpace: "nowrap",
         scrollBehaviour: "smooth",
         WebkitOverflowScrolling: "touch",
         cursor: "grab",
         outline: "none", //hide focus outline
+        alignItems: "center",
     }} 
     className="panorama-container"
     >
         <div 
         className="panorama-wrapper"
+        ref={contentRef}
         style={{
             position: 'relative',
             display: 'inline-block',
@@ -105,15 +153,19 @@ return (
         }}
         >
             <img 
+            ref={imgRef}
             src={src} 
             alt={alt} 
             style={{ 
-                height: "100%",
+                height: "100vh",
                 width: "auto",
-                display: "inline-block",
+                display: "block",
                 userSelect: "none",
                 }} 
             />
+            {React.Children.map(children, (child) =>
+            React.cloneElement(child, { imagewidth })
+            )}
             <div
             className="hotspot-layer"
             style={{

@@ -1,21 +1,26 @@
-import town from '../../assets/townStreetEdited.png';
+import town from '../../assets/townExtended-4.png';
 import './townscene.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PanoramaViewer from '../../components/panoramaViewer.jsx';
+import Bird from '../../components/bird.jsx';
+import Snail from '../../components/snail.jsx';
+import Bird2 from '../../components/bird2.jsx';
+import Snail2 from '../../components/snail2.jsx';
+
 
 const hotspots = [
-    { id: 'ogruRecords', label: 'Ogru Records', position: '8%' },
-    { id: 'songbirdDesigns', label: 'Songbird Design', position: '33%' },
-    { id: 'noticeboard', label: 'Noticeboard', position: '53%' },
-    { id: 'songbirdSites', label: 'Songbird Sites', position: '75%' },
+    { id: 'ogruRecords', label: 'Ogru Records', position: '20%' },
+    { id: 'songbirdDesigns', label: 'Songbird Design', position: '38%' },
+    { id: 'noticeboard', label: 'Noticeboard', position: '54%' },
+    { id: 'songbirdSites', label: 'Songbird Sites', position: '70%' },
 ];
 
 function TownScene() {
 
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     const handleNavigation = (destination) => {
         navigate(`/${destination}`);
     };
@@ -34,9 +39,7 @@ function TownScene() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-           
                 <PanoramaViewer src={town} className="townContainer">
-                   
                     {hotspots.map(({ id, label, position }) => (
                         <HotspotButton key={id} label={label} position={position}
                             onClick={() => {
@@ -45,6 +48,10 @@ function TownScene() {
                             }}
                         />
                     ))}
+               <div style={{ width: "100%", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                    <Bird2 />
+                    <Snail2 style={{ transform: 'rotate(-180deg)'}}/>
+                    </div>
                 </PanoramaViewer>
         </motion.div>
     );
@@ -58,7 +65,7 @@ function HotspotButton({ label, position, onClick }) {
         initial: { opacity: 0, y: -300, rotate: -10, scale: 1 },
         visible: {
             opacity: 1,
-            y: [-300, 80],
+            y: ["-500%", "1px"],
             rotate: [-40, 20],
             transition: {
                 duration: 1.6,
@@ -72,12 +79,13 @@ function HotspotButton({ label, position, onClick }) {
     return (
 
         <motion.div
-            style={{ position: 'absolute', top: '50%', left: position, zIndex: 200 }}
+            style={{ position: 'absolute', top: '60%', left: position, zIndex: 200 }}
             className="hotspot"
             role="button"
             tabIndex="true"
+            focusable="true"
             whileFocus={{ backgroundColor: 'rgba(24, 239, 67, 0.256)'}}
-            whileHover={{ backgroundColor: 'rgba(24, 239, 67, 0.256)'}}ß
+            whileHover={{ backgroundColor: 'rgba(24, 239, 67, 0.256)'}}
             onMouseEnter={() => {
                 console.log('Hovered', label)
                 setHasAppeared(true)
