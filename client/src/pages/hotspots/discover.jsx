@@ -1,8 +1,40 @@
 import './hotspots.css';
 import { motion } from 'framer-motion';
-
+import { useState, useEffect } from 'react';
+import Leaf from '../../assets/leaf.png';
 
 function Discover() {
+
+const [records, setRecords] = useState([]);
+const [error, setError] = useState(null);
+const [loading, setLoading] = useState(true);
+
+console.log("records list ", records, typeof records);
+
+  
+useEffect(() => {
+    fetch('/api/records')
+      .then(res => {
+        if (!res.ok) {
+            throw new Error(`HTTP error! status:, ${res.status}`);
+        }
+        return res.json() //parse as JSON
+    })
+      .then(data => {
+        console.log("response", data, Array.isArray(data));
+        setRecords(Array.isArray(data) ? data : []); //make sure it's an array
+        setLoading(false);
+    })
+    .catch(error => {
+        setError(error.message)
+        console.error('fetch error:',error)
+        setLoading(false);
+    });
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
     return (
         <motion.div
             className="page"
@@ -13,8 +45,22 @@ function Discover() {
         >
             <div className="topicContainer">
                 <h1 className="topicTitle">Discover</h1>
-                <p className="ogruText topicText">This is the page for you to browse all the works that I have been involved with. Here you can learn about the history of my music work, albums, etc.</p>
-            </div>
+            <div>
+        {records.map(record => (
+          <card key={record.id}>
+            <h2>{record.title}</h2>
+            <img src={record.imageUrl[0]} alt={record.title}
+            style={{ width: "200px", height: '200px', display: 'block', border: "2px solid red"}}
+            />
+            <p>by {record.artist.name}</p> {/* ← Artist info available! */}
+            <p>{record.description}</p>
+            <button label="Links"></button>
+          </card>
+        ))}
+                    
+        </div>
+      </div>
+            
         </motion.div>
     );
 }
