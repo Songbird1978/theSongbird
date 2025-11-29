@@ -3,19 +3,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import banner from '../assets/birdBanner.png';
 import '../pages/townscene/townscene.css';
 
-function Bird2 ({ imagewidth }) {
+function Bird2 () {
 
-    console.log("image width is:", imagewidth);
+
   
     return (
             <AnimatePresence>
                 <motion.div 
-                style={{ width: "100%", height: 'auto' }}
+                style={{ width: "100%", height: 'auto', position: 'absolute', top: '10%' }}
                 initial={{
-                    x: +3000,
+                    x: '100vw',
                 }}
                 animate={{
-                    x: -1000,
+                    x: "-600px",
                     rotate: [0, 0, 0,  0.1, 0.2, 0.3, 0.4, 0.5, 0.4, 0.3, 0.2, 0.1, 0, 0, 0, 0, 0]
                 }}
                 transition={{

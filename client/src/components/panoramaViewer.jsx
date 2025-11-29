@@ -130,7 +130,6 @@ return (
     tabIndex={0}
     style={{
         height: "100vh",
-        width: "100vw",
         overflowX: "auto",
         overflowY: "hidden",
         display: 'flex',

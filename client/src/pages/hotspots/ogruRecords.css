@@ -96,8 +96,8 @@
 }
 
 .ogruOptionCard {
-    width: 200px;
-    height: 200px;
+    width: 15rem;
+    height: 15rem;
     padding: 5px;
     margin-top: 20px;
     opacity: 80%;
@@ -110,7 +110,7 @@
 .ogruCardContainer {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .optionTitle {
@@ -148,15 +148,15 @@
 
 /* media queries */
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
     .ogruOptionCard {
-        width: 150px;
-        height: 150px;
+        width: 10rem;
+        height: 10rem;
         align-self: center;
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
     .ogruCardContainer {
         width: 100%;
         flex-direction: column;

@@ -48,13 +48,14 @@ useEffect(() => {
             <div>
         {records.map(record => (
           <card key={record.id}>
-            <h2>{record.title}</h2>
+            
             <img src={record.imageUrl[0]} alt={record.title}
-            style={{ width: "200px", height: '200px', display: 'block', border: "2px solid red"}}
+            style={{ width: "400px", height: '400px', display: 'block'}}
             />
-            <p>by {record.artist.name}</p> {/* ← Artist info available! */}
-            <p>{record.description}</p>
-            <button label="Links"></button>
+            <h2>{record.title}</h2>
+            <p>{record.artist.name}</p> {/* ← Artist info available! */}
+           {/* <p>{record.description}</p> */}
+          
           </card>
         ))}
                     

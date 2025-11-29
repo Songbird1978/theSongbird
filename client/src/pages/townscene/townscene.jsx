@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PanoramaViewer from '../../components/panoramaViewer.jsx';
-import Bird from '../../components/bird.jsx';
-import Snail from '../../components/snail.jsx';
 import Bird2 from '../../components/bird2.jsx';
 import Snail2 from '../../components/snail2.jsx';
 
@@ -13,7 +11,7 @@ import Snail2 from '../../components/snail2.jsx';
 const hotspots = [
     { id: 'ogruRecords', label: 'Ogru Records', position: '20%' },
     { id: 'songbirdDesigns', label: 'Songbird Design', position: '38%' },
-    { id: 'noticeboard', label: 'Noticeboard', position: '54%' },
+    { id: 'noticeboard', label: 'Noticeboard', position: '52%' },
     { id: 'songbirdSites', label: 'Songbird Sites', position: '70%' },
 ];
 
@@ -48,9 +46,19 @@ function TownScene() {
                             }}
                         />
                     ))}
-               <div style={{ width: "100%", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+               <div style={{ 
+                width: "100%", 
+                height: "100vh", 
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                overflow: "hidden",
+                pointerEvents: "none",
+                zIndex: 100
+
+                }}>
                     <Bird2 />
-                    <Snail2 style={{ transform: 'rotate(-180deg)'}}/>
+                    <Snail2 />
                     </div>
                 </PanoramaViewer>
         </motion.div>
@@ -65,7 +73,7 @@ function HotspotButton({ label, position, onClick }) {
         initial: { opacity: 0, y: -300, rotate: -10, scale: 1 },
         visible: {
             opacity: 1,
-            y: ["-500%", "1px"],
+            y: ["-500%", "10px"],
             rotate: [-40, 20],
             transition: {
                 duration: 1.6,
