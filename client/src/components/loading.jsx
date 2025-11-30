@@ -1,16 +1,14 @@
-import {  useState } from "react";
-import "./startScreen.css";
+import "../pages/startScreen/startScreen.css";
 import { motion } from 'framer-motion';
-import songbirdLogo from '../../assets/theSongbirdLogo.png';
+import songbirdLogo from '../assets/theSongbirdLogo.png';
 
 function Loading() {
-    const [isLoaded, setIsLoaded] = useState(false);
-
+    
 
     return (
         <div className="loadingContainer">
                     <motion.img
-                        className="loadingImage"
+                        className="loadingImage w-sm"
                         key='loadingImage'
                         src={songbirdLogo}
                         alt="songbird Logo"

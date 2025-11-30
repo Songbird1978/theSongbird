@@ -1,6 +1,6 @@
 import './hotspots.css';
 import { motion } from 'framer-motion';
-import MusicPlayer from '../../components/musicPlayer.jsx';
+import MusicPlayer from '../../components/musicPlayer/musicPlayer.jsx';
 import '../../pages/hotspots/ogruRecords.css';
 import '../../fonts/fonts.css';
 
@@ -16,7 +16,9 @@ function Listen() {
         >
             <div className="topicContainer">
                 <h1 className="topicTitle">Listen</h1>
+                <div className="flex justify-center">
                 <MusicPlayer />
+                </div>
             </div>
         </motion.div>
     );

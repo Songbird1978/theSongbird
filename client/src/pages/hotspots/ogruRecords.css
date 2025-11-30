@@ -122,13 +122,7 @@
 .optionText {
     font-family: 'allRoundGothic';
     color: rgb(19, 10, 10);
-
 }
-
-.greetings {
-    margin-bottom: 10%;
-}
-
 
 .topicContainer {
     display: flex;
@@ -147,6 +141,14 @@
 }
 
 /* media queries */
+
+@media (max-width: 1170px) {
+    .ogruOptionCard {
+        width: 12rem;
+        height: 12rem;
+        align-self: center;
+    }
+}
 
 @media (max-width: 950px) {
     .ogruOptionCard {

@@ -1,7 +1,9 @@
-import './hotspots.css';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import Leaf from '../../assets/leaf.png';
+import { useState, useEffect, useNavigate } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Loading from '../../components/loading';
+import './ogruRecords.css';
+
 
 function Discover() {
 
@@ -32,37 +34,41 @@ useEffect(() => {
     });
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading className="w-sm" />;
   if (error) return <div>Error: {error}</div>;
 
     return (
-        <motion.div
+      <motion.div
             className="page"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="topicContainer">
+      <div className="topicContainer w-full flex justify-center bg-stone-200 opacity-80">
+                        
                 <h1 className="topicTitle">Discover</h1>
-            <div>
-        {records.map(record => (
-          <card key={record.id}>
-            
-            <img src={record.imageUrl[0]} alt={record.title}
-            style={{ width: "400px", height: '400px', display: 'block'}}
-            />
-            <h2>{record.title}</h2>
-            <p>{record.artist.name}</p> {/* ← Artist info available! */}
-           {/* <p>{record.description}</p> */}
-          
-          </card>
-        ))}
-                    
+         
+            <div className="grid p-10 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-center">
+              {records.map(record => (
+                <Card key={record.id} className="max-w-60 flex-col mb-10">
+                  <CardContent>
+                  <img src={record.imageUrl[0]} alt={record.title}
+                 
+                  className="w-full h-50"
+                  />
+                   <p className="font-gothic optionTitle text-left text-md">{record.title}</p> {/* ← Artist info available! */}
+                  </CardContent>
+                  <CardHeader>
+                  <CardTitle className="font-gothic text-left optionTitle text-sm">by {record.artist.name}</CardTitle>
+                  </CardHeader>
+                </Card>
+              ))}
         </div>
+    
       </div>
             
-        </motion.div>
+      </motion.div>
     );
 }
 

@@ -47,7 +47,7 @@ function OgruRecords() {
     return (
         
         <motion.div
-            className="page"
+            className="page scrollbar-hide"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -55,7 +55,7 @@ function OgruRecords() {
         >
             <div className="ogruContainer">
                 <motion.div
-                    className="backdrop"
+                    className="backdrop scrollbar-hide"
                     initial={{ y: 500 }}
                     transition={{ duration: 1.5, ease: "easeIn" }}
                     animate={{ y: 0, height: "auto" }}
@@ -89,7 +89,7 @@ function OgruRecords() {
                         )}
                     </motion.div>
                  )}
-                    <motion.div id="contentSection" className="optionPage">
+                    <motion.div id="contentSection" className="mt-10 optionPage">
                         <AnimatePresence mode="wait">
                             {clicked === "ogru" && (
                                 <motion.div

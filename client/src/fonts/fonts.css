@@ -11,4 +11,12 @@
 @font-face {
     font-family: 'allRoundGothic';
     src: url('./allRoundGothic/Fontspring-DEMO-allroundgothic-book.otf') format('opentype');
+    font-weight: 400;
+    font-style: book;
+}
+@font-face {
+    font-family: 'allRoundGothicBold';
+    src: url('./allRoundGothic/Fontspring-DEMO-allroundgothic-bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: bold;
 }
