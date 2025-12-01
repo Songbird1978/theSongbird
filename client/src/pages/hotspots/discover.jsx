@@ -13,6 +13,24 @@ const [loading, setLoading] = useState(true);
 
 console.log("records list ", records, typeof records);
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1 // Delay between each child
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+};
   
 useEffect(() => {
     fetch('/api/records')
@@ -49,22 +67,26 @@ useEffect(() => {
                         
                 <h1 className="topicTitle">Discover</h1>
          
-            <div className="grid p-10 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-center">
+            <motion.div className="grid p-10 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-center"
+             variants={containerVariants}
+             initial="hidden"
+             whileInView="visible"
+             viewport={{ once: true }}
+            >
               {records.map(record => (
+                <motion.div key={record.id} variants={itemVariants}>
                 <Card key={record.id} className="max-w-60 flex-col mb-10">
                   <CardContent>
-                  <img src={record.imageUrl[0]} alt={record.title}
-                 
-                  className="w-full h-50"
-                  />
-                   <p className="font-gothic optionTitle text-left text-md">{record.title}</p> {/* ← Artist info available! */}
+                    <img src={record.imageUrl[0]} alt={record.title} className="w-full h-50"/>
+                   <p className="font-gothic optionTitle text-left text-md">{record.title}</p> {/* ← Artist info available! */}              
                   </CardContent>
                   <CardHeader>
                   <CardTitle className="font-gothic text-left optionTitle text-sm">by {record.artist.name}</CardTitle>
                   </CardHeader>
                 </Card>
+                </motion.div>
               ))}
-        </div>
+        </motion.div>
     
       </div>
             
