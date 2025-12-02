@@ -136,9 +136,8 @@ return (
         whiteSpace: "nowrap",
         scrollBehaviour: "smooth",
         WebkitOverflowScrolling: "touch",
-        cursor: "grab",
-        outline: "none", //hide focus outline
-        alignItems: "center",
+        cursor: "grab", 
+        alignItems: "right",
     }} 
     className="panorama-container"
     >

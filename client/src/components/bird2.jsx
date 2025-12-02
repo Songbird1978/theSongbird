@@ -10,7 +10,7 @@ function Bird2 () {
     return (
             <AnimatePresence>
                 <motion.div 
-                style={{ width: "100%", height: 'auto', position: 'absolute', top: '10%' }}
+                style={{ width: "100%", height: 'auto', position: 'absolute', top: '10%', zIndex: '2000' }}
                 initial={{
                     x: '100vw',
                 }}

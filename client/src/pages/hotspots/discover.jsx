@@ -52,7 +52,7 @@ useEffect(() => {
     });
   }, []);
 
-  if (loading) return <Loading className="w-sm" />;
+  if (loading) return <Loading className="p-10" />;
   if (error) return <div>Error: {error}</div>;
 
     return (
