@@ -1,0 +1,10 @@
+.sitesContainer {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    background-image: url("../../assets/SongbirdSites.png");
+    background-size: cover;
+    background-repeat: none;
+    background-attachment: fixed;
+    justify-content: center;
+}
