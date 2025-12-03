@@ -9,7 +9,7 @@ import redLeaf from "../../assets/redLeaf.png";
 import "../home/home.css";
 import rustleSound from '../../assets/rustle.mp3';
 import rustleQuietHover from '../../assets/rustleQuietHover.mp3';
-import birdSound from '../../assets/birds.mp3';
+import { useSound } from '../../contexts/SoundContext';
 
 
 function Home() {
@@ -17,21 +17,22 @@ function Home() {
 
     const navigate = useNavigate();
 
-  
-
     const handleClick = () => {
         setExitIndex((prev) => prev + 1);
     };
 
-    const rustle = new Audio(rustleSound);
-    const birds = new Audio(birdSound);
-    const rustleQuiet = new Audio(rustleQuietHover);
+    const handleLastClick = () => {
+        playBirdSound(); //start the bird sound
+    }
 
+    const { playBirdSound } = useSound();
+    
+    const rustle = new Audio(rustleSound);
+    const rustleQuiet = new Audio(rustleQuietHover);
+    
     // Optional: so it doesn’t overlap repeatedly
     rustle.volume = 0.6;
     rustle.preload = "auto";
-
-    birds.volume = 0.3;
 
     rustleQuiet.volume = 0.4;
     rustleQuiet.preload = 'auto';
@@ -167,7 +168,7 @@ function Home() {
                             whileHover={{ scale: 1.05 }}
                             exit={{ opacity: 0, scale: 1.3 }}
                             transition={{ duration: 2, ease: "easeInOut" }}
-                            onClick={handleClick}
+                            onClick={handleClick && handleLastClick}
                             onAnimationComplete={() => {
                                 navigate("/townscene")}}
                         >

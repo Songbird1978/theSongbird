@@ -1,7 +1,7 @@
 // StartScreen.jsx
 import { useNavigate } from "react-router-dom";
 import leaf from "../../assets/leaf.png";
-import birdSound from '../../assets/birds.mp3';
+import { useSound } from '../../contexts/SoundContext';
 import { useEffect, useRef, useState } from "react";
 import "./startScreen.css";
 import { motion } from 'framer-motion';
@@ -15,7 +15,7 @@ import songbirdLogo from '../../assets/theSongbirdLogo.png';
 
 function StartScreen({ onEnter }) {
     const [isLoaded, setIsLoaded] = useState(false);
-    const [audio] = useState(new Audio(birdSound));
+   const { playBirdSound } = useSound();
     const navigate = useNavigate();
 
 
@@ -46,9 +46,7 @@ function StartScreen({ onEnter }) {
     }, []);
 
     const handleClick = () => {
-        audio.loop = true;
-        audio.volume = 0.3;
-        audio.play().catch((e) => console.error("Autoplay block:", err));
+        playBirdSound();
         navigate("/garden");
     };
 

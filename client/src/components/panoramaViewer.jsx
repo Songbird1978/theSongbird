@@ -161,9 +161,6 @@ return (
                 userSelect: "none",
                 }} 
             />
-            {React.Children.map(children, (child) =>
-            React.cloneElement(child, { imagewidth })
-            )}
             <div
             className="hotspot-layer"
             style={{

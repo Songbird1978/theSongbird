@@ -8,7 +8,10 @@ import Bird2 from '../../components/bird2.jsx';
 import Snail2 from '../../components/snail2.jsx';
 import Loading from '../../components/loading.jsx';
 import DropLeaves from '../../components/dropLeaves.jsx'
-
+import gust from '../../assets/gustOwind.mp3';
+import leaf from '../../assets/leafFall.mp3';
+import shop from '../../assets/shopDoorBellOpenClose.mp3';
+import { useSound } from '../../contexts/SoundContext';
 
 const hotspots = [
     { id: 'ogruRecords', label: 'Ogru Records', position: '20%' },
@@ -21,8 +24,27 @@ function TownScene() {
     const navigate = useNavigate();
     const [hasAppeared, setHasAppeared] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { stopBirdSound, playBirdSound } = useSound();
 
+const gustOwind = new Audio(gust);
+gustOwind.volume = 0.5;
+gustOwind.preload = "auto";
 
+const leafFall = new Audio(leaf);
+leafFall.volume = 0.6;
+leafFall.preload = 'auto';
+
+const door = new Audio(shop);
+door.volume = 0.5;
+door.preload = 'auto';
+
+useEffect(() => {
+    playBirdSound();
+
+    return () => {
+// only stop when nagigating to shops
+    }
+}, []);
     //load saved state on mount
     useEffect(() => {
         loadLeafState();
@@ -67,13 +89,22 @@ function TownScene() {
 
     const dropAllLeaves = () => {
         console.log("drop all leaves was clicked");
+        
         const allLeafIds = hotspots.map(leaf => leaf.id);
-        setHasAppeared(allLeafIds);
+    // Shuffle but keep consistent timing
+    const shuffled = [...allLeafIds].sort(() => Math.random() - 0.5);
+    
+    shuffled.forEach((leafId, index) => {
+        setTimeout(() => {
+            setHasAppeared(prev => [...prev, leafId]);
+        }, index * 150);
+    });
     };
 
     const resetLeaves = () => {
         console.log('reset leaves was clicked');
         setHasAppeared([]);
+        gustOwind.play()
         try {
             localStorage.removeItem('leaf-state');
         } catch (error) {
@@ -82,7 +113,9 @@ function TownScene() {
     };
 
     const handleNavigation = (destination) => {
+        stopBirdSound(); // Stop when entering a shop 
         navigate(`/${destination}`);
+
     };
 
     if (loading) return <Loading className="w-sm" />;
@@ -102,9 +135,16 @@ function TownScene() {
             transition={{ duration: 0.5 }}
         >
                 <PanoramaViewer src={town} className="townContainer">
+                <DropLeaves 
+                   hasAppeared={hasAppeared}  
+                   dropAllLeaves={dropAllLeaves} 
+                   resetLeaves={resetLeaves} 
+                   hotspots={hotspots} 
+                   />
                     {hotspots.map(({ id, label, position }) => {
                         return (
                         <HotspotButton 
+                        leafFall={leafFall}
                         key={id} 
                         id={id}
                         label={label} 
@@ -114,6 +154,7 @@ function TownScene() {
                         onClick={() => {
                             console.log({ label }, "was clicked");
                             handleNavigation(id);
+                            door.play();
                             }}
                         />
                     );
@@ -126,24 +167,16 @@ function TownScene() {
                 left: 0,
                 overflow: "hidden",
                 pointerEvents: "none",
-                zIndex: 100
-
                 }}>
-                   <DropLeaves 
-                   hasAppeared={hasAppeared}  
-                   dropAllLeaves={dropAllLeaves} 
-                   resetLeaves={resetLeaves} 
-                   hotspots={hotspots} 
-                   />
-                    <Bird2 />
-                    <Snail2 />
+                <Bird2  />
+                <Snail2 />
                     </div>
                 </PanoramaViewer>
         </motion.div>
     );
 }
 
-function HotspotButton({ label, position, onClick, hasAppeared, onHover }) {
+function HotspotButton({ label, position, onClick, hasAppeared, onHover, leafFall }) {
 
     const buttonVariants = {
         initial: { opacity: 0, y: -300, rotate: -10, scale: 1 },
@@ -152,13 +185,19 @@ function HotspotButton({ label, position, onClick, hasAppeared, onHover }) {
             y: ["-500%", "10px"],
             rotate: [-40, 20],
             transition: {
+                staggerChildren: 0.2,
                 duration: 1.6,
                 ease: 'easeOut',
                 type: 'spring',
                 stiffness: 50,
             },
         },
+        exit: {
+            opacity: 0, x: -400, rotate: [-180, 0, 180], transition: { staggerChildren: 0.2, duration: 2, ease: 'easeOut'}
+        }
     };
+
+
 
     return (
         <motion.div
@@ -173,11 +212,13 @@ function HotspotButton({ label, position, onClick, hasAppeared, onHover }) {
                 console.log('Hovered', label)
                 onHover();
             }}
+            onAnimationStart={() => leafFall.play()}
         >
             <AnimatePresence>
                 {hasAppeared && (
                     <motion.button
                         className="leafButton"
+                        onAminationStart={() => leafFall.play()}
                         whileHover={{
                             scale: [1, 1.2, 1],
                             rotate: [0, 5, -5, 0],
@@ -190,7 +231,7 @@ function HotspotButton({ label, position, onClick, hasAppeared, onHover }) {
                         variants={buttonVariants}
                         initial="initial"
                         animate="visible"
-                        exit="initial"
+                        exit="exit"
                     >
                         <p className="buttonText">
                             {label}

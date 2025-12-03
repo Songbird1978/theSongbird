@@ -1,18 +1,31 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
 import banner from '../assets/birdBanner.png';
 import '../pages/townscene/townscene.css';
+import birdFlying from '../assets/birdFlying.mp3';
 
 function Bird2 () {
 
-
+    useEffect(() => {
+        const flying = new Audio(birdFlying);
+        flying.loop = true;
+        flying.volume = 0.4;
+        flying.preload = 'auto';
+        flying.play();
+// cleanup function - runs when component unmounts
+    return () => {
+        flying.pause();
+        flying.currentTime = 0; //reset to beginning 
+};
+}, []);
   
     return (
             <AnimatePresence>
                 <motion.div 
-                style={{ width: "100%", height: 'auto', position: 'absolute', top: '10%', zIndex: '2000' }}
+                style={{ height: 'auto', position: 'absolute', top: '10%', zIndex: '9999' }}
                 initial={{
-                    x: '100vw',
+                    x: 'calc(100vw + 400px)',
                 }}
                 animate={{
                     x: "-600px",
@@ -27,7 +40,6 @@ function Bird2 () {
                 >                
                 <img src={banner} alt="bird carrying banner with instructions for use - use keyboard arrows or mouse to explore the town" style={{ width: 600}} />
                 </motion.div>
-                
             </AnimatePresence>
     )
 }

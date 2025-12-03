@@ -1,13 +1,15 @@
 import '../pages/townscene/townscene.css';
 import { PersonStanding } from 'lucide-react';
 
+
 function DropLeaves({ hasAppeared=[], dropAllLeaves, resetLeaves, hotspots=[] }) {
 
     return (
-        <div className="absolute top-4 left-4 bg-white/90 opacity-50 p-4 rounded-lg shadow-lg max-w-sm zIndex-5000">
+        <div className="dropLeaves absolute z-9999 top-4 left-4 bg-white/90 opacity-70 p-4 rounded-lg shadow-lg max-w-sm">
         <PersonStanding />
         <p className="text-xs overflow-hidden text-wrap text-gray-700 mb-2 font-gothic">
-          Hover over leaves to make them fall
+          Hover the town to make leaves fall<br></br><br></br>
+          Release the leaves to visit the shops
         </p>
         <p className="text-xs text-gray-600 mb-3 font-courier">
           Fallen leaves: {hasAppeared.length} / {hotspots.length}

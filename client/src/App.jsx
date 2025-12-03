@@ -10,6 +10,7 @@ import SongbirdDesigns from './pages/hotspots/songbirdDesigns.jsx';
 import SongbirdSites from './pages/hotspots/songbirdSites.jsx';
 import './pages/hotspots/hotspots.css';
 import { AnimatePresence } from 'framer-motion';
+import { SoundProvider } from './contexts/SoundContext';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
 
       <div className="App">
         <AnimatePresence mode="wait">
+          <SoundProvider>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<StartScreen />} />
             <Route path="/garden" element={<Home />} />
@@ -29,6 +31,7 @@ function App() {
             <Route path="/songbirdDesigns" element={<SongbirdDesigns />} />
             <Route path="/songbirdSites" element={<SongbirdSites />} />
           </Routes>
+          </SoundProvider>
         </AnimatePresence>
       </div>
 
