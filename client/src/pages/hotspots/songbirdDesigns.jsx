@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ogruRecords.css";
 import "../../fonts/fonts.css";
+import "./songbirdDesigns.css";
 import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
 import "../townscene/townscene.css";
@@ -17,7 +18,25 @@ function SongbirdDesigns() {
 
     const navigate = useNavigate();
 
-    r;
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1, // Delay between each child
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5 },
+        },
+    };
+
     return (
         <motion.div
             className="page"
@@ -36,7 +55,7 @@ function SongbirdDesigns() {
                     whileInView="visible"
                     viewport={{ once: true }}
                 >
-                    {records.map((record) => (
+                    {records.map(() => (
                         <motion.div key={record.id} variants={itemVariants}>
                             <Card
                                 key={record.id}
