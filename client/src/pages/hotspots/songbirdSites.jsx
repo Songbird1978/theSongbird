@@ -9,6 +9,7 @@ import Read from "./read.jsx";
 import Sites from "./sites.jsx";
 import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
+import BackToTop from "../../components/backToTop/backToTop.jsx";
 import "../townscene/townscene.css";
 import "../home/home.css";
 //import TownScene from '../townscene/townscene.jsx';
@@ -118,9 +119,10 @@ function SongbirdSites() {
                         style={{ cursor: "pointer" }}
                         ></Button>
                     </div>
-                    <BackToTop  containerSelector=".App"/>
+                
                 </motion.div>
             </div>
+            <BackToTop  containerSelector=".App"/>
         </motion.div>
     );
 }

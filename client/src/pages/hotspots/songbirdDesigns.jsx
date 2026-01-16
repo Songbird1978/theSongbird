@@ -9,6 +9,7 @@ import Designs from "./designs.jsx";
 import "./songbirdDesigns.css";
 import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
+import BackToTop from "../../components/backToTop/backToTop.jsx";
 import "../townscene/townscene.css";
 import "../home/home.css";
 
@@ -118,9 +119,10 @@ function SongbirdDesigns() {
                     style={{ cursor: "pointer" }}
                     ></Button>
                 </div>
-                <BackToTop  containerSelector=".App"/>
+               
             </motion.div>
         </div>
+        <BackToTop containerSelector=".App"/>
     </motion.div>
     );
 }

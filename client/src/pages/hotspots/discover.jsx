@@ -3,6 +3,7 @@ import { useState, useEffect, useNavigate } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Loading from '../../components/loading';
 import './ogruRecords.css';
+import Show from '../../components/show.jsx';
 
 
 function Discover() {
@@ -10,6 +11,8 @@ function Discover() {
 const [records, setRecords] = useState([]);
 const [error, setError] = useState(null);
 const [loading, setLoading] = useState(true);
+const [selectedCard, setSelectedCard] = useState(null);
+const [showRecord, setShowRecord] = useState(false);
 
 console.log("records list ", records, typeof records);
 
@@ -75,17 +78,63 @@ useEffect(() => {
             >
               {records.map(record => (
                 <motion.div key={record.id} variants={itemVariants}>
-                <Card key={record.id} className="max-w-60 flex-col mb-10">
+                <Card key={record.id} className="max-w-100 flex-col-reverse mb-10 bg-stone-100"
+                  onClick={() => {
+                    setSelectedCard()
+                    setShowRecord(true)
+                    console.log('selected card is:', record.title)
+                  }}
+                >
                   <CardContent>
+                  <p className="font-gothic optionTitle text-left text-md">{record.title}</p> {/* ← Artist info available! */} 
                     <img src={record.imageUrl[0]} alt={record.title} className="w-full h-50"/>
-                   <p className="font-gothic optionTitle text-left text-md">{record.title}</p> {/* ← Artist info available! */}              
+                           
                   </CardContent>
                   <CardHeader>
-                  <CardTitle className="font-gothic text-left optionTitle text-sm">by {record.artist.name}</CardTitle>
+                  <CardTitle className="font-courier text-left text-sm">{record.artist.name}</CardTitle>
                   </CardHeader>
                 </Card>
+                {showRecord && (
+                                    <div style={{ 
+                                        position: 'fixed', 
+                                        top: 0, 
+                                        left: 0, 
+                                        width: '100vw', 
+                                        height: '100vh', 
+                                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                        zIndex: 99999,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}>
+                                        <div style={{
+                                            backgroundColor: 'white',
+                                            padding: '20px',
+                                            borderRadius: '8px',
+                                            width: '90%',
+                                            maxWidth: '1000px',
+                                            height: '90vh',
+                                            display: 'flex',
+                                            flexDirection: 'column'
+                                        }}>
+                                            <button 
+                                                onClick={() => setShowRecord(false)}
+                                                style={{ 
+                                                    alignSelf: 'flex-end',
+                                                    padding: '10px 20px',
+                                                    marginBottom: '10px',
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
+                                                Close
+                                            </button>
+                                            <Show record={selectedCard} key={record.id} />
+                                        </div>
+                                    </div>
+                                )}     
                 </motion.div>
               ))}
+                 
         </motion.div>
     
       </div>

@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import "./ogruRecords.css";
 import "../../fonts/fonts.css";
 import Ogru from "./ogru.jsx";
-import Listen from "./listen.jsx";
 import Discover from "./discover.jsx";
 import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
@@ -18,16 +17,9 @@ const optionCards = [
     {
         id: "ogru",
         label: "Read",
-        color: "rgba(120, 178, 32, 0.621)",
-        colorTwo: "rgb(105, 120, 81)",
-        p: "Read the story",
-    },
-    {
-        id: "listen",
-        label: "Listen",
         color: "rgba(135, 206, 250, 0.51)",
         colorTwo: "rgb(82, 107, 122)",
-        p: "Listen to Recordings",
+        p: "Read more",
     },
     {
         id: "discover",
@@ -41,8 +33,7 @@ const optionCards = [
 function OgruRecords() {
     const [clicked, setClicked] = useState();
     const [complete, setComplete] = useState(false);
-   
-
+    
     const navigate = useNavigate(); 
 
     return (
@@ -104,17 +95,6 @@ function OgruRecords() {
                                     <Ogru />
                                 </motion.div>
                             )}
-                            {clicked === "listen" && (
-                                <motion.div
-                                    key="listen"
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -50 }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <Listen />
-                                </motion.div>
-                            )}
                             {clicked === "discover" && (
                                 <motion.div
                                     key="discover"
@@ -138,13 +118,14 @@ function OgruRecords() {
                             to={'/townscene'}
                         style={{ cursor: "pointer" }}
                         ></Button>
-                      
+                          
                     </div>
                    
-                    <BackToTop  containerSelector=".App"/>
+               
                 </motion.div>
                 
             </div>
+            <BackToTop  containerSelector=".App"/>
         </motion.div>
     );
 }
