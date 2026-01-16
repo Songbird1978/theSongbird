@@ -17,10 +17,10 @@ import click from '../../assets/clickButton.mp3';
 
 export default function Noticeboard() {
 
-
     const navigate = useNavigate();
 
     const [hasPlayed, setHasPlayed] = useState(false);
+    const [showPDF, setShowPDF] = useState(false);
     const videoRef = useRef(null);
 
     const paperSound = new Audio(paper);
@@ -89,32 +89,16 @@ export default function Noticeboard() {
                         />
 
                         {/* Noticeboard GRID */}
-                        <div className="noticeGrid">
+                        <div className="noticeGrid grid p-10 grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
 
-                            <section className="header">
-                                <h1 className="noticeTitle ">The Songbird Noticeboard</h1>
-                                <h2 className="noticeDescription"> <i>General news and information</i></h2>
-                            </section>
-
-                            <section className="cvButton">
-
-                                <motion.img
-                                    src={CVButton}
-                                    alt="CV Button"
-                                    className="cv"
-                                    onAnimationStart={() => paperSound.play()}
-                                    initial={{ rotate: 0, x: 0, y: 0 }}
-                                    transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
-                                    whileHover={{ rotate: -5, x: 0, y: 0, scale: 1.1 }}
-                                    whileTap={{ rotate: 5, x: 0, y: 0 }}
-                                />
-                            </section>
-
-                            <section className="badge">
+                        
+                                <h1 className="noticeTitle">The Songbird Noticeboard</h1>
+                            
                                 <motion.img
                                     src={badge}
+                                    style={{height: "75px", width: 'auto'}}
                                     alt="badge"
-                                    className="badgeGreen"
+                                    className="badgeGreen badge"
                                     transition={{ type: "spring", stiffness: 300 }}
                                     whileTap={{ scale: 0.9 }}
                                     onAnimationStart={() => clickButton.play()}
@@ -124,24 +108,85 @@ export default function Noticeboard() {
                                         }, 600);
                                     }}
                                 />
-                            </section>
+                          
 
-                            <section className="about">
+                                <motion.img
+                                    src={CVButton}
+                                    style={{height: "200px", width: 'auto'}}
+                                    alt="CV Button"
+                                    className="cv cvButton"
+                                    onAnimationStart={() => paperSound.play()}
+                                    initial={{ rotate: 0, x: 0, y: 0 }}
+                                    transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
+                                    whileHover={{ rotate: -5, x: 0, y: 0, scale: 1.1 }}
+                                    whileTap={{ rotate: 5, x: 0, y: 0 }}
+                                    onClick={() =>{
+                                        setShowPDF(true)
+                                        console.log('cv clicked', showPDF)
+                                    }}
+                                />
+                       
+                       {showPDF && (
+                                    <div style={{ 
+                                        position: 'fixed', 
+                                        top: 0, 
+                                        left: 0, 
+                                        width: '100vw', 
+                                        height: '100vh', 
+                                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                        zIndex: 99999,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}>
+                                        <div style={{
+                                            backgroundColor: 'white',
+                                            padding: '20px',
+                                            borderRadius: '8px',
+                                            width: '90%',
+                                            maxWidth: '1000px',
+                                            height: '90vh',
+                                            display: 'flex',
+                                            flexDirection: 'column'
+                                        }}>
+                                            <button 
+                                                onClick={() => setShowPDF(false)}
+                                                style={{ 
+                                                    alignSelf: 'flex-end',
+                                                    padding: '10px 20px',
+                                                    marginBottom: '10px',
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
+                                                Close
+                                            </button>
+                                            <iframe 
+                                                src="/cv.pdf" 
+                                                style={{ 
+                                                    width: '100%', 
+                                                    height: '100%',
+                                                    border: 'none'
+                                                }}
+                                                title="CV"
+                                            />
+                                        </div>
+                                    </div>
+                                )}     
+                         
                                 <motion.img
                                     src={aboutMe}
+                                    style={{height: "150px", width: 'auto'}}
                                     alt="about me"
-                                    className="aboutMe"
+                                    className="about"
                                     onAnimationStart={() => paperSound.play()}
                                     initial={{ rotate: 0, x: 0, y: 0, scale: 1.2 }}
                                     transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
-                                    whileHover={{ rotate: -5, x: 0, y: 0, scale: 1.3 }}
-                                    whileTap={{ rotate: 5, x: 0, y: 0 }}
+                                    whileHover={{ rotate: -5, x: 0, y: 0, scale: 1.5 }}
+                                    whileTap={{ rotate: 5, x: 0, y: 0, scale: 1.5 }}
                                 />
-
-                            </section>
-
-                            <section className="links">
+                             
                                 <motion.img src={linkedIn}
+                                 style={{height: "150px", width: 'auto', cursor: 'pointer'}}
                                     alt="linkedIn"
                                     className="linkedIn"
                                     onAnimationStart={() => paperSound.play()}
@@ -149,9 +194,12 @@ export default function Noticeboard() {
                                     transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
                                     whileHover={{ rotate: 5, x: 0, y: 0, scale: 1.4 }}
                                     whileTap={{ rotate: -5, x: 0, y: 0 }}
+                                    onClick={() => window.open('https://uk.linkedin.com/in/hayley-callender-4b8409204', '_blank')}
                                 />
+                              
                                 <motion.img
                                     src={github}
+                                    style={{height: "120px", width: 'auto'}}
                                     alt="gitHub"
                                     className="gitHub"
                                     onAnimationStart={() => paperSound.play()}
@@ -159,21 +207,9 @@ export default function Noticeboard() {
                                     transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
                                     whileHover={{ rotate: -5, x: 0, y: 0, scale: 1.4 }}
                                     whileTap={{ rotate: 7, x: 0, y: 0 }}
-                                />
-                                <motion.img
-                                    src={soundcloud}
-                                    alt="soundcloud"
-                                    className="soundcloud"
-                                    onAnimationStart={() => paperSound.play()}
-                                    initial={{ rotate: 0, x: 0, y: 0 }}
-                                    transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
-                                    whileHover={{ rotate: 2, x: 0, y: 0, scale: 1.4 }}
-                                    whileTap={{ rotate: -8, x: 0, y: 0 }}
-                                />
-                            </section>
-
+                                    onClick={() => window.open('https://github.com/Songbird1978', '_blank')}
+                                />  
                         </div>
-
                     </motion.div>
                 )}
             </div>

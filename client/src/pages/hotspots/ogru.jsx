@@ -1,8 +1,6 @@
 import './ogruRecords.css';
 import { motion } from 'framer-motion';
 import Typewriter from '../../components/typewriter.jsx';
-import AnimatedLeafButton from '../../components/button.jsx';
-
 
 function Ogru() {
     return (

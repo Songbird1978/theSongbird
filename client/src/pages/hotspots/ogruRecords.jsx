@@ -9,6 +9,7 @@ import Listen from "./listen.jsx";
 import Discover from "./discover.jsx";
 import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
+import BackToTop from "../../components/backToTop/backToTop.jsx";
 import "../townscene/townscene.css";
 import "../home/home.css";
 //import TownScene from '../townscene/townscene.jsx';
@@ -60,7 +61,8 @@ function OgruRecords() {
                     transition={{ duration: 1.5, ease: "easeIn" }}
                     animate={{ y: 0, height: "auto" }}
                 >
-                    <Greetings setComplete={setComplete} />
+                     
+                    <Greetings setComplete={setComplete} id="top" />
                  {complete && (
                     <motion.div className="ogruCardContainer">
                         {optionCards.map(
@@ -125,7 +127,9 @@ function OgruRecords() {
                                 </motion.div>
                             )}
                         </AnimatePresence>
+                      
                     </motion.div>
+                   
                     <div className="magicLeafDiv">
                         <Button
                             className="magicLeafBack"
@@ -134,8 +138,12 @@ function OgruRecords() {
                             to={'/townscene'}
                         style={{ cursor: "pointer" }}
                         ></Button>
+                      
                     </div>
+                   
+                    <BackToTop  containerSelector=".App"/>
                 </motion.div>
+                
             </div>
         </motion.div>
     );

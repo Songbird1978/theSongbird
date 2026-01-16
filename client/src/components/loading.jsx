@@ -8,7 +8,7 @@ function Loading() {
     return (
         <div className="loadingContainer">
                     <motion.img
-                        className="loadingImage w-sm"
+                        className="loadingImage w-sm text-gray-500"
                         key='loadingImage'
                         src={songbirdLogo}
                         alt="songbird Logo"

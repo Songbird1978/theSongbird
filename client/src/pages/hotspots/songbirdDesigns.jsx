@@ -4,36 +4,28 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ogruRecords.css";
 import "../../fonts/fonts.css";
-import Ogru from "./ogru.jsx";
-import Listen from "./listen.jsx";
-import Discover from "./discover.jsx";
+import About from "./about.jsx";
+import Designs from "./designs.jsx";
 import "./songbirdDesigns.css";
 import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
 import "../townscene/townscene.css";
 import "../home/home.css";
 
-const optionCards = [
+const designOptionCards = [
     {
-        id: "ogru",
-        label: "Read",
+        id: "about",
+        label: "About",
         color: "rgba(120, 178, 32, 0.621)",
         colorTwo: "rgb(105, 120, 81)",
-        p: "Read the story",
+        p: "Songbird Designs",
     },
     {
-        id: "listen",
-        label: "Listen",
+        id: "designs",
+        label: "Designs",
         color: "rgba(135, 206, 250, 0.51)",
         colorTwo: "rgb(82, 107, 122)",
-        p: "Listen to Recordings",
-    },
-    {
-        id: "discover",
-        label: "Discover",
-        color: "rgba(89, 37, 37, 0.502)",
-        colorTwo: "rgb(100, 81, 81)",
-        p: "Browse the collection",
+        p: "Browse the designs",
     },
 ];
 
@@ -65,7 +57,7 @@ function SongbirdDesigns() {
                 <Greetings setComplete={setComplete} />
              {complete && (
                 <motion.div className="ogruCardContainer">
-                    {optionCards.map(
+                    {designOptionCards.map(
                         ({ id, label, color, colorTwo, p }) => (
                             <OgruOptionCard
                                 key={id}
@@ -93,37 +85,26 @@ function SongbirdDesigns() {
              )}
                 <motion.div id="contentSection" className="mt-10 optionPage">
                     <AnimatePresence mode="wait">
-                        {clicked === "ogru" && (
+                        {clicked === "about" && (
                             <motion.div
-                                key="ogru"
+                                key="about"
                                 initial={{ opacity: 0, y: 50 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -50 }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <Ogru />
+                                <About />
                             </motion.div>
                         )}
-                        {clicked === "listen" && (
+                        {clicked === "designs" && (
                             <motion.div
-                                key="listen"
+                                key="designs"
                                 initial={{ opacity: 0, y: 50 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -50 }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <Listen />
-                            </motion.div>
-                        )}
-                        {clicked === "discover" && (
-                            <motion.div
-                                key="discover"
-                                initial={{ opacity: 0, y: 50 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -50 }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <Discover />
+                                <Designs />
                             </motion.div>
                         )}
                     </AnimatePresence>
@@ -137,6 +118,7 @@ function SongbirdDesigns() {
                     style={{ cursor: "pointer" }}
                     ></Button>
                 </div>
+                <BackToTop  containerSelector=".App"/>
             </motion.div>
         </div>
     </motion.div>
@@ -153,7 +135,7 @@ function Greetings({ setComplete }) {
                 <Typewriter
                     lines={[
                         " Welcome to Songbird Designs. ",
-                        " Have a browse through the projects ",
+                        " Read about my experiences or browse the projects.",
                     ]}
                     
                     speed={100}

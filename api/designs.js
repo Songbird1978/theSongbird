@@ -13,16 +13,12 @@ export default async function handler(req, res) {
 
     if (req.method === "GET") {
         try {
-            const designs = await prisma.design.findMany({
-                include: {
-                    records: true,
-                },
-                orderBy: { createdAt: "asc" },
-            });
-            return res.status(200).json(records);
+            const design = await prisma.design.findMany();
+
+            return res.status(200).json(design);
         } catch (error) {
             console.error("Database Error", error);
-            return res.status(500).json({ error: "Failed to fetch records" });
+            return res.status(500).json({ error: "Failed to fetch designs" });
         }
     }
 

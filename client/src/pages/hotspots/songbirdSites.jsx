@@ -5,9 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import "./ogruRecords.css";
 import './songbirdSites.css';
 import "../../fonts/fonts.css";
-import Ogru from "./ogru.jsx";
-import Listen from "./listen.jsx";
-import Discover from "./discover.jsx";
+import Read from "./read.jsx";
+import Sites from "./sites.jsx";
 import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
 import "../townscene/townscene.css";
@@ -16,25 +15,18 @@ import "../home/home.css";
 
 const optionCards = [
     {
-        id: "ogru",
+        id: "read",
         label: "Read",
         color: "rgba(120, 178, 32, 0.621)",
         colorTwo: "rgb(105, 120, 81)",
         p: "Read the story",
     },
     {
-        id: "listen",
-        label: "Listen",
-        color: "rgba(135, 206, 250, 0.51)",
-        colorTwo: "rgb(82, 107, 122)",
-        p: "Listen to Recordings",
-    },
-    {
-        id: "discover",
-        label: "Discover",
+        id: "sites",
+        label: "Sites",
         color: "rgba(89, 37, 37, 0.502)",
         colorTwo: "rgb(100, 81, 81)",
-        p: "Browse the collection",
+        p: "Browse the work",
     },
 ];
 
@@ -92,37 +84,27 @@ function SongbirdSites() {
                  )}
                     <motion.div id="contentSection" className="mt-10 optionPage">
                         <AnimatePresence mode="wait">
-                            {clicked === "ogru" && (
+                            {clicked === "read" && (
                                 <motion.div
-                                    key="ogru"
+                                    key="read"
                                     initial={{ opacity: 0, y: 50 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -50 }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <Ogru />
+                                    <Read />
                                 </motion.div>
                             )}
-                            {clicked === "listen" && (
+                        
+                            {clicked === "sites" && (
                                 <motion.div
-                                    key="listen"
+                                    key="sites"
                                     initial={{ opacity: 0, y: 50 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -50 }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <Listen />
-                                </motion.div>
-                            )}
-                            {clicked === "discover" && (
-                                <motion.div
-                                    key="discover"
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -50 }}
-                                    transition={{ duration: 0.5 }}
-                                >
-                                    <Discover />
+                                    <Sites />
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -136,6 +118,7 @@ function SongbirdSites() {
                         style={{ cursor: "pointer" }}
                         ></Button>
                     </div>
+                    <BackToTop  containerSelector=".App"/>
                 </motion.div>
             </div>
         </motion.div>

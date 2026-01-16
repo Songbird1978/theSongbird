@@ -1,0 +1,9 @@
+.backToTopDiv {
+    pointer-events: fill;
+    cursor: pointer;
+}
+
+.topIcon {
+    color: grey;
+    opacity: 60%;
+}

@@ -4,7 +4,6 @@
     flex-wrap: nowrap;
     overflow-x: scroll;
     width: 100%;
-
 }
 
 .noticeVideo,
@@ -22,7 +21,6 @@
     justify-content: center;
     color: black;
     z-index: 2500;
-
 }
 
 .noticeImage {
@@ -34,111 +32,74 @@
 
 /*GRID*/
 .noticeGrid {
-    display: grid;
     width: 100vw;
     height: 100vh;
-    grid-template-areas:
-        "header header header"
-        "cvButton badge about"
-        "links links links";
-    z-index: 2000;
+    padding: 10%;
 }
 
 /*HEADER */
-
 .header {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    justify-content: left;
     z-index: 700;
-    grid-area: header;
-    flex-direction: column;
+}
+.noticeTitle,
+.noticeDescription {
+    justify-self: left;
+    align-self: center;
+    z-index: 700;
+    font-size: 1.5rem
 }
 
 .badge {
-    display: flex;
     z-index: 2500;
-    justify-content: center;
-    align-items: top;
     opacity: 40;
-    height: 150px;
-    grid-area: badge;
+    align-self: center;
+    justify-self: right;
 }
 
 .badgeGreen {
     z-index: 2500;
-    width: 100px;
-    height: 100px;
     opacity: 40;
-
-}
-
-.noticeTitle,
-.noticeDescription {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 20px;
-    z-index: 700;
-
+    justify-self: right;
 }
 
 .noticeTitle {
-    color: rgb(206, 193, 175);
-    text-shadow: 2px 2px 4px #000000;
+    color: darkslategrey;
     font-family: 'Courier New', Courier, monospace;
+
 }
 
 .noticeDescription {
     color: black;
     font-family: 'Courier New', Courier, monospace;
-    mix-blend-mode: difference;
+
 }
 
 /*CVBUTTON*/
 .cvButton {
     z-index: 700;
-    display: flex;
-    grid-area: cvButton;
-    justify-content: right;
-
+    justify-self: center;
 }
-
-.cv {
-    height: 45vh;
-    margin-top: -15vh;
-
-}
-
-
 .about {
-    grid-area: about;
-    display: flex;
     z-index: 700;
-    justify-content: left;
-
-
+    justify-self: center;
 }
-
-.aboutMe {
-    height: 40vh;
-    margin-top: -10vh;
-    justify-content: left;
+.linkedIn {
+    z-index: 700; 
+    justify-self: center;
 }
-
-.links {
-    grid-area: links;
-    display: flex;
-    z-index: 700;
-    justify-content: space-evenly;
-    height: 15vh;
-    margin-top: -15vh;
+.gitHub {
+    z-index: 700; 
+    justify-self: center;
+}
+.soundcloud {
+    z-index: 700; 
+    justify-self: center;
 }
 
 .soundcloud,
 .gitHub,
 .linkedIn,
-.aboutMe,
 .cv,
 .badgeGreen {
     filter: drop-shadow(5px 5px 2px #4a4a51);

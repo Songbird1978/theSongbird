@@ -1,8 +1,10 @@
 {
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@prisma/client": "^5.22.0"
   },
   "devDependencies": {
+    "dotenv": "^17.2.3",
     "prisma": "^5.22.0"
   },
   "prisma": {

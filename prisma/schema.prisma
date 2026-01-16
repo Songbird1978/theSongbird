@@ -60,6 +60,7 @@ model Site {
   id          Int      @id @default(autoincrement())
   techstack   String[]
   title       String
+  type        String?
   description String
   imageUrl    String[]
   link        String?
@@ -69,6 +70,7 @@ model Site {
 model Design {
   id          Int      @id @default(autoincrement())
   title       String
+  type        String?
   techstack   String[]
   description String
   imageUrl    String[]
