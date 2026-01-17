@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import leavesLeft from "../../assets/leaves2NoBgL.png";
 import leavesRight from "../../assets/leaves2NoBgFlipR.png";
@@ -7,10 +7,9 @@ import leavesFull from "../../assets/leavesFull.png";
 import secretGardenDoorSquare from "../../assets/secretGardenDoorSquare.png";
 import redLeaf from "../../assets/redLeaf.png";
 import "../home/home.css";
-import rustleSound from '../../assets/rustle.mp3';
-import rustleQuietHover from '../../assets/rustleQuietHover.mp3';
-import { useSound } from '../../contexts/SoundContext';
-
+import rustleSound from "../../assets/rustle.mp3";
+import rustleQuietHover from "../../assets/rustleQuietHover.mp3";
+import { useSound } from "../../contexts/SoundContext";
 
 function Home() {
     const [exitIndex, setExitIndex] = useState(0);
@@ -23,19 +22,19 @@ function Home() {
 
     const handleLastClick = () => {
         playBirdSound(); //start the bird sound
-    }
+    };
 
     const { playBirdSound } = useSound();
-    
+
     const rustle = new Audio(rustleSound);
     const rustleQuiet = new Audio(rustleQuietHover);
-    
+
     // Optional: so it doesn’t overlap repeatedly
     rustle.volume = 0.6;
     rustle.preload = "auto";
 
     rustleQuiet.volume = 0.4;
-    rustleQuiet.preload = 'auto';
+    rustleQuiet.preload = "auto";
 
     return (
         <motion.div
@@ -49,25 +48,23 @@ function Home() {
                 <motion.button
                     src={redLeaf}
                     alt="leaf button"
-                    className="leaf"
+                    className="redLeaf"
                     onClick={handleClick}
                     whileHover={{
                         scale: [1.3, 1.5, 1.2],
                         rotate: [0, 5, -5, 0],
                         transition: {
-                            duration: 2, repeat: Infinity
+                            duration: 2,
+                            repeat: Infinity,
                         },
                         y: ["0%", "-10%", "0%"], // Adds slight bounce
                         x: ["0%", "-5%", "0%"], // Adds slight bounce
                     }}
-
                 >
-                    <p className="buttonTextHome">
-                        Click Me
-                    </p>
+                    <p className="buttonTextHome">Click Me</p>
                 </motion.button>
 
-               {/*{exitIndex >= 1 && <TownScene />}    could use this if you want to stay on the garden - otherwise - navigate to the townscene*/ }
+                {/*{exitIndex >= 1 && <TownScene />}    could use this if you want to stay on the garden - otherwise - navigate to the townscene*/}
 
                 {/* Left and Right Leaves */}
 
@@ -80,7 +77,11 @@ function Home() {
                                 className="leavesLeftDiv"
                                 onAnimationStart={() => rustle.play()}
                                 initial={{ x: 0, opacity: 1 }}
-                                exit={{ x: "-100vw", opacity: 1, rotate: [0, 2, -2, 1, -1, 0] }}
+                                exit={{
+                                    x: "-100vw",
+                                    opacity: 1,
+                                    rotate: [0, 2, -2, 1, -1, 0],
+                                }}
                                 transition={{ duration: 1.2 }}
                             >
                                 <motion.img
@@ -90,10 +91,11 @@ function Home() {
                                     whileHover={{
                                         rotate: [0, -2, 2, -1, 1, 0],
                                         transition: { duration: 0.6 },
-                                        scale: [1, 1.01, 1]
+                                        scale: [1, 1.01, 1],
                                     }}
                                     alt="leaves left"
-                                    className="leavesLeft" />
+                                    className="leavesLeft"
+                                />
                             </motion.div>
                         )}
                         {/* Right */}
@@ -103,8 +105,11 @@ function Home() {
                                 className="leavesRightDiv"
                                 onAnimationStart={() => rustle.play()}
                                 initial={{ x: 0, opacity: 1 }}
-
-                                exit={{ x: "100vw", opacity: 1, rotate: [0, 2, -2, 1, -1, 0] }}
+                                exit={{
+                                    x: "100vw",
+                                    opacity: 1,
+                                    rotate: [0, 2, -2, 1, -1, 0],
+                                }}
                                 transition={{ duration: 1.2 }}
                             >
                                 <motion.img
@@ -114,7 +119,7 @@ function Home() {
                                     whileHover={{
                                         rotate: [0, 2, -2, 1, -1, 0],
                                         transition: { duration: 0.6 },
-                                        scale: [1, 1.01, 1]
+                                        scale: [1, 1.01, 1],
                                     }}
                                     alt="leaves right"
                                     className="leavesRight"
@@ -123,7 +128,6 @@ function Home() {
                         )}
                     </AnimatePresence>
                 </div>
-
 
                 {/* Full Leaves */}
                 <AnimatePresence>
@@ -137,7 +141,6 @@ function Home() {
                                 opacity: 0,
                                 scale: [1, 1.03, 1],
                                 rotate: [0, 0.5, 0],
-
                             }}
                             transition={{ duration: 1.5 }}
                             onClick={handleClick}
@@ -151,7 +154,7 @@ function Home() {
                                 whileHover={{
                                     scale: [1, 1.03, 1],
                                     rotate: [0, -1, 1, -1, 1, 0],
-                                    transition: { duration: 0.6 }
+                                    transition: { duration: 0.6 },
                                 }}
                             />
                         </motion.div>
@@ -170,7 +173,8 @@ function Home() {
                             transition={{ duration: 2, ease: "easeInOut" }}
                             onClick={handleClick && handleLastClick}
                             onAnimationComplete={() => {
-                                navigate("/townscene")}}
+                                navigate("/townscene");
+                            }}
                         >
                             <img
                                 src={secretGardenDoorSquare}
@@ -186,4 +190,3 @@ function Home() {
 }
 
 export default Home;
-

@@ -63,12 +63,11 @@
     text-align: center;
 }
 
-
-.topicTitle, .ogruTitle {
+.topicTitle,
+.ogruTitle {
     font-family: "allRoundGothic";
     color: rgba(104, 62, 62, 0.8);
     font-size: 3em;
-
 }
 
 .ogruText {

@@ -5,7 +5,6 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-
 }
 
 .secretGardenBush {
@@ -16,7 +15,6 @@
     height: 100vh;
     top: 0;
     left: 0;
-
 }
 
 .leavesLeftDiv,
@@ -46,7 +44,6 @@
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-
 }
 
 .leavesFull {
@@ -61,8 +58,7 @@
     object-fit: cover;
 }
 
-
-.leaf {
+.redLeaf {
     position: absolute;
     width: 10rem;
     height: 10rem;
@@ -71,7 +67,7 @@
     left: 2rem;
     cursor: pointer;
     pointer-events: auto;
-    background-image: url('../../assets/redLeaf.png');
+    background-image: url("../../assets/redLeaf.png");
     background-size: 80%;
     background-position: rotate(80deg);
     background-color: transparent;
@@ -98,22 +94,18 @@
 
 .leavesFullDiv {
     z-index: 800;
-
 }
 
 .leavesLeftDiv {
     z-index: 900;
-
 }
 
 .leavesRightDiv {
     z-index: 850;
-
 }
 
 .secretGardenDoorSqu {
     z-index: 700;
-
 }
 
 .secretGardenBush,

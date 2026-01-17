@@ -9,7 +9,7 @@ function Discover() {
     const [records, setRecords] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [selectedCard, setSelectedCard] = useState(null);
+    const [selectedRecord, setSelectedRecord] = useState(null);
     const [showRecord, setShowRecord] = useState(false);
 
     console.log("records list ", records, typeof records);
@@ -64,7 +64,7 @@ function Discover() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="topicContainer w-full flex justify-center bg-stone-200 opacity-80">
+            <div className="topicContainer w-full flex justify-center opacity-80">
                 <h1 className="topicTitle">Discover</h1>
 
                 <motion.div
@@ -78,9 +78,9 @@ function Discover() {
                         <motion.div key={record.id} variants={itemVariants}>
                             <Card
                                 key={record.id}
-                                className="max-w-100 flex-col-reverse mb-10 bg-stone-100"
+                                className="max-w-100 flex-col-reverse mb-10 bg-stone-100 p-2"
                                 onClick={() => {
-                                    setSelectedCard(record.id);
+                                    setSelectedRecord(record);
                                     setShowRecord(true);
                                     console.log(
                                         "selected card is:",
@@ -89,7 +89,7 @@ function Discover() {
                                 }}
                             >
                                 <CardContent>
-                                    <p className="font-gothic optionTitle text-left text-md">
+                                    <p className="font-courier text-left text-md">
                                         {record.title}
                                     </p>
                                     {/* ← Artist info available! */}
@@ -105,58 +105,24 @@ function Discover() {
                                     </CardTitle>
                                 </CardHeader>
                             </Card>
-                            {showRecord && (
-                                <div
-                                    style={{
-                                        position: "fixed",
-                                        top: 0,
-                                        left: 0,
-                                        width: "100vw",
-                                        height: "100vh",
-                                        backgroundColor: "rgba(0, 0, 0, 0.8)",
-                                        zIndex: 99999,
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                    }}
-                                >
-                                    <div
-                                        style={{
-                                            backgroundColor: "white",
-                                            padding: "20px",
-                                            borderRadius: "8px",
-                                            width: "90%",
-                                            maxWidth: "1000px",
-                                            height: "90vh",
-                                            display: "flex",
-                                            flexDirection: "column",
-                                        }}
-                                    >
-                                        <button
-                                            onClick={() => setShowRecord(false)}
-                                            style={{
-                                                alignSelf: "flex-end",
-                                                padding: "10px 20px",
-                                                marginBottom: "10px",
-                                                cursor: "pointer",
-                                            }}
-                                        >
-                                            Close
-                                        </button>
-                                        <Show
-                                            id={selectedCard}
-                                            title={record.title}
-                                            description={record.description}
-                                            imageUrl={record.imageUrl[0]}
-                                            link={record.links[0]}
-                                            name={record.artist.name}
-                                        />
-                                    </div>
-                                </div>
-                            )}
                         </motion.div>
                     ))}
                 </motion.div>
+
+                {showRecord && selectedRecord && (
+                    <Show
+                        id={selectedRecord.id}
+                        title={selectedRecord.title}
+                        description={selectedRecord.description}
+                        imageUrl={selectedRecord.imageUrl[0]}
+                        images={selectedRecord.imageUrl}
+                        link={selectedRecord.links[0]}
+                        name={selectedRecord.artist.name}
+                        audio={selectedRecord.artist.audioUrl}
+                        artistInfo={selectedRecord.artist.description}
+                        setShowRecord={setShowRecord}
+                    />
+                )}
             </div>
         </motion.div>
     );

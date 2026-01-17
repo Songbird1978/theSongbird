@@ -47,7 +47,7 @@
     justify-self: left;
     align-self: center;
     z-index: 700;
-    font-size: 1.5rem
+    font-size: 1.5rem;
 }
 
 .badge {
@@ -65,14 +65,12 @@
 
 .noticeTitle {
     color: darkslategrey;
-    font-family: 'Courier New', Courier, monospace;
-
+    font-family: "Courier New", Courier, monospace;
 }
 
 .noticeDescription {
     color: black;
-    font-family: 'Courier New', Courier, monospace;
-
+    font-family: "Courier New", Courier, monospace;
 }
 
 /*CVBUTTON*/
@@ -85,15 +83,15 @@
     justify-self: center;
 }
 .linkedIn {
-    z-index: 700; 
+    z-index: 700;
     justify-self: center;
 }
 .gitHub {
-    z-index: 700; 
+    z-index: 700;
     justify-self: center;
 }
 .soundcloud {
-    z-index: 700; 
+    z-index: 700;
     justify-self: center;
 }
 
