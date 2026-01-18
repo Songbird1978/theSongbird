@@ -12,10 +12,9 @@
 .magicLeafDiv {
     display: flex;
     justify-content: center;
-    padding: 30px;
-    margin-top: 30%;
     align-items: center;
-    height: 50%;
+    height: 40%;
+    margin-top: 40%;
 }
 
 .magicLeafBack {
@@ -24,9 +23,9 @@
     justify-content: center;
     width: 15rem;
     height: 15rem;
-    z-index: 3000;
+    z-index: 2000;
     cursor: pointer;
-    pointer-events: auto !important;
+    pointer-events: auto;
     background-image: url("../../assets/leaf.png");
     background-position: rotate(90deg);
     background-color: transparent;
@@ -37,16 +36,28 @@
     overflow: visible;
 }
 
+.navLeaf {
+    background-image: url("../../assets/leaf.png");
+    background-position: rotate(90deg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: transparent;
+    overflow: visible;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
 #magicLeafText {
     display: flex;
     text-align: center;
     justify-content: center;
-    margin-left: 5rem;
-    margin-bottom: 6rem;
+    margin-left: 20%;
+    margin-bottom: 55%;
     font-size: 1.5rem;
     transform: rotate(-40deg);
     color: antiquewhite;
-    width: 50%;
+    width: 100%;
 }
 
 .backdrop {
@@ -54,7 +65,7 @@
     margin-top: 10%;
     margin-bottom: 10%;
     padding: 33px;
-    width: 70%;
+    width: 75%;
     min-height: auto;
     overflow: scroll;
     background-color: rgba(234, 229, 222, 0.805);
@@ -180,7 +191,7 @@
         margin-bottom: 11rem;
         font-size: 1.4rem;
         transform: rotate(-40deg);
-        color: rgba(24, 239, 67, 0.256);
+        color: antiquewhite;
         width: 50%;
     }
 }

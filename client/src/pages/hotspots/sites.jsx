@@ -1,19 +1,25 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Loading from "../../components/loading";
 import "./ogruRecords.css";
-import Show from "../../components/show.jsx";
+import { useRecord } from "../../contexts/RecordContext";
 
 function Sites() {
     const [sites, setSites] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [selectedRecord, setSelectedRecord] = useState(null);
-    const [showRecord, setShowRecord] = useState(false);
+    const { setSelectedRecord } = useRecord();
 
-    console.log("sites list ", sites, typeof sites);
+    const navigate = useNavigate();
 
+    //console.log("sites list ", sites, typeof sites);
+
+    const handleRecordClick = (record) => {
+        setSelectedRecord(record);
+        navigate("/show");
+    };
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -44,6 +50,7 @@ function Sites() {
             .then((data) => {
                 console.log("response", data, Array.isArray(data));
                 setSites(Array.isArray(data) ? data : []); //make sure it's an array
+                console.log("sites is:", sites);
                 setLoading(false);
             })
             .catch((error) => {
@@ -51,6 +58,10 @@ function Sites() {
                 console.error("fetch error:", error);
                 setLoading(false);
             });
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("webDevStoreView", "projects");
     }, []);
 
     if (loading) return <Loading className="p-10" />;
@@ -74,53 +85,41 @@ function Sites() {
                     whileInView="visible"
                     viewport={{ once: true }}
                 >
-                    {sites.map((site) => (
-                        <motion.div key={site.id} variants={itemVariants}>
+                    {sites.map((record) => (
+                        <motion.div key={record.id} variants={itemVariants}>
                             <Card
-                                key={site.id}
+                                key={record.id}
                                 className="max-w-100 flex-col-reverse mb-10 bg-stone-100 opacity-80"
                                 onClick={() => {
-                                    setSelectedRecord(site);
-                                    setShowRecord(true);
+                                    setSelectedRecord(record);
+                                    handleRecordClick(record);
+
                                     console.log(
                                         "selected card is:",
-                                        site.title
+                                        record.title
                                     );
                                 }}
                             >
                                 <CardContent>
                                     <p className="font-courier optionTitle text-left text-md">
-                                        {site.title}
-                                    </p>{" "}
+                                        {record.title}
+                                    </p>
                                     {/* ← Artist info available! */}
                                     <img
-                                        src={site.imageUrl[0]}
-                                        alt={site.title}
+                                        src={record.imageUrl[0]}
+                                        alt={record.title}
                                         className="w-full h-50"
                                     />
                                 </CardContent>
                                 <CardHeader>
                                     <CardTitle className="font-courier text-left text-gray-500 text-sm">
-                                        {site.type}
+                                        {record.type}
                                     </CardTitle>
                                 </CardHeader>
                             </Card>
                         </motion.div>
                     ))}
                 </motion.div>
-                {showRecord && selectedRecord && (
-                    <Show
-                        id={selectedRecord.id}
-                        title={selectedRecord.title}
-                        description={selectedRecord.description}
-                        imageUrl={selectedRecord.imageUrl[0]}
-                        images={selectedRecord.imageUrl}
-                        link={selectedRecord.link}
-                        techstack={selectedRecord.techstack}
-                        type={selectedRecord.type}
-                        setShowRecord={setShowRecord}
-                    />
-                )}
             </div>
         </motion.div>
     );

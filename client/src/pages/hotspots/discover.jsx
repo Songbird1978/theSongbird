@@ -1,18 +1,26 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, useNavigate } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Loading from "../../components/loading";
 import "./ogruRecords.css";
 import Show from "../../components/show.jsx";
+import { useRecord } from "../../contexts/RecordContext";
 
 function Discover() {
     const [records, setRecords] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [selectedRecord, setSelectedRecord] = useState(null);
-    const [showRecord, setShowRecord] = useState(false);
+    const { setSelectedRecord } = useRecord();
 
-    console.log("records list ", records, typeof records);
+    const navigate = useNavigate();
+
+    const handleRecordClick = (record) => {
+        setSelectedRecord(record);
+        navigate("/show");
+    };
+
+    //console.log("records list ", records, typeof records);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -53,6 +61,10 @@ function Discover() {
             });
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem("recordStoreView", "projects");
+    }, []);
+
     if (loading) return <Loading className="p-10" />;
     if (error) return <div>Error: {error}</div>;
 
@@ -68,7 +80,7 @@ function Discover() {
                 <h1 className="topicTitle">Discover</h1>
 
                 <motion.div
-                    className="grid p-10 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-center"
+                    className="grid w-full p-1 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-center"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -80,8 +92,7 @@ function Discover() {
                                 key={record.id}
                                 className="max-w-100 flex-col-reverse mb-10 bg-stone-100 p-2"
                                 onClick={() => {
-                                    setSelectedRecord(record);
-                                    setShowRecord(true);
+                                    handleRecordClick(record);
                                     console.log(
                                         "selected card is:",
                                         record.title
@@ -108,21 +119,6 @@ function Discover() {
                         </motion.div>
                     ))}
                 </motion.div>
-
-                {showRecord && selectedRecord && (
-                    <Show
-                        id={selectedRecord.id}
-                        title={selectedRecord.title}
-                        description={selectedRecord.description}
-                        imageUrl={selectedRecord.imageUrl[0]}
-                        images={selectedRecord.imageUrl}
-                        link={selectedRecord.links[0]}
-                        name={selectedRecord.artist.name}
-                        audio={selectedRecord.artist.audioUrl}
-                        artistInfo={selectedRecord.artist.description}
-                        setShowRecord={setShowRecord}
-                    />
-                )}
             </div>
         </motion.div>
     );

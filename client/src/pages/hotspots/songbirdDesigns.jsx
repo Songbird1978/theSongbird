@@ -1,6 +1,6 @@
 import "./hotspots.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ogruRecords.css";
 import "../../fonts/fonts.css";
@@ -30,106 +30,119 @@ const designOptionCards = [
     },
 ];
 
-
 function SongbirdDesigns() {
     const [designs, setDesigns] = useState([]);
     const [clicked, setClicked] = useState();
     const [complete, setComplete] = useState(false);
     const [loading, setLoading] = useState(true);
-
+    const [showingProjects, setShowingProjects] = useState(false);
     const navigate = useNavigate();
 
+    // When they click the button
+    const handleShowProjects = () => {
+        setShowingProjects(true);
+        localStorage.setItem("designStoreView", "projects");
+    };
+
+    useEffect(() => {
+        const savedView = localStorage.getItem("designStoreView");
+        if (savedView === "projects") {
+            setShowingProjects(true);
+        }
+    }, []);
 
     return (
         <motion.div
-        className="page scrollbar-hide"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-    >
-        <div className="designContainer">
-            <motion.div
-                className="backdrop scrollbar-hide"
-                initial={{ y: 500 }}
-                transition={{ duration: 1.5, ease: "easeIn" }}
-                animate={{ y: 0, height: "auto" }}
-            >
-                <Greetings setComplete={setComplete} />
-             {complete && (
-                <motion.div className="ogruCardContainer">
-                    {designOptionCards.map(
-                        ({ id, label, color, colorTwo, p }) => (
-                            <OgruOptionCard
-                                key={id}
-                                id={id}
-                                label={label}
-                                p={p}
-                                color={color}
-                                colorTwo={colorTwo}
-                                onClick={() => {
-                                    setClicked(id);
-                                    setTimeout(() => {
-                                        document
-                                            .getElementById(
-                                                "contentSection"
-                                            )
-                                            .scrollIntoView({
-                                                behavior: "smooth",
-                                            });
-                                    }, 200); // small delay to allow animation if needed
-                                }}
-                            />
-                        )
+            className="page scrollbar-hide"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+        >
+            <div className="designContainer">
+                <motion.div
+                    className="backdrop scrollbar-hide"
+                    initial={{ y: 500 }}
+                    transition={{ duration: 1.5, ease: "easeIn" }}
+                    animate={{ y: 0, height: "auto" }}
+                >
+                    <Greetings setComplete={setComplete} />
+                    {complete && (
+                        <motion.div className="ogruCardContainer">
+                            {designOptionCards.map(
+                                ({ id, label, color, colorTwo, p }) => (
+                                    <OgruOptionCard
+                                        key={id}
+                                        id={id}
+                                        label={label}
+                                        p={p}
+                                        color={color}
+                                        colorTwo={colorTwo}
+                                        onClick={() => {
+                                            setClicked(id);
+                                            setShowingProjects(true);
+                                            handleShowProjects;
+                                            setTimeout(() => {
+                                                document
+                                                    .getElementById(
+                                                        "contentSection"
+                                                    )
+                                                    .scrollIntoView({
+                                                        behavior: "smooth",
+                                                    });
+                                            }, 200); // small delay to allow animation if needed
+                                        }}
+                                    />
+                                )
+                            )}
+                        </motion.div>
                     )}
+                    <motion.div
+                        id="contentSection"
+                        className="mt-10 optionPage"
+                    >
+                        <AnimatePresence mode="wait">
+                            {clicked === "about" && (
+                                <motion.div
+                                    key="about"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -50 }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <About />
+                                </motion.div>
+                            )}
+                            {clicked === "designs" && (
+                                <motion.div
+                                    key="designs"
+                                    initial={{ opacity: 0, y: 50 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -50 }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    {showingProjects && <Designs />}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.div>
+                    <div className="magicLeafDiv">
+                        <Button
+                            className="magicLeafBack"
+                            id="magicLeafText"
+                            text="Exit"
+                            to={"/townscene"}
+                            style={{ cursor: "pointer" }}
+                        ></Button>
+                    </div>
                 </motion.div>
-             )}
-                <motion.div id="contentSection" className="mt-10 optionPage">
-                    <AnimatePresence mode="wait">
-                        {clicked === "about" && (
-                            <motion.div
-                                key="about"
-                                initial={{ opacity: 0, y: 50 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -50 }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <About />
-                            </motion.div>
-                        )}
-                        {clicked === "designs" && (
-                            <motion.div
-                                key="designs"
-                                initial={{ opacity: 0, y: 50 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -50 }}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <Designs />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </motion.div>
-                <div className="magicLeafDiv">
-                    <Button
-                        className="magicLeafBack"
-                        id="magicLeafText"
-                        text="Exit"
-                        to={'/townscene'}
-                    style={{ cursor: "pointer" }}
-                    ></Button>
-                </div>
-               
-            </motion.div>
-        </div>
-        <BackToTop containerSelector=".App"/>
-    </motion.div>
+            </div>
+            <BackToTop containerSelector=".App" />
+        </motion.div>
     );
 }
 
 function Greetings({ setComplete }) {
- 
-
     return (
         <>
             <motion.div className="greetings">
@@ -139,14 +152,12 @@ function Greetings({ setComplete }) {
                         " Welcome to Songbird Designs. ",
                         " Read about my experiences or browse the projects.",
                     ]}
-                    
                     speed={100}
                     pauseBetween={1000}
                     className="ogruText"
                     onComplete={() => {
-                        setComplete(true)
+                        setComplete(true);
                     }} // trigger when typing is complete
-                    
                 />
             </motion.div>
         </>
@@ -168,8 +179,5 @@ function OgruOptionCard({ label, color, p, colorTwo, onClick }) {
         </motion.button>
     );
 }
-
-
-
 
 export default SongbirdDesigns;

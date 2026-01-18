@@ -1,9 +1,9 @@
 import "./hotspots.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ogruRecords.css";
-import './songbirdSites.css';
+import "./songbirdSites.css";
 import "../../fonts/fonts.css";
 import Read from "./read.jsx";
 import Sites from "./sites.jsx";
@@ -34,12 +34,22 @@ const optionCards = [
 function SongbirdSites() {
     const [clicked, setClicked] = useState();
     const [complete, setComplete] = useState(false);
-   
+    const [showingProjects, setShowingProjects] = useState(false);
+    const navigate = useNavigate();
 
-    const navigate = useNavigate(); 
+    // When they click the button
+    const handleShowProjects = () => {
+        setShowingProjects(true);
+        localStorage.setItem("webDevStoreView", "projects");
+    };
 
+    useEffect(() => {
+        const savedView = localStorage.getItem("webDevStoreView");
+        if (savedView === "projects") {
+            setShowingProjects(true);
+        }
+    }, []);
     return (
-        
         <motion.div
             className="page scrollbar-hide"
             initial={{ opacity: 0 }}
@@ -55,35 +65,40 @@ function SongbirdSites() {
                     animate={{ y: 0, height: "auto" }}
                 >
                     <Greetings setComplete={setComplete} />
-                 {complete && (
-                    <motion.div className="ogruCardContainer">
-                        {optionCards.map(
-                            ({ id, label, color, colorTwo, p }) => (
-                                <OgruOptionCard
-                                    key={id}
-                                    id={id}
-                                    label={label}
-                                    p={p}
-                                    color={color}
-                                    colorTwo={colorTwo}
-                                    onClick={() => {
-                                        setClicked(id);
-                                        setTimeout(() => {
-                                            document
-                                                .getElementById(
-                                                    "contentSection"
-                                                )
-                                                .scrollIntoView({
-                                                    behavior: "smooth",
-                                                });
-                                        }, 200); // small delay to allow animation if needed
-                                    }}
-                                />
-                            )
-                        )}
-                    </motion.div>
-                 )}
-                    <motion.div id="contentSection" className="mt-10 optionPage">
+                    {complete && (
+                        <motion.div className="ogruCardContainer">
+                            {optionCards.map(
+                                ({ id, label, color, colorTwo, p }) => (
+                                    <OgruOptionCard
+                                        key={id}
+                                        id={id}
+                                        label={label}
+                                        p={p}
+                                        color={color}
+                                        colorTwo={colorTwo}
+                                        onClick={() => {
+                                            setClicked(id);
+                                            setShowingProjects(true);
+                                            handleShowProjects;
+                                            setTimeout(() => {
+                                                document
+                                                    .getElementById(
+                                                        "contentSection"
+                                                    )
+                                                    .scrollIntoView({
+                                                        behavior: "smooth",
+                                                    });
+                                            }, 200); // small delay to allow animation if needed
+                                        }}
+                                    />
+                                )
+                            )}
+                        </motion.div>
+                    )}
+                    <motion.div
+                        id="contentSection"
+                        className="mt-10 optionPage"
+                    >
                         <AnimatePresence mode="wait">
                             {clicked === "read" && (
                                 <motion.div
@@ -96,7 +111,7 @@ function SongbirdSites() {
                                     <Read />
                                 </motion.div>
                             )}
-                        
+
                             {clicked === "sites" && (
                                 <motion.div
                                     key="sites"
@@ -105,7 +120,7 @@ function SongbirdSites() {
                                     exit={{ opacity: 0, y: -50 }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <Sites />
+                                    {showingProjects && <Sites />}
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -115,21 +130,18 @@ function SongbirdSites() {
                             className="magicLeafBack"
                             id="magicLeafText"
                             text="Exit"
-                            to={'/townscene'}
-                        style={{ cursor: "pointer" }}
+                            to={"/townscene"}
+                            style={{ cursor: "pointer" }}
                         ></Button>
                     </div>
-                
                 </motion.div>
             </div>
-            <BackToTop  containerSelector=".App"/>
+            <BackToTop containerSelector=".App" />
         </motion.div>
     );
 }
 
 function Greetings({ setComplete }) {
- 
-
     return (
         <>
             <motion.div className="greetings">
@@ -139,14 +151,12 @@ function Greetings({ setComplete }) {
                         " Good day to you. ",
                         " What would you like to do? ",
                     ]}
-                    
                     speed={100}
                     pauseBetween={1000}
                     className="ogruText"
                     onComplete={() => {
-                        setComplete(true)
+                        setComplete(true);
                     }} // trigger when typing is complete
-                    
                 />
             </motion.div>
         </>
