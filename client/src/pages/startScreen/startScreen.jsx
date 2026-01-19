@@ -91,7 +91,7 @@ function StartScreen({ onEnter }) {
                             ease: "linear", // no stopping
                         }}
                     ></motion.img>
-                    <p className="loadingText">Loading ...</p>
+                    <p className="loadingText">Loading ....</p>
                 </>
             )}
         </div>
