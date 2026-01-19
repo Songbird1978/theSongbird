@@ -1,1 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build
+dist
+dist-ssr
+
+# Env
+.env
+.env.*
+*.local
+
+# Logs
+logs
+*.log
+
+# Tooling
 .vercel
+/generated
+.DS_Store
