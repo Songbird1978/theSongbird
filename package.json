@@ -8,8 +8,12 @@
     "dotenv": "^17.2.3",
     "prisma": "^5.22.0"
   },
+  "scripts": {
+    "postinstall": "npx prisma generate"
+  },
   "prisma": {
-    "seed": "node prisma/seed.js"
+    "seed": "node prisma/seed.js",
+
   },
   "type": "module"
 }
