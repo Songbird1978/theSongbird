@@ -401,7 +401,7 @@ function Show() {
                             </CardContent>
                         </Card>
                     ) : null}
-                    <Nav />
+                    <Nav className="p-6 m-4" />
                 </motion.div>
             </div>
         </div>

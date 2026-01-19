@@ -6,9 +6,9 @@ function Nav() {
 
     return (
         <>
-            <div className="w-full flex justify-evenly h-auto">
+            <div className="w-full flex justify-evenly h-auto mt-10 mb-10">
                 <AnimatedLeafButton
-                    className="navLeaf"
+                    className="navLeaf text-none"
                     text="Songbird Records"
                     to="/ogruRecords"
                     onClick={() => navigate("/ogruRecords")}
