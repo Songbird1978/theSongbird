@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import banner from "../assets/birdBanner.png";
 import "../pages/townscene/townscene.css";
-import birdFlying from "../assets/birdFlying.mp3";
+import birdFlying from "../assets/birdflying.mp3";
 
 function Bird2() {
     //tr
