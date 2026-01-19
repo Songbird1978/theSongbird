@@ -1,23 +1,22 @@
 // StartScreen.jsx
 import { useNavigate } from "react-router-dom";
 import leaf from "../../assets/leaf.png";
-import { useSound } from '../../contexts/SoundContext';
+import { useSound } from "../../contexts/SoundContext";
 import { useEffect, useRef, useState } from "react";
 import "./startScreen.css";
-import { motion } from 'framer-motion';
-import leavesFull from '../../assets/leavesFull.png';
-import leavesLeft from '../../assets/leaves2NoBgL.png';
-import leavesRight from '../../assets/leaves2noBgFlipR.png';
-import rustle from '../../assets/rustle.mp3';
-import rustleQuiet from '../../assets/rustleQuietHover.mp3';
-import secretGardenDoor from '../../assets/secretGardenDoorSquare.png';
-import songbirdLogo from '../../assets/theSongbirdLogo.png';
+import { motion } from "framer-motion";
+import leavesFull from "../../assets/leavesFull.png";
+import leavesLeft from "../../assets/leavesL.png";
+import leavesRight from "../../assets/leavesR.png";
+import rustle from "../../assets/rustle.mp3";
+import rustleQuiet from "../../assets/rustleQuietHover.mp3";
+import secretGardenDoor from "../../assets/secretGardenDoorSquare.png";
+import songbirdLogo from "../../assets/theSongbirdLogo.png";
 
 function StartScreen({ onEnter }) {
     const [isLoaded, setIsLoaded] = useState(false);
-   const { playBirdSound } = useSound();
+    const { playBirdSound } = useSound();
     const navigate = useNavigate();
-
 
     useEffect(() => {
         //preload images
@@ -36,10 +35,10 @@ function StartScreen({ onEnter }) {
         //preload sounds
 
         const quietRustle = new Audio(rustleQuiet);
-        quietRustle.preload = 'auto';
+        quietRustle.preload = "auto";
 
         const rustleSound = new Audio(rustle);
-        rustleSound.preload = 'auto';
+        rustleSound.preload = "auto";
 
         //fake loading delay or real check
         setTimeout(() => setIsLoaded(true), 1500);
@@ -56,30 +55,30 @@ function StartScreen({ onEnter }) {
                 <>
                     <motion.img
                         src={leaf}
-                        key='leaf'
+                        key="leaf"
                         alt="Enter The Songbird"
                         className="leafInto"
                         whileHover={{
                             scale: [1, 1.1, 1],
                             rotate: [0, 5, -5, 0],
                             transition: {
-                                duration: 2, repeat: Infinity
+                                duration: 2,
+                                repeat: Infinity,
                             },
                             y: ["0%", "-10%", "0%"], // Adds slight bounce
                             x: ["0%", "-5%", "0%"], // Adds slight bounce
                         }}
                         onClick={handleClick}
                     />
-                    <div className="callToAction">Enter The Songbird Garden</div>
+                    <div className="callToAction">
+                        Enter The Songbird Garden
+                    </div>
                 </>
-
             ) : (
                 <>
-
-
                     <motion.img
                         className="loadingImage"
-                        key='loadingImage'
+                        key="loadingImage"
                         src={songbirdLogo}
                         alt="songbird Logo"
                         animate={{
@@ -89,10 +88,9 @@ function StartScreen({ onEnter }) {
                         transition={{
                             repeat: Infinity, //continuous rotation
                             duration: 5, // 5 seconds to rotate
-                            ease: "linear" // no stopping 
+                            ease: "linear", // no stopping
                         }}
-                    >
-                    </motion.img>
+                    ></motion.img>
                     <p className="loadingText">Loading ...</p>
                 </>
             )}
