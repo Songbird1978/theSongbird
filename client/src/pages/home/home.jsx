@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import leavesLeft from "../../assets/leaves2NoBgL.png";
-import leavesRight from "../../assets/leaves2NoBgFlipR.png";
+import leavesLeft from "../../assets/leavesL.png";
+import leavesRight from "../../assets/leavesR.png";
 import leavesFull from "../../assets/leavesFull.png";
 import secretGardenDoorSquare from "../../assets/secretGardenDoorSquare.png";
 import redLeaf from "../../assets/redLeaf.png";
