@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/prisma.js";
 
-const prisma = new PrismaClient();
+
 
 export default async function handler(req, res) {
     // Enable CORS
