@@ -17,7 +17,7 @@ function StartScreen({ onEnter }) {
     const [isLoaded, setIsLoaded] = useState(false);
     const { playBirdSound } = useSound();
     const navigate = useNavigate();
-
+    //just
     useEffect(() => {
         //preload images
         const preLoadImage = (src) => {
