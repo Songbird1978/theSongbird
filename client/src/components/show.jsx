@@ -13,7 +13,7 @@ import { useRecord } from "../contexts/RecordContext";
 import useEmblaCarousel from "embla-carousel-react";
 import Nav from "../components/nav.jsx";
 import Loading from "../components/loading.jsx";
-import '../components.listen.css';
+
 
 function Show() {
     const { selectedRecord } = useRecord();
