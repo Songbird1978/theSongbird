@@ -243,12 +243,14 @@ function Show() {
                         </Card>
                     )}
                       {selectedRecord?.audioUrl && ( //AUDIOPLAYER 
-                      <div className="w-full h-5 mt-10 mb-10 ">
+                      <div className="w-full h-2 flex justify-center mt-10 mb-10 ">
                             <Card className="w-full h-auto">
                                 <CardHeader>
                                     <CardTitle>
                                     {selectedRecord.artist.name}
+                                    <CardTitle>
                                     {selectedRecord.title}
+                                    </CardTitle>
                                     </CardTitle>
                                 </CardHeader>
                             <CardContent>
@@ -280,7 +282,7 @@ function Show() {
                                     -1 && (
                                     <div className="embla w-full">
                                         <div
-                                            className="embla__viewport max-w-lg max-h-[30rem]  w-full  mx-auto"
+                                            className="embla__viewport max-w-lg max-h-5 w-full  mx-auto"
                                             ref={emblaRef}
                                             style={{
                                                 overflow: "hidden",
