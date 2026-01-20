@@ -127,7 +127,7 @@ function Show() {
                     {selectedRecord?.imageUrl?.length > 0 && ( //FIRST CAROUSEL - GENERAL - FOR ALL
                         <div className="embla w-full">
                             <div
-                                className="embla__viewport border max-w-lg mt-6 mb-6 w-full h-66 mx-auto"
+                                className="embla__viewport border max-w-lg max-h-[30rem]  mt-6 mb-6 w-full mx mx-auto"
                                 ref={emblaRef}
                                 style={{
                                     overflow: "hidden",
@@ -232,7 +232,7 @@ function Show() {
                                     -1 && (
                                     <div className="embla w-full">
                                         <div
-                                            className="embla__viewport max-w-lg max-h-48  w-full  mx-auto"
+                                            className="embla__viewport max-w-lg max-h-[30rem]  w-full  mx-auto"
                                             ref={emblaRef}
                                             style={{
                                                 overflow: "hidden",
@@ -345,9 +345,9 @@ function Show() {
                                     </div>
                                 )}
                             </div>
-                            <p className="text-justify text-sm">
+                            <Card className="text-justify text-sm max-w-100 p-2 mb-5 bg-stone-100 ">
                                 {selectedRecord.artist.description}
-                            </p>
+                            </Card>
                         </Card>
                     ) : null}
                     {selectedRecord?.techstack ? ( //TECHSTACK CARD
