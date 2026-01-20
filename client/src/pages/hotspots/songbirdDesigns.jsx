@@ -10,6 +10,7 @@ import "./songbirdDesigns.css";
 import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
 import BackToTop from "../../components/backToTop/backToTop.jsx";
+import Nav from '../../components/nav.jsx';
 import "../townscene/townscene.css";
 import "../home/home.css";
 
@@ -38,6 +39,11 @@ function SongbirdDesigns() {
     const [showingProjects, setShowingProjects] = useState(false);
     const navigate = useNavigate();
 
+    const handleGreetingComplete = () => {
+        setComplete(true);
+        localStorage.setItem("greetingComplete", "true");
+      };
+
     // When they click the button
     const handleShowProjects = () => {
         setShowingProjects(true);
@@ -50,6 +56,13 @@ function SongbirdDesigns() {
             setShowingProjects(true);
         }
     }, []);
+
+    useEffect(() => {
+        const stored = localStorage.getItem("greetingComplete");
+        if (stored === "true") {
+          setComplete(true);
+        }
+      }, []);
 
     return (
         <motion.div
@@ -135,6 +148,7 @@ function SongbirdDesigns() {
                             style={{ cursor: "pointer" }}
                         ></Button>
                     </div>
+                    <Nav />
                 </motion.div>
             </div>
             <BackToTop containerSelector=".App" />
@@ -142,9 +156,16 @@ function SongbirdDesigns() {
     );
 }
 
-function Greetings({ setComplete }) {
+function Greetings({ setComplete, complete }) {
     return (
-        <>
+        <>{complete ? (
+            <motion.div className="greetings">
+                <motion.h1 className="ogruTitle">Songbird Designs</motion.h1>
+                <h2
+                    className="ogruText"
+                >Hi, Welcome back</h2>
+            </motion.div>
+            ) : (
             <motion.div className="greetings">
                 <motion.h1 className="ogruTitle">Songbird Designs</motion.h1>
                 <Typewriter
@@ -152,14 +173,15 @@ function Greetings({ setComplete }) {
                         " Welcome to Songbird Designs. ",
                         " Read about my experiences or browse the projects.",
                     ]}
-                    speed={100}
-                    pauseBetween={1000}
+                    speed={70}
+                    pauseBetween={200}
                     className="ogruText"
                     onComplete={() => {
                         setComplete(true);
                     }} // trigger when typing is complete
                 />
             </motion.div>
+            )}
         </>
     );
 }

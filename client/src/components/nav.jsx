@@ -6,37 +6,42 @@ function Nav() {
 
     return (
         <>
-            <div className="w-full flex justify-evenly h-auto mt-10 mb-10">
+            <div className="flex flex-col md:flex-row md:justify-evenly h-auto mt-10 mb-10 !text-xs !text-gray-500 !font-courier" >
                 <AnimatedLeafButton
                     className="navLeaf text-none"
                     text="Songbird Records"
+                    ariaLabel="Songbird Records"
                     to="/ogruRecords"
                     onClick={() => navigate("/ogruRecords")}
-                ></AnimatedLeafButton>
+                >Songbird Records</AnimatedLeafButton>
                 <AnimatedLeafButton
                     className="navLeaf"
                     text="Songbird Designs"
+                    ariaLabel="Songbird Designs"
                     to="/songbirdDesigns"
                     onClick={() => navigate("/songbirdDesigns")}
-                ></AnimatedLeafButton>
+                >Songbird Designs</AnimatedLeafButton>
                 <AnimatedLeafButton
                     className="navLeaf"
                     text="Songbird Sites"
+                    ariaLabel="Songbird Sites"
                     to="/songbirdSites"
                     onClick={() => navigate("/songbirdSites")}
-                ></AnimatedLeafButton>
+                >Songbird Sites</AnimatedLeafButton>
                 <AnimatedLeafButton
                     className="navLeaf"
                     text="Noticeboard"
+                    ariaLabel="Noticeboard"
                     to="/noticeboard"
                     onClick={() => navigate("/noticeboard")}
-                ></AnimatedLeafButton>
+                >Noticeboard</AnimatedLeafButton>
                 <AnimatedLeafButton
                     className="navLeaf"
                     text="To the Town"
+                    ariaLabel="To the Town"
                     to="/townscene"
                     onClick={() => navigate("/townscene")}
-                ></AnimatedLeafButton>
+                >To the Town</AnimatedLeafButton>
             </div>
         </>
     );

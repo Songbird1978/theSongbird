@@ -217,7 +217,12 @@ function Show() {
                             </div>
                         </div>
                     )}
-                    {selectedRecord?.artist ? (
+                    {selectedRecord?.artist ? ( //AUDIOPLAYER OR EMBED 
+                        <Card w-full h-auto>
+                            {selectedRecord?.artist?.audioUrl}
+                        </Card>
+                    ) : null}
+                    {selectedRecord?.artist ? ( //ARTIST CAROUSEL OF IMAGES
                         <Card>
                             <CardTitle className="text-lg p-6">
                                 {selectedRecord.artist.name}

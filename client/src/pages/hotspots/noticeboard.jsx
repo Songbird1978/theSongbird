@@ -15,6 +15,7 @@ import click from '../../assets/clickButton.mp3';
 
 
 
+
 export default function Noticeboard() {
 
     const navigate = useNavigate();
@@ -96,9 +97,8 @@ export default function Noticeboard() {
                             
                                 <motion.img
                                     src={badge}
-                                    style={{height: "75px", width: 'auto'}}
                                     alt="badge"
-                                    className="badgeGreen badge"
+                                    className="badgeGreen badge h-20 md:h-28 lg:h-36"
                                     transition={{ type: "spring", stiffness: 300 }}
                                     whileTap={{ scale: 0.9 }}
                                     onAnimationStart={() => clickButton.play()}
@@ -112,9 +112,9 @@ export default function Noticeboard() {
 
                                 <motion.img
                                     src={CVButton}
-                                    style={{height: "200px", width: 'auto'}}
+                                  
                                     alt="CV Button"
-                                    className="cv cvButton"
+                                    className="cv cvButton h-64 md:h-80 lg:h-96"
                                     onAnimationStart={() => paperSound.play()}
                                     initial={{ rotate: 0, x: 0, y: 0 }}
                                     transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
@@ -175,9 +175,8 @@ export default function Noticeboard() {
                          
                                 <motion.img
                                     src={aboutMe}
-                                    style={{height: "150px", width: 'auto'}}
                                     alt="about me"
-                                    className="about"
+                                    className="about h-48 md:h-64 lg:h-80"
                                     onAnimationStart={() => paperSound.play()}
                                     initial={{ rotate: 0, x: 0, y: 0, scale: 1.2 }}
                                     transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
@@ -186,9 +185,9 @@ export default function Noticeboard() {
                                 />
                              
                                 <motion.img src={linkedIn}
-                                 style={{height: "150px", width: 'auto', cursor: 'pointer'}}
+                                 style={{ cursor: 'pointer'}}
                                     alt="linkedIn"
-                                    className="linkedIn"
+                                    className="linkedIn h-32 md:h-40 lg:h-48 xl:h-64"
                                     onAnimationStart={() => paperSound.play()}
                                     initial={{ rotate: 0, x: 0, y: 0 }}
                                     transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
@@ -199,9 +198,9 @@ export default function Noticeboard() {
                               
                                 <motion.img
                                     src={github}
-                                    style={{height: "120px", width: 'auto'}}
+                                    style={{cursor: 'pointer'}}
                                     alt="gitHub"
-                                    className="gitHub"
+                                    className="gitHub h-32 md:h-40 lg:h-48 xl:h-64"
                                     onAnimationStart={() => paperSound.play()}
                                     initial={{ rotate: 0, x: 0, y: 0 }}
                                     transition={{ duration: 0.2, ease: "easeOut", spring: "light" }}
@@ -209,7 +208,9 @@ export default function Noticeboard() {
                                     whileTap={{ rotate: 7, x: 0, y: 0 }}
                                     onClick={() => window.open('https://github.com/Songbird1978', '_blank')}
                                 />  
+                                      
                         </div>
+                  
                     </motion.div>
                 )}
             </div>

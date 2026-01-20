@@ -9,6 +9,7 @@ import Discover from "./discover.jsx";
 import Typewriter from "../../components/typewriter.jsx";
 import Button from "../../components/button.jsx";
 import BackToTop from "../../components/backToTop/backToTop.jsx";
+import Nav from '../../components/nav.jsx';
 import "../townscene/townscene.css";
 import "../home/home.css";
 //import TownScene from '../townscene/townscene.jsx';
@@ -134,6 +135,7 @@ function OgruRecords() {
                             style={{ cursor: "pointer" }}
                         ></Button>
                     </div>
+                    <Nav />
                 </motion.div>
             </div>
             <BackToTop containerSelector=".App" />
@@ -151,8 +153,8 @@ function Greetings({ setComplete }) {
                         " Good day to you. ",
                         " What would you like to do? ",
                     ]}
-                    speed={100}
-                    pauseBetween={1000}
+                    speed={70}
+                    pauseBetween={200}
                     className="ogruText"
                     onComplete={() => {
                         setComplete(true);

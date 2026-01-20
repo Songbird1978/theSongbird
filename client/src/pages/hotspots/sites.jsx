@@ -5,16 +5,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Loading from "../../components/loading";
 import "./ogruRecords.css";
 import { useRecord } from "../../contexts/RecordContext";
+import sitesMock from "../../../mocks/Site.json";
 
 function Sites() {
     const [sites, setSites] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const { setSelectedRecord } = useRecord();
 
+    const { setSelectedRecord } = useRecord();
     const navigate = useNavigate();
 
     //console.log("sites list ", sites, typeof sites);
+
+    const isDev = import.meta.env.DEV;
 
     const handleRecordClick = (record) => {
         setSelectedRecord(record);
@@ -39,6 +42,8 @@ function Sites() {
         },
     };
 
+    /*
+
     useEffect(() => {
         fetch("/api/sites")
             .then((res) => {
@@ -60,6 +65,37 @@ function Sites() {
             });
     }, []);
 
+    */
+
+
+    useEffect(() => {
+        const loadSites = async () => {
+            try {
+                if (isDev) {
+                    // DEV: use local JSON
+                    setSites(sitesMock);
+                } else {
+                    // PROD: fetch from API
+                    const res = await fetch("/api/sites");
+                    if (!res.ok) {
+                        throw new Error(`HTTP error ${res.status}`);
+                    }
+                    const data = await res.json();
+                    setDesigns(Array.isArray(data) ? data : []);
+                }
+            } catch (err) {
+                console.error("Records load error:", err);
+                setError(err.message);
+            } finally {
+                // ALWAYS stop loading
+                setLoading(false);
+            }
+        };
+    
+        loadSites();
+    }, [isDev]);
+    
+
     useEffect(() => {
         localStorage.setItem("webDevStoreView", "projects");
     }, []);
@@ -79,7 +115,7 @@ function Sites() {
                 <h1 className="topicTitle">Songbird Sites</h1>
 
                 <motion.div
-                    className="grid p-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-4 justify-items-right"
+                    className="grid p-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 justify-items-right"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"

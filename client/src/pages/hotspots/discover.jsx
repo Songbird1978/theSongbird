@@ -6,19 +6,22 @@ import Loading from "../../components/loading";
 import "./ogruRecords.css";
 import Show from "../../components/show.jsx";
 import { useRecord } from "../../contexts/RecordContext";
+import recordsMock from "../../../mocks/Record.json";
 
 function Discover() {
     const [records, setRecords] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const { setSelectedRecord } = useRecord();
 
+    const { setSelectedRecord } = useRecord();
     const navigate = useNavigate();
 
     const handleRecordClick = (record) => {
         setSelectedRecord(record);
         navigate("/show");
     };
+
+    const isDev = import.meta.env.DEV;
 
     //console.log("records list ", records, typeof records);
 
@@ -41,6 +44,8 @@ function Discover() {
         },
     };
 
+   
+/*
     useEffect(() => {
         fetch("/api/records")
             .then((res) => {
@@ -60,6 +65,36 @@ function Discover() {
                 setLoading(false);
             });
     }, []);
+*/
+
+
+useEffect(() => {
+    const loadRecords = async () => {
+        try {
+            if (isDev) {
+                // DEV: use local JSON
+                setRecords(recordsMock);
+            } else {
+                // PROD: fetch from API
+                const res = await fetch("/api/records");
+                if (!res.ok) {
+                    throw new Error(`HTTP error ${res.status}`);
+                }
+                const data = await res.json();
+                setDesigns(Array.isArray(data) ? data : []);
+            }
+        } catch (err) {
+            console.error("Records load error:", err);
+            setError(err.message);
+        } finally {
+            // ALWAYS stop loading
+            setLoading(false);
+        }
+    };
+
+    loadRecords();
+}, [isDev]);
+
 
     useEffect(() => {
         localStorage.setItem("recordStoreView", "projects");
@@ -80,7 +115,7 @@ function Discover() {
                 <h1 className="topicTitle">Discover</h1>
 
                 <motion.div
-                    className="grid w-full p-1 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-items-center"
+                    className="grid w-full p-1 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 justify-items-center"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -112,7 +147,7 @@ function Discover() {
                                 </CardContent>
                                 <CardHeader>
                                     <CardTitle className="font-courier text-left text-sm">
-                                        {record.artist.name}
+                                        {record?.artist?.name}
                                     </CardTitle>
                                 </CardHeader>
                             </Card>

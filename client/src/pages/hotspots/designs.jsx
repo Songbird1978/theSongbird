@@ -6,21 +6,26 @@ import Loading from "../../components/loading";
 import { useRecord } from "../../contexts/RecordContext";
 import "./ogruRecords.css";
 
+// JSON mock data
+import designsMock from "../../../mocks/Design.json";
+
 function Designs() {
     const [designs, setDesigns] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const { setSelectedRecord } = useRecord();
 
+    const { setSelectedRecord } = useRecord();
     const navigate = useNavigate();
 
     //console.log("designs list ", designs, typeof designs);
+
+    const isDev = import.meta.env.DEV;
 
     const handleRecordClick = (record) => {
         setSelectedRecord(record);
         navigate("/show");
     };
-
+    
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -39,12 +44,14 @@ function Designs() {
             transition: { duration: 0.5 },
         },
     };
-
+   
+/*
     useEffect(() => {
         fetch("/api/designs")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`HTTP error! status:, ${res.status}`);
+                    
                 }
                 return res.json(); //parse as JSON
             })
@@ -59,6 +66,35 @@ function Designs() {
                 setLoading(false);
             });
     }, []);
+*/
+
+useEffect(() => {
+    const loadDesigns = async () => {
+        try {
+            if (isDev) {
+                // DEV: use local JSON
+                setDesigns(designsMock);
+            } else {
+                // PROD: fetch from API
+                const res = await fetch("/api/designs");
+                if (!res.ok) {
+                    throw new Error(`HTTP error ${res.status}`);
+                }
+                const data = await res.json();
+                setDesigns(Array.isArray(data) ? data : []);
+            }
+        } catch (err) {
+            console.error("Designs load error:", err);
+            setError(err.message);
+        } finally {
+            // ALWAYS stop loading
+            setLoading(false);
+        }
+    };
+
+    loadDesigns();
+}, [isDev]);
+
 
     useEffect(() => {
         localStorage.setItem("designStoreView", "projects");
@@ -79,7 +115,7 @@ function Designs() {
                 <h1 className="topicTitle">Designs</h1>
 
                 <motion.div
-                    className="grid p-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-4 justify-items-right"
+                    className="grid p-5 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 justify-items-right"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"

@@ -1,0 +1,149 @@
+[
+    {
+        "id": 1,
+        "name": "Giorgio Li Calzi",
+        "description": "Giorgio Li Calzi (1965) is a trumpeter, composer and music producer, cultural promoter, performing director. He started overdubbing piano and synthesizer as a child, and in 1990 he began to study and play the trumpet.  In 1990 Giorgio also won the best European composer award at the Competition for Young Jazz Talents (RAI/Ives St. Laurent), in Rome.",
+        "genres": [
+            "JAZZ",
+            "EXPERIMENTAL",
+            "ELECTRONIC"
+        ],
+        "imageUrl": [
+            "https://giorgiolicalzi.com/wp-content/uploads/2018/10/solaris-coazzolo-tremlet.jpg",
+            "https://giorgiolicalzi.com/wp-content/uploads/2014/02/li-calzi-chamois-ph-baiano.jpg"
+        ],
+        "audioUrl": [
+            "/audio/project1.mp3"
+        ],
+        "links": [
+            "https://giorgiolicalzi.com/"
+        ],
+        "createdAt": "2025-12-05 22:28:38.425"
+    },
+    {
+        "id": 2,
+        "name": "Helsinki",
+        "description": "Combining elements of Jazz, Soul and Blues, encased in the experience and wisdom of a group of musicians that have worked together and apart in many forms for the last 40 years. Furious Cool, born out of shared loss and change, are a group striving to write beautiful songs and share the joy of their love for music and live performance. Gary Shaw - guitar, Robin Vick - bass, Cliff Chapman - keys, Bernie Fox - drums & percussion, Hayley Alker - voice",
+        "genres": [
+            "JAZZ",
+            "SOUL",
+            "BLUES"
+        ],
+        "imageUrl": [
+            "/images/project1.jpg"
+        ],
+        "audioUrl": [
+            "/audio/project1.mp3"
+        ],
+        "links": [
+            "https://soundcloud.com/helsinki"
+        ],
+        "createdAt": "2025-12-05 22:28:38.52"
+    },
+    {
+        "id": 3,
+        "name": "Hippy Equivalent",
+        "description": "Combining elements of Jazz, Soul and Blues, encased in the experience and wisdom of a group of musicians that have worked together and apart in many forms for the last 40 years. Furious Cool, born out of shared loss and change, are a group striving to write beautiful songs and share the joy of their love for music and live performance. Gary Shaw - guitar, Robin Vick - bass, Cliff Chapman - keys, Bernie Fox - drums & percussion, Hayley Alker - voice",
+        "genres": [
+            "EXPERIMENTAL",
+            "CHAOS",
+            "JAZZ",
+            "TRASH"
+        ],
+        "imageUrl": [
+            "/images/project1.jpg"
+        ],
+        "audioUrl": [
+            "/audio/project1.mp3"
+        ],
+        "links": [
+            "https://github.com/yourusername/project1"
+        ],
+        "createdAt": "2025-12-05 22:28:38.596"
+    },
+    {
+        "id": 4,
+        "name": "CURL",
+        "description": "Combining elements of Jazz, Soul and Blues, encased in the experience and wisdom of a group of musicians that have worked together and apart in many forms for the last 40 years. Furious Cool, born out of shared loss and change, are a group striving to write beautiful songs and share the joy of their love for music and live performance. Gary Shaw - guitar, Robin Vick - bass, Cliff Chapman - keys, Bernie Fox - drums & percussion, Hayley Alker - voice",
+        "genres": [
+            "ELECTRONIC",
+            "ROCK",
+            "NEW WAVE",
+            "ALTERNATIVE"
+        ],
+        "imageUrl": [
+            "/images/project1.jpg"
+        ],
+        "audioUrl": [
+            "/audio/project1.mp3"
+        ],
+        "links": [
+            "https://github.com/yourusername/project1"
+        ],
+        "createdAt": "2025-12-05 22:28:38.67"
+    },
+    {
+        "id": 5,
+        "name": "Peach and the New Beats",
+        "description": "Peach and the New Beats serve to you 'music to melt your heart.' That, they say, is their goal. The group created their first album of material, 'A curious case of happiness' in 2012. Their original music takes influence from soul, jazz and blues. They released their second EP 'Home Before Midnight', in 2016. They give each well-chosen cover, the 'Peachy' treatment. Influences include Steely Dan, Rickie lee Jones, Steve Gadd, Harriett Wheeler, Neil Larson, John Cleary, Dr John, Joni Mitchell, Talk Talk and many more.",
+        "genres": [
+            "JAZZ",
+            "SOUL",
+            "AMBIENT"
+        ],
+        "imageUrl": [
+            "/images/project1.jpg"
+        ],
+        "audioUrl": [
+            "/audio/project1.mp3"
+        ],
+        "links": [
+            "https://github.com/yourusername/project1"
+        ],
+        "createdAt": "2025-12-05 22:28:38.754"
+    },
+    {
+        "id": 6,
+        "name": "Furious Cool",
+        "description": "Combining elements of Jazz, Soul and Blues, encased in the experience and wisdom of a group of musicians that have worked together and apart in many forms for the last 40 years. Furious Cool, born out of shared loss and change, are a group striving to write beautiful songs and share the joy of their love for music and live performance. Gary Shaw - guitar, Robin Vick - bass, Cliff Chapman - keys, Bernie Fox - drums & percussion, Hayley Alker - voice",
+        "genres": [
+            "JAZZ",
+            "SOUL",
+            "BLUES"
+        ],
+        "imageUrl": [
+            "/images/project1.jpg"
+        ],
+        "audioUrl": [
+            "/audio/project1.mp3"
+        ],
+        "links": [
+            "https://github.com/yourusername/project1"
+        ],
+        "createdAt": "2025-12-05 22:28:38.829"
+    },
+    {
+        "id": 7,
+        "name": "Session Vocals",
+        "description": "Over the years, Hayley has guested on records and has been sampled by various musicians",
+        "genres": [
+            "JAZZ",
+            "SOUL",
+            "BLUES",
+            "ALTERNATIVE",
+            "INDIE",
+            "ROCK",
+            "EXPERIMENTAL"
+        ],
+        "imageUrl": [
+            "/images/project1.jpg"
+        ],
+        "audioUrl": [
+            "/audio/project1.mp3"
+        ],
+        "links": [
+            "https://github.com/yourusername/project1"
+        ],
+        "createdAt": "2025-12-05 22:28:38.899"
+    }
+]

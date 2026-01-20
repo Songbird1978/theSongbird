@@ -1,0 +1,99 @@
+[
+    {
+        "id": 1,
+        "title": "Peach and the New Beats",
+        "description": "Creation of full colour CD album with 8 page booklet, inlay and on-cd print design for manufacture. Creation of vector images, colour swatches, and templates for manufacture including creation of UPC and ISRC codes. The physical product is sold with a postcard following the theme of the CD. Marketing materials for live work including posters, backdrops, logos, email templates and invoices.",
+        "link": "https://peachandthenewbeats.bandcamp.com/album/a-curious-case-of-happiness",
+        "createdAt": "2025-12-05 22:28:38.972",
+        "imageUrl": [
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764080684/Peach_LP_cover_dz7pj1.jpg",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944170/Screenshot_2025-12-05_at_14.11.21_trwsvs.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944170/Screenshot_2025-12-05_at_14.11.43_wywn80.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944167/Screenshot_2025-12-05_at_14.11.05_uocaku.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944162/Screenshot_2025-12-05_at_14.10.33_iweady.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944161/Screenshot_2025-12-05_at_14.10.13_oztt74.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944161/Screenshot_2025-12-05_at_14.10.13_oztt74.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944159/Screenshot_2025-12-05_at_14.09.57_zjoylt.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944135/CD_Demo_Cover_duo_xuqkhi.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944127/CD_Demo_Cover_band_czjk5v.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764944036/Contact_sheet_nujld9.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764945113/Peach_postcard_ba8ouu.jpg"
+        ],
+        "techstack": [
+            "Adobe Illustrator",
+            "Adobe Indesign",
+            "Adobe photoshop",
+            "Adobe Fonts"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Helsinki",
+        "description": "Helsinki is a band created in 2007. Two albums were created. It has a minimalist theme. Simplicity and clean lines was the brief for the first CD. We collaborated with Dean Clarke on the design and Hayley realised the design using Adobe Indesign. The second CD was created in collaboration with James Weaver. The brief was to create an art deco representation of an old Portsmouth cinema from Cosham. The inlays and credits were the inside of the cinema lobby and the fonts used old 1930s style fonts, to continue the art deco theme throughout the product. Hayley drafted the ideas, James Weaver realised designs through collaboration and revision meetings with the band. Hayley realised the final contact sheets before manufacture",
+        "link": "https://soundcloud.com/helsinki",
+        "createdAt": "2025-12-05 22:28:38.972",
+        "imageUrl": [
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764086483/Helsinki_Arrivals_and_Departures_fktc3a.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764086483/Helsinki_Arrivals_and_Departures_fktc3a.png"
+        ],
+        "techstack": [
+            "Adobe Indesign",
+            "Adobe dreamweaver",
+            "artist collaboration"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Furious Cool",
+        "description": "Furious Cool (band) needed an organic feeling for their design work. I created the logo using dark card, paint and old-fashioned typographic stamps, photography and then used Photoshop and InDesign to bring the idea together and edit where needed. The poster uses sepia effects to match the logo and the cover for their single, Sit Down, released in 2020. I created a blue chair using pastels. I photographed the image and using Photoshop to enhance, edit and then InDesign to pull the design together. This gives an textural and organic effect to the cover, which is tangible and pleasing. Their Logo was ",
+        "link": "https://furiouscool.myportfolio.com/",
+        "createdAt": "2025-12-05 22:28:38.972",
+        "imageUrl": [
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764086476/Sit_Down_Single_cover_4th_July_22_darker_blue_font_ujdkfg.jpg",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764080686/Photo_with_Logo_tgcmgm.jpg"
+        ],
+        "techstack": [
+            "Adobe Photoshop",
+            "Adobe InDesign",
+            "Adobe Illustrator",
+            "Adobe Fonts",
+            "Adobe Premier Pro"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Hippy Equivalent",
+        "description": "Four single covers for separate songs. Hippy Equivalent is a new musical project. There is a whole album ready to be released, of which artwork ideas are being developed for 2026",
+        "link": "https://hippyequivalent.bandcamp.com/music",
+        "createdAt": "2025-12-05 22:28:38.972",
+        "imageUrl": [
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764081512/Around_the_World_-_HIPEQ_-_high_quality_facebook_nrlnah.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764847003/ROADHIPEQNoScholar_mibwhg.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764086478/Toads_CD_image_boqyga.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764939098/Trigger_CD_image_Indesign_paint_logo_xhc3us.png"
+        ],
+        "techstack": [
+            "Adobe Photoshop",
+            "Adobe Illustrator",
+            "Adobe InDesign"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Studio One28",
+        "description": "Development of promotional materials for a studio",
+        "link": "https://studioone28.com",
+        "createdAt": "2025-12-05 22:28:38.972",
+        "imageUrl": [
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764080680/One28Icon_aizoj1.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764960666/studioOne28AnimateComplex_p26m5p.gif",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764960614/One28Gif_laja9y.gif",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764960607/studioOne28BannerImageRed_Yell_voixr8.png",
+            "https://res.cloudinary.com/djajtxjpr/image/upload/v1764960606/studioOne28ImageBlueLinenYell_dilfrt.png"
+        ],
+        "techstack": [
+            "Adobe Indesign",
+            "Adobe Illustrator, Adobe Animate"
+        ]
+    }
+]
