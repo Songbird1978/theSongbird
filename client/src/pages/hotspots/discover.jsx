@@ -81,7 +81,7 @@ useEffect(() => {
                     throw new Error(`HTTP error ${res.status}`);
                 }
                 const data = await res.json();
-                setDesigns(Array.isArray(data) ? data : []);
+                setRecords(Array.isArray(data) ? data : []);
             }
         } catch (err) {
             console.error("Records load error:", err);
