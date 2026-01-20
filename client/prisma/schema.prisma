@@ -51,6 +51,7 @@ model Record {
   artist      Artist  @relation(fields: [artistId], references: [id])
   name        String?
   title       String
+  audioUrl    String?
   description String
   imageUrl    String[]
   links       String[]

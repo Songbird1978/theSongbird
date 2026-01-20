@@ -4,6 +4,7 @@ import {
     ArrowCircleRightIcon,
     LinkIcon,
     PlayCircleIcon,
+    PauseCircleIcon
 } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -12,10 +13,17 @@ import { useRecord } from "../contexts/RecordContext";
 import useEmblaCarousel from "embla-carousel-react";
 import Nav from "../components/nav.jsx";
 import Loading from "../components/loading.jsx";
+import '../components.listen.css';
 
 function Show() {
     const { selectedRecord } = useRecord();
     const [isLoading, setIsLoading] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(false);
+
+
+    const audio = new Audio(selectedRecord.audioUrl);
+    audio.volume = 0.5;
+    audio.preload = "auto";
 
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
@@ -41,6 +49,16 @@ function Show() {
         return () => clearTimeout(timer);
     }, []);
 
+      //PLAYING OR NOT
+      const togglePlay = () => {
+        if (isPlaying) {
+            audio.pause();
+        } else {
+            audio.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
+
     useEffect(() => {
         if (!isLoading && !selectedRecord) {
             navigate("/townscene");
@@ -54,6 +72,8 @@ function Show() {
     if (!selectedRecord) {
         return null; // Don't render anything while redirecting
     }
+
+    
 
     return (
         <div //OUTER CONTAINERS AND BACKGROUND
@@ -217,10 +237,38 @@ function Show() {
                             </div>
                         </div>
                     )}
-                    {selectedRecord?.artist?.embedCode && ( //AUDIOPLAYER OR EMBED 
-                        <Card w-full h-auto>
-                            <div dangerouslySetInnerHTML={{ __html: selectedRecord?.artist?.audioUrl }} />
+                    {selectedRecord?.artist?.embedCode && ( // EMBED CODE 
+                        <Card w-full h-auto justify-center flex>
+                            <div contentEditable="false" dangerouslySetInnerHTML={{ __html: selectedRecord?.artist?.embedCode }} />
                         </Card>
+                    )}
+                      {selectedRecord?.audioUrl && ( //AUDIOPLAYER 
+                      <div className="w-full h-5 mt-10 mb-10 ">
+                            <Card className="w-full h-auto">
+                                <CardHeader>
+                                    <CardTitle>
+                                    {selectedRecord.artist.name}
+                                    {selectedRecord.title}
+                                    </CardTitle>
+                                </CardHeader>
+                            <CardContent>
+                                 {isPlaying ? (
+                                    <PauseCircleIcon className="w-full h-auto"
+                                    onClick={() =>{
+                                        togglePlay();
+                                    }}
+                                    />
+                                 ) : (
+                                    <PlayCircleIcon className="w-full h-auto"
+                                    onClick={() =>{
+                                        togglePlay();
+                                    }}
+                                    />
+
+                                 )}
+                                 </CardContent>
+                        </Card>
+                        </div>
                     )}
                     {selectedRecord?.artist ? ( //ARTIST CAROUSEL OF IMAGES
                         <Card>

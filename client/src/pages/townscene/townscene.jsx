@@ -115,11 +115,6 @@ function TownScene() {
         }
     };
 
-    const handleNavigation = (destination) => {
-        stopBirdSound(); // Stop when entering a shop
-        navigate(`/${destination}`);
-    };
-
     if (loading) return <Loading className="w-sm" />;
 
     const variants = {

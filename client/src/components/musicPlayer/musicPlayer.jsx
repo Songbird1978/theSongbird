@@ -3,11 +3,11 @@ import "../musicPlayer/listen3.css";
 //import "../../components/gallery/gallery.css";
 import "../../components/musicPlayer/audioPlayer.css";
 import { Play, SkipForward, SkipBack } from "lucide-react";
-<Play />
 
 
-export default function AudioPlaylistPlayer({ tracks }) {
-    //const API_URL = process.env.REACT_APP_API_URL;
+
+export default function AudioPlaylistPlayer({ selectedRecord }) {
+    
 
     const audioRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -21,8 +21,8 @@ export default function AudioPlaylistPlayer({ tracks }) {
     //console.log( 'tracks from music player', tracks );
 
     const getResponsiveImage = (url) => {
-        if (windowWidth < 500) return getImageUrl(url, "thumbnail");
-        if (windowWidth < 1000) return getImageUrl(url, "card");
+        if (windowWidth < 500) return getImageUrl(imageUrl, "thumbnail");
+        if (windowWidth < 1000) return getImageUrl(imageUrl, "card");
         return getImageUrl(url, "large");
     };
 
@@ -33,17 +33,18 @@ export default function AudioPlaylistPlayer({ tracks }) {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    const currentTrack = tracks[currentIndex];
-    const rawImageUrl = currentTrack?.artwork?.url;
-    const audioSrc = currentTrack?.audioFile?.url;
+    const currentTrack = selectedRecord.artist.audioUrl[currentIndex];
+    const rawImageUrl = selectedRecord.artist.imageUrl;
+    const audioSrc = currentTrack;
     const imageUrl = rawImageUrl ? getResponsiveImage(rawImageUrl) : null;
-    const imageAlt = currentTrack?.songTitle || "artwork";
+    const imageAlt = selectedRecord.artist.name || "artwork";
     const audioUrl = audioSrc ? `${audioSrc}` : null;
+    const tracks = selectedRecord.artist.audioUrl;
     //console.log("audioUrl=", audioUrl);
 
     //SKIPPING TRACKS FORWARD
     const handleNext = useCallback(() => {
-        setCurrentIndex((prev) => (prev + 1) % tracks.length);
+        setCurrentIndex((prev) => (prev + 1) % selec.length);
         setIsPlaying(true);
     }, [tracks]);
 
