@@ -23,6 +23,7 @@ model Artist {
   genres      String[]
   imageUrl    String[]
   audioUrl    String[]
+  embedCode   String?  @db.Text
   links       String[]
   records     Record[]
   createdAt   DateTime @default(now())

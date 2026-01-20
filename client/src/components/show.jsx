@@ -217,11 +217,11 @@ function Show() {
                             </div>
                         </div>
                     )}
-                    {selectedRecord?.artist ? ( //AUDIOPLAYER OR EMBED 
+                    {selectedRecord?.artist?.embedCode && ( //AUDIOPLAYER OR EMBED 
                         <Card w-full h-auto>
-                            {selectedRecord?.artist?.audioUrl}
+                            <div dangerouslySetInnerHTML={{ __html: selectedRecord?.artist?.audioUrl }} />
                         </Card>
-                    ) : null}
+                    )}
                     {selectedRecord?.artist ? ( //ARTIST CAROUSEL OF IMAGES
                         <Card>
                             <CardTitle className="text-lg p-6">
