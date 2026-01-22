@@ -8,12 +8,14 @@ import "../../fonts/fonts.css";
 import Read from "./read.jsx";
 import Sites from "./sites.jsx";
 import Typewriter from "../../components/typewriter.jsx";
+import Loading from '../../components/loading.jsx';
 import Button from "../../components/button.jsx";
 import BackToTop from "../../components/backToTop/backToTop.jsx";
 import Nav from '../../components/nav.jsx';
 import "../townscene/townscene.css";
 import "../home/home.css";
-//import TownScene from '../townscene/townscene.jsx';
+import UseImagePreloader from '../../components/useImagePreloader.jsx';
+
 
 const optionCards = [
     {
@@ -36,20 +38,35 @@ function SongbirdSites() {
     const [clicked, setClicked] = useState();
     const [complete, setComplete] = useState(false);
     const [showingProjects, setShowingProjects] = useState(false);
+    const bgImageUrl = 'https://res.cloudinary.com/djajtxjpr/image/upload/v1769088588/SongbirdSites_bybkpr.png';
+    const imageLoaded = UseImagePreloader(bgImageUrl);
     const navigate = useNavigate();
 
-    // When they click the button
+    const handleGreetingComplete = () => { //STORING LOCAL STORAGE GREETINGS TO ENSURE TYPING DOESN'T HAPPEN TWICE
+        setComplete(true);
+        localStorage.setItem("greetingComplete", "true");
+      };
+
+      useEffect(() => {
+        const stored = localStorage.getItem("greetingComplete"); //RETRIEVING GREETINGS STATE
+        if (stored === "true") {
+          setComplete(true);
+        }
+      }, []);
+
+    // When they click the button STORE IN LOCAL STORAGE FOR RETURN TO PAGE AFTER FOLLOWING EXTERNAL LINK
     const handleShowProjects = () => {
         setShowingProjects(true);
         localStorage.setItem("webDevStoreView", "projects");
     };
 
     useEffect(() => {
-        const savedView = localStorage.getItem("webDevStoreView");
+        const savedView = localStorage.getItem("webDevStoreView"); //RETRIEVING STORE STATE - SHOULD SHOW SITES LOADED
         if (savedView === "projects") {
             setShowingProjects(true);
         }
     }, []);
+
     return (
         <motion.div
             className="page scrollbar-hide"
@@ -58,7 +75,12 @@ function SongbirdSites() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="sitesContainer">
+            <div className={`sitesContainer transition-opacity duration-500
+             ${imageLoaded ? 'opacity-100' : 'opacity-0'}`} //container with background image and conditional fade-in
+             style={{ backgroundImage: `url(${bgImageUrl})`}}
+            
+            >
+                {imageLoaded ? (
                 <motion.div
                     className="backdrop scrollbar-hide"
                     initial={{ y: 500 }}
@@ -137,6 +159,9 @@ function SongbirdSites() {
                     </div>
                     <Nav />
                 </motion.div>
+                ) : (
+                    <Loading />
+                )}
             </div>
             <BackToTop containerSelector=".App" />
         </motion.div>

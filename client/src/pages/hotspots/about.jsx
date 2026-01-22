@@ -22,7 +22,7 @@ function About() {
                         "I like to mix drawings or photographed elements with graphics. I like the textures that can create. My plan for this portfolio is to develop some drawings for the town and backgrounds.  I have also used some AI to create images for backgrounds but I would like to replace those with handmade elements."
                    
                     ]}
-                    speed={50}
+                    speed={20}
                     pauseBetween={1000}
                 ></Typewriter>
             </div>
