@@ -87,14 +87,14 @@ export default function Noticeboard() {
 
                         {/* Noticeboard GRID */}
                         <div className="noticeGrid grid p-10 grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
-                            <h1 className="noticeTitle pt-2">
+                            <h1 className="noticeTitle pt-5 place-self-center">
                                 The Songbird Noticeboard
                             </h1>
 
                             <motion.img
                                 src={badge}
                                 alt="badge"
-                                className="badgeGreen badge h-20 md:h-28 lg:h-28"
+                                className="badgeGreen badge h-20 md:h-28 lg:h-28 place-self-center"
                                 transition={{ type: "spring", stiffness: 300 }}
                                 whileTap={{ scale: 0.9 }}
                                 onAnimationStart={() => clickButton.play()}
@@ -108,7 +108,7 @@ export default function Noticeboard() {
                             <motion.img
                                 src={CVButton}
                                 alt="CV Button"
-                                className="cv cvButton h-64 md:h-80 lg:h-80"
+                                className="cv cvButton h-48 sm:h-48 md:h-64 lg:h-80"
                                 onAnimationStart={() => paperSound.play()}
                                 initial={{ rotate: 0, x: 0, y: 0 }}
                                 transition={{
@@ -183,7 +183,7 @@ export default function Noticeboard() {
                             <motion.img
                                 src={aboutMe}
                                 alt="about me"
-                                className="about h-48 md:h-64 lg:h-80"
+                                className="about h-48 md:h-64 place-self-center"
                                 onAnimationStart={() => paperSound.play()}
                                 initial={{ rotate: 0, x: 0, y: 0, scale: 1.2 }}
                                 transition={{

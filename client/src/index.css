@@ -58,6 +58,12 @@ body {
     perspective-origin: 0 0;
 }
 
+body {
+    overscroll-behavior: none;
+    position: fixed;
+    width: 100%;
+}
+
 @layer base {
     :root {
         --radius: 0.625rem;
