@@ -10,7 +10,18 @@
         "imageUrl": [
             "https://res.cloudinary.com/djajtxjpr/image/upload/v1764518344/Organum_stivtl.jpg"
         ],
-        "artistId": 1,
+        "audioUrl": "https://res.cloudinary.com/djajtxjpr/video/upload/v1764172150/01B_i_held_a_jewel_in_my_fingers_voice_strings_smv88z.mp3",
+        "songName": "Eyes Wide Open",
+        "artist": {
+            "name": "Giorgio Li Calzi",
+            "description": "Giorgio is...",
+            "genres": ["JAZZ", "SOUL", "EXPERIMENTAL"],
+            "embedCode": "<iframe width=\"100%\" height=\"166\" scrolling=\"no\" frameborder=\"no\" allow=\"autoplay\" src=\"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A11903352&color=%23a48e79&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true\"></iframe><div style=\"font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;\"><a href=\"https://soundcloud.com/giorgiolicalzi\" title=\"Giorgio Li Calzi\" target=\"_blank\" style=\"color: #cccccc; text-decoration: none;\">Giorgio Li Calzi</a> · <a href=\"https://soundcloud.com/giorgiolicalzi/eyes-wide-open-feat-hayley\" title=\"Eyes wide open feat. Hayley Alker\" target=\"_blank\" style=\"color: #cccccc; text-decoration: none;\">Eyes wide open feat. Hayley Alker</a></div>",
+            "links": ["https://www.fonosintesi.com/disco_licalzi.shtml"],
+            "imageUrl": ["https://giorgiolicalzi.com/wp-content/uploads/2014/02/rava-li-calzi-ph-a-bazzurro-low.jpg?w=150", "https://giorgiolicalzi.com/wp-content/uploads/2014/02/li-calzi-organum-ph-a-albert-2.jpg?w=150"],
+            "audioUrl": ["https://res.cloudinary.com/djajtxjpr/video/upload/v1764172150/01B_i_held_a_jewel_in_my_fingers_voice_strings_smv88z.mp3"]
+    
+    },
         "name": null
     },
     {

@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-family: 'Georgia', serif;
+    font-family: "Georgia", serif;
 }
 
 .leafInto {
@@ -24,27 +24,23 @@
 
 .callToAction {
     margin-top: 20px;
-    font-family: 'Cursive';
+    font-family: "Cursive";
     color: antiquewhite;
     font-size: 1.6rem;
     letter-spacing: 1px;
 }
 
-
 .loadingText {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     color: gray;
-    font-family: 'courier';
+    font-family: "courier";
     letter-spacing: 1px;
 }
 
 .loadingImage {
-    width: 150px;
     filter: hue-rotate(280deg) saturate(0.8);
     /* green tint */
-    box-shadow: 0 0 40px rgba(100, 255, 100, 0.6);
     /* greenish glow */
     border-radius: 50%;
     /* if your logo is circular-ish */
-
 }

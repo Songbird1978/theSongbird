@@ -52,6 +52,7 @@ model Record {
   name        String?
   title       String
   audioUrl    String?
+  audioName   String?
   description String
   imageUrl    String[]
   links       String[]

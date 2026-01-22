@@ -18,6 +18,7 @@ function Discover() {
 
     const handleRecordClick = (record) => {
         setSelectedRecord(record);
+
         navigate("/show");
     };
 
@@ -44,8 +45,7 @@ function Discover() {
         },
     };
 
-   
-/*
+    /*
     useEffect(() => {
         fetch("/api/records")
             .then((res) => {
@@ -67,34 +67,32 @@ function Discover() {
     }, []);
 */
 
-
-useEffect(() => {
-    const loadRecords = async () => {
-        try {
-            if (isDev) {
-                // DEV: use local JSON
-                setRecords(recordsMock);
-            } else {
-                // PROD: fetch from API
-                const res = await fetch("/api/records");
-                if (!res.ok) {
-                    throw new Error(`HTTP error ${res.status}`);
+    useEffect(() => {
+        const loadRecords = async () => {
+            try {
+                if (isDev) {
+                    // DEV: use local JSON
+                    setRecords(recordsMock);
+                } else {
+                    // PROD: fetch from API
+                    const res = await fetch("/api/records");
+                    if (!res.ok) {
+                        throw new Error(`HTTP error ${res.status}`);
+                    }
+                    const data = await res.json();
+                    setRecords(Array.isArray(data) ? data : []);
                 }
-                const data = await res.json();
-                setRecords(Array.isArray(data) ? data : []);
+            } catch (err) {
+                console.error("Records load error:", err);
+                setError(err.message);
+            } finally {
+                // ALWAYS stop loading
+                setLoading(false);
             }
-        } catch (err) {
-            console.error("Records load error:", err);
-            setError(err.message);
-        } finally {
-            // ALWAYS stop loading
-            setLoading(false);
-        }
-    };
+        };
 
-    loadRecords();
-}, [isDev]);
-
+        loadRecords();
+    }, [isDev]);
 
     useEffect(() => {
         localStorage.setItem("recordStoreView", "projects");

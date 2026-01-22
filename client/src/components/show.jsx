@@ -1,10 +1,10 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect, useRef } from "react";
 import {
     ArrowCircleLeftIcon,
     ArrowCircleRightIcon,
     LinkIcon,
     PlayCircleIcon,
-    PauseCircleIcon
+    PauseCircleIcon,
 } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -14,16 +14,11 @@ import useEmblaCarousel from "embla-carousel-react";
 import Nav from "../components/nav.jsx";
 import Loading from "../components/loading.jsx";
 
-
 function Show() {
+    const audioRef = useRef(null);
     const { selectedRecord } = useRecord();
     const [isLoading, setIsLoading] = useState(true);
     const [isPlaying, setIsPlaying] = useState(false);
-
-
-    const audio = new Audio(selectedRecord.audioUrl);
-    audio.volume = 0.5;
-    audio.preload = "auto";
 
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
@@ -49,8 +44,12 @@ function Show() {
         return () => clearTimeout(timer);
     }, []);
 
-      //PLAYING OR NOT
-      const togglePlay = () => {
+    const audio = new Audio(selectedRecord?.audioUrl);
+    audio.volume = 0.5;
+    audio.preload = "auto";
+
+    //PLAYING OR NOT
+    const togglePlay = () => {
         if (isPlaying) {
             audio.pause();
         } else {
@@ -72,8 +71,6 @@ function Show() {
     if (!selectedRecord) {
         return null; // Don't render anything while redirecting
     }
-
-    
 
     return (
         <div //OUTER CONTAINERS AND BACKGROUND
@@ -189,12 +186,12 @@ function Show() {
                             <div className="buttonsAll w-full flex justify-between bg-transparent">
                                 <div className="buttonsLandR">
                                     <ArrowCircleLeftIcon //BUTTONS AREA FOR CAROUSEL 1
+                                        onClick={scrollPrev}
+                                        className="leftIcon embla__prev bg-0 p-4"
                                         size={80}
                                         weight="bold"
                                         label="back one image"
                                         aria-label="back one image"
-                                        onClick={scrollPrev}
-                                        className="leftIcon embla__prev bg-0 p-4"
                                         style={{
                                             color: "rgba(38, 33, 27, 0.783)",
                                             opacity: " 80%",
@@ -237,44 +234,74 @@ function Show() {
                             </div>
                         </div>
                     )}
-                    {selectedRecord?.artist?.embedCode && ( // EMBED CODE 
-                        <Card w-full h-auto justify-center flex>
-                            <div contentEditable="false" dangerouslySetInnerHTML={{ __html: selectedRecord?.artist?.embedCode }} />
-                        </Card>
-                    )}
-                      {selectedRecord?.audioUrl && ( //AUDIOPLAYER 
-                      <div className="w-full h-2 flex justify-center mt-10 mb-10 ">
+
+                    {/* AUDIO AREA */}
+
+                    <div className=" w-full h-auto grid grid-flow-row xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2  gap-4">
+                        {selectedRecord?.artist?.embedCode && ( // EMBED CODE
                             <Card className="w-full h-auto">
-                                <CardHeader>
-                                    <CardTitle>
-                                    {selectedRecord.artist.name}
-                                    <CardTitle>
-                                    {selectedRecord.title}
-                                    </CardTitle>
+                                <div
+                                    contentEditable="false"
+                                    dangerouslySetInnerHTML={{
+                                        __html: selectedRecord?.artist
+                                            ?.embedCode,
+                                    }}
+                                />
+                            </Card>
+                        )}
+                        {selectedRecord?.audioUrl && ( //AUDIOPLAYER
+                            <Card className="w-full h-auto grid grid-flow-row xs:grid-cols-1 sm-grid-cols-1 md:grid-cols-2 gap-4 audioCard text-nowrap">
+                                <CardHeader className="audioCardHeader">
+                                    <CardTitle className="audioCardTitle">
+                                        <CardTitle className="audioCardTitlePlay">
+                                            Play:{" "}
+                                            <span className="font-weight: 600 text-xl">
+                                                {selectedRecord.songName}
+                                            </span>
+                                        </CardTitle>
+                                        <br></br>
+                                        From: {selectedRecord.title}
+                                        <CardTitle className="audioCardTitle2">
+                                            <br></br>
+                                            By: {selectedRecord.artist.name}
+                                        </CardTitle>
                                     </CardTitle>
                                 </CardHeader>
-                            <CardContent>
-                                 {isPlaying ? (
-                                    <PauseCircleIcon className="w-full h-auto"
-                                    onClick={() =>{
-                                        togglePlay();
-                                    }}
-                                    />
-                                 ) : (
-                                    <PlayCircleIcon className="w-full h-auto"
-                                    onClick={() =>{
-                                        togglePlay();
-                                    }}
-                                    />
-
-                                 )}
-                                 </CardContent>
-                        </Card>
-                        </div>
-                    )}
+                                <CardContent className="w-50 h-auto audioCardContent flex justify-center">
+                                    {isPlaying ? (
+                                        <PauseCircleIcon
+                                            className="pauseIcon p-0"
+                                            onClick={togglePlay}
+                                            size={80}
+                                            weight="bold"
+                                            label="Pause Audio Icon"
+                                            aria-label="Pause Audio Icon"
+                                            style={{
+                                                color: "rgba(38, 33, 27, 0.783)",
+                                                opacity: " 80%",
+                                            }}
+                                        />
+                                    ) : (
+                                        <PlayCircleIcon
+                                            className="playIcon p-0"
+                                            onClick={togglePlay}
+                                            size={80}
+                                            weight="bold"
+                                            label="Play Audio Icon"
+                                            aria-label="Play Audio Icon"
+                                            style={{
+                                                color: "rgba(38, 33, 27, 0.783)",
+                                                opacity: " 80%",
+                                            }}
+                                        />
+                                    )}
+                                </CardContent>
+                            </Card>
+                        )}
+                    </div>
                     {selectedRecord?.artist ? ( //ARTIST CAROUSEL OF IMAGES
                         <Card>
-                            <CardTitle className="text-lg p-6">
+                            <CardTitle className="text-xl p-6">
                                 {selectedRecord.artist.name}
                             </CardTitle>
                             <div className="w-100">
@@ -282,7 +309,7 @@ function Show() {
                                     -1 && (
                                     <div className="embla w-full">
                                         <div
-                                            className="embla__viewport max-w-lg max-h-5 w-full  mx-auto"
+                                            className="embla__viewport max-w-lg h-auto w-full  mx-auto"
                                             ref={emblaRef}
                                             style={{
                                                 overflow: "hidden",
