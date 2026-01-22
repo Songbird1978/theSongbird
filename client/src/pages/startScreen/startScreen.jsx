@@ -12,6 +12,7 @@ import rustle from "../../assets/rustle.mp3";
 import rustleQuiet from "../../assets/rustleQuietHover.mp3";
 import secretGardenDoor from "../../assets/secretGardenDoorSquare.png";
 import songbirdLogo from "../../assets/theSongbirdLogo.png";
+import Loading from "../../components/loading.jsx";
 
 function StartScreen({ onEnter }) {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -75,24 +76,7 @@ function StartScreen({ onEnter }) {
                     </div>
                 </>
             ) : (
-                <>
-                    <motion.img
-                        className="loadingImage"
-                        key="loadingImage"
-                        src={songbirdLogo}
-                        alt="songbird Logo"
-                        animate={{
-                            rotate: 360, //rotation 360
-                            y: ["0%", "-5%", "0%"], // Adds slight bounce
-                        }}
-                        transition={{
-                            repeat: Infinity, //continuous rotation
-                            duration: 5, // 5 seconds to rotate
-                            ease: "linear", // no stopping
-                        }}
-                    ></motion.img>
-                    <p className="loadingText">Loading ....</p>
-                </>
+               <Loading />
             )}
         </div>
     );
