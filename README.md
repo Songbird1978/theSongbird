@@ -5,10 +5,10 @@ A unique, interactive portfolio experience showcasing web development, music pro
 ## Quick Access
 
 **For recruiters/hiring managers:** Jump straight to my web development projects:
-**[View Web Projects →](thesongbird.co.uk/songbirdSites)**
+**[View Web Projects →](https://thesongbird.co.uk/songbirdSites)**
 
 **For the full experience:** Explore the interactive town:
-**[Enter TheSongbird →](thesongbird.co.uk)**
+**[Enter TheSongbird →](https://thesongbird.co.uk)**
 
 ## What's Inside
 
