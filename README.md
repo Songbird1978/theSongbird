@@ -39,12 +39,11 @@ React, Next.js, TypeScript, JavaScript, Prisma ORM, CSS Animations, Framer-motio
 The site includes multiple entry points - explore from any store and navigate between sections via in-site links.
 
 ---
-<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__1_htqos0.png]">
-<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697625/localhost_3000__8_tklc2v.png]">
-<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__2_dpbrxm.png]">
-<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__1_htqos0.png]">
-<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__6_hdfusj.png]">
-<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__6_hdfusj.png]">
+<div max-width="500" height="auto">
+<img width="100%" height="auto" alt="townscene" src="https://github.com/user-attachments/assets/7d60925f-110d-4172-a765-687e007c6d3c" />
+<img width="100%" height="auto" alt="localhost_3000__8_tklc2v" src="https://github.com/user-attachments/assets/fd9f030b-ce00-4c70-9f50-90afef0297b2" />
+<img width="100%" height="auto" alt="noticeboard" src="https://github.com/user-attachments/assets/1b2bfef8-4cf4-45a9-afdb-daf507ce2022" />
+</div>
 ---
 **Contact:** [LinkedIn](https://www.linkedin.com/in/hayley-thesongbird) | [GitHub](https://Songbird1978) 
 
