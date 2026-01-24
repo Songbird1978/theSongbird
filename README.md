@@ -34,7 +34,7 @@ Graphic design projects with tools and process explanations
 - Mini-game (Snailbait)
 
 ## Tech Stack
-React, Next.js, TypeScript, JavaScript, Prisma ORM, CSS Animations, Framer-motion, Canvas API, Audio API, vercel CD
+React, Vite, TypeScript, JavaScript, Prisma ORM, CSS Animations, Framer-motion, Audio API, Tailwind, vercel, lucide, phosphor-icons, shadcn.ui, embla-carousel
 
 ## Navigation
 The site includes multiple entry points - explore from any store and navigate between sections via in-site links.
