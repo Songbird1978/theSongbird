@@ -39,7 +39,13 @@ React, Next.js, TypeScript, JavaScript, Prisma ORM, CSS Animations, Framer-motio
 The site includes multiple entry points - explore from any store and navigate between sections via in-site links.
 
 ---
-
+<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__1_htqos0.png]">
+<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697625/localhost_3000__8_tklc2v.png]">
+<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__2_dpbrxm.png]">
+<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__1_htqos0.png]">
+<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__6_hdfusj.png]">
+<img width="668" alt="image" src="[https://res.cloudinary.com/djajtxjpr/image/upload/v1767697626/localhost_3000__6_hdfusj.png]">
+---
 **Contact:** [LinkedIn](https://www.linkedin.com/in/hayley-thesongbird) | [GitHub](https://Songbird1978) 
 
 *A portfolio that celebrates creativity in code.*
