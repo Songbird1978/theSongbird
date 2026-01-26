@@ -170,7 +170,7 @@ export default function Noticeboard() {
                                         <iframe
                                             src="/cv.pdf"
                                             style={{
-                                                width: "100svw",
+                                                width: "100%",
                                                 height: "100svh",
                                                 border: "none",
                                             }}
