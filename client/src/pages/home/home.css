@@ -2,8 +2,8 @@
     position: relative;
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
     overflow: hidden;
 }
 
@@ -11,16 +11,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
     top: 0;
     left: 0;
 }
 
 .leavesLeftDiv,
 .leavesRightDiv {
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
     display: flex;
     align-items: center;
     position: absolute;
@@ -30,8 +30,8 @@
 
 .leavesLeft,
 .leavesRight {
-    height: 100vh;
-    width: 100vw;
+    height: 100svh;
+    width: 100svw;
     object-fit: cover;
     pointer-events: none;
 }
@@ -41,8 +41,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
     pointer-events: none;
 }
 
@@ -53,8 +53,8 @@
 
 .leavesFull,
 .secretGardenDoorSqu {
-    width: 100vw;
-    height: 100vh;
+    width: 100svw;
+    height: 100svh;
     object-fit: cover;
 }
 

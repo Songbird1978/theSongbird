@@ -155,7 +155,7 @@ return (
             src={src} 
             alt={alt} 
             style={{ 
-                height: "100vh",
+                height: "100svh",
                 width: "auto",
                 display: "block",
                 userSelect: "none",

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import snail from "../assets/snail.png";
 import "../pages/townscene/townscene.css";
-import snailSlime from "../assets/snailSlime.mp3";
+
 
 function Snail2() {
     //console.log("Snail2 rendering!");

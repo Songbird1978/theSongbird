@@ -234,9 +234,14 @@ function HotspotButton({
                 {hasAppeared && (
                     <motion.button
                         className="leafButton"
-                        onAminationStart={() => leafFall.play()}
+                        whileFocus={{scale: [1, 1.4, 1],
+                            rotate: [0, 5, -5, 0],
+                            transition: {
+                                duration: 2,
+                                repeat: Infinity,
+                        },  }}
                         whileHover={{
-                            scale: [1, 1.2, 1],
+                            scale: [1, 1.4, 1],
                             rotate: [0, 5, -5, 0],
                             transition: {
                                 duration: 2,
