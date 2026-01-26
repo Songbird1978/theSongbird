@@ -133,8 +133,7 @@ export default function Noticeboard() {
                                 <div
                                     style={{
                                         position: "fixed",
-                                        top: 0,
-                                        left: 0,
+                                        inset: 0,
                                         width: "100vw",
                                         height: "100vh",
                                         backgroundColor: "rgba(0, 0, 0, 0.8)",
@@ -151,7 +150,7 @@ export default function Noticeboard() {
                                             borderRadius: "8px",
                                             width: "90%",
                                             maxWidth: "1000px",
-                                            height: "90vh",
+                                            height: "90svh",
                                             display: "flex",
                                             flexDirection: "column",
                                         }}
@@ -172,6 +171,7 @@ export default function Noticeboard() {
                                             style={{
                                                 width: "100%",
                                                 height: "100svh",
+                                                flex: 1,
                                                 border: "none",
                                             }}
                                             title="CV"

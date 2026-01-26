@@ -35,7 +35,6 @@ function Read() {
                         "Since completing a Front-end Web Development bootcamp, I have continued to develop, adding some understanding of backend development, databases, accessibility and new technologies to my array of skills.",
                         "I have included projects here that have led to employment and I would dearly love to work in a web development team and develop more skills and knowledge in the future.",
                     ]}
-                    onComplete={setTypingComplete}
                     speed={50}
                     pauseBetween={1000}
                 ></Typewriter>

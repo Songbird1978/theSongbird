@@ -99,7 +99,6 @@ function SongbirdSites() {
                                         colorTwo={colorTwo}
                                         onClick={() => {
                                             setClicked(id);
-                                            setShowingProjects(true);
                                             handleShowProjects;
                                             setTimeout(() => {
                                                 document

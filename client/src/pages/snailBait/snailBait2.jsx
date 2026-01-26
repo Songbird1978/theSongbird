@@ -41,6 +41,11 @@ function SnailBait() {
             ArrowUp: false,
             ArrowDown: false,
         },
+        joystick: {
+            active: false,
+            origin: { x: 0, y: 0},
+            vector: null,
+        },
         ghosts: [],
         g: {
             x: "",
@@ -65,12 +70,13 @@ function SnailBait() {
             tog: false,
             play: null,
         },
+    
     });
 
 
 
     useEffect(() => {
-        const { keyz, player, g } = gameData.current;
+        const { keyz, joystick, player, g } = gameData.current;
 
         // Set up refs for game elements
         g.gridGame = gridGameRef.current;
@@ -97,16 +103,20 @@ function SnailBait() {
                 g.inplay = true;
             }
         };
-
         // Keyup handler
         const handleKeyUp = (e) => {
             if (e.code in keyz) {
                 keyz[e.code] = false;
             }
         };
+     
+  
+
 
         document.addEventListener("keydown", handleKeyDown);
         document.addEventListener("keyup", handleKeyUp);
+
+      
 
         // Cleanup
         return () => {
@@ -226,7 +236,7 @@ function SnailBait() {
     
 //moving in play
     const move = () => {
-        const { player, g, myBoard, ghosts, keyz } = gameData.current;
+        const { player, g, myBoard, ghosts, keyz, joystick } = gameData.current;
 
         if (g.inplay) {
             player.cool--;
@@ -509,7 +519,29 @@ function SnailBait() {
                     Start Game
                 </button>
             </div>
+            {/*JOYSTICK */}
+            <div className="joystick fixed bottom-12 place-self-center">
+                    {/*Outer base */}
+                    <div
+                        className="base relative w-32 h-32 rounded-full
+                            bg-purple-700/80
+                            border-4 border-purple-400
+                            shadow-lg shadow-purple-900/40
+                            flex items-center justify-center">
 
+                        {/*Inner thumb*/}
+                        <div
+                        className="stick w-10 h-10 rounded-full
+                                bg-green-400
+                                border-4 border-green-200
+                                shadow-md shadow-green-600/50">
+                        </div>
+
+                    </div>
+                    </div>
+                    <div className="instructions w-full h-auto p-4 mt-4 text-center text-lg font-courier text-purple-700/80 rgba(104, 62, 62, 0.8) bg-amber-100">
+                    USE : ARROWS | JOYSTICK | MOUSE | TOUCH
+                    </div>
             <div className="ghost" ref={ghostRef}>
                 <img
                     src={bee}
