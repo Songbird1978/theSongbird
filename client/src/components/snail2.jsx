@@ -6,27 +6,14 @@ import "../pages/townscene/townscene.css";
 import snailSlime from "../assets/snailSlime.mp3";
 
 function Snail2() {
-    console.log("Snail2 rendering!");
+    //console.log("Snail2 rendering!");
     const navigate = useNavigate();
 
     const handleClick = () => {
-        console.log("navigate to..:", navigate);
+        //console.log("navigate to..:", navigate);
         navigate("/snailBait");
     };
 
-    useEffect(() => {
-        const snailSound = new Audio(snailSlime);
-        snailSound.loop = true;
-        snailSound.volume = 0.3;
-        snailSound.preload = "auto";
-        snailSound.play();
-        // cleanup function - runs when component unmounts
-        return () => {
-            console.log("snail sound paused", snailSound.currentime);
-            snailSound.pause();
-            snailSound.currentTime = 0; //reset to beginning
-        };
-    }, []);
 
     return (
         <AnimatePresence>

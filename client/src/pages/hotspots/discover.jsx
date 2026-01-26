@@ -18,7 +18,6 @@ function Discover() {
 
     const handleRecordClick = (record) => {
         setSelectedRecord(record);
-
         navigate("/show");
     };
 
@@ -44,28 +43,6 @@ function Discover() {
             transition: { duration: 0.5 },
         },
     };
-
-    /*
-    useEffect(() => {
-        fetch("/api/records")
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status:, ${res.status}`);
-                }
-                return res.json(); //parse as JSON
-            })
-            .then((data) => {
-                console.log("response", data, Array.isArray(data));
-                setRecords(Array.isArray(data) ? data : []); //make sure it's an array
-                setLoading(false);
-            })
-            .catch((error) => {
-                setError(error.message);
-                console.error("fetch error:", error);
-                setLoading(false);
-            });
-    }, []);
-*/
 
     useEffect(() => {
         const loadRecords = async () => {

@@ -44,29 +44,7 @@ function Designs() {
             transition: { duration: 0.5 },
         },
     };
-   
-/*
-    useEffect(() => {
-        fetch("/api/designs")
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status:, ${res.status}`);
-                    
-                }
-                return res.json(); //parse as JSON
-            })
-            .then((data) => {
-                console.log("response", data, Array.isArray(data));
-                setDesigns(Array.isArray(data) ? data : []); //make sure it's an array
-                setLoading(false);
-            })
-            .catch((error) => {
-                setError(error.message);
-                console.error("fetch error:", error);
-                setLoading(false);
-            });
-    }, []);
-*/
+
 
 useEffect(() => {
     const loadDesigns = async () => {
@@ -129,11 +107,7 @@ useEffect(() => {
                                 onClick={() => {
                                     setSelectedRecord(record);
                                     handleRecordClick(record);
-
-                                    console.log(
-                                        "selected card is:",
-                                        record.title
-                                    );
+                                    //console.log( "selected card is:",record.title);
                                 }}
                             >
                                 <CardContent>

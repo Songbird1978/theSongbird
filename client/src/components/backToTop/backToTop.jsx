@@ -7,9 +7,9 @@ function BackToTop({ containerSelector = "" }) {
     const scrollToTop = () => {
         if (containerSelector) {
             const container = document.querySelector(containerSelector);
-            console.log(containerSelector);
-            console.log("Container found:", container);
-            console.log("Container scroll position:", container?.scrollTop);
+            //console.log(containerSelector);
+            //console.log("Container found:", container);
+            //console.log("Container scroll position:", container?.scrollTop);
             container?.scrollTo({ top: 0, behavior: "smooth" });
         } else {
             window.scrollTo({ top: 0, behavior: "smooth" });

@@ -13,7 +13,7 @@ useEffect(() => {
     if (!img) return;
     if (img.complete) setImageWidth(img.naturalWidth);
     else img.onload = () => setImageWidth(img.naturalWidth);
-    console.log("panorama img width = ", imagewidth);
+    //console.log("panorama img width = ", imagewidth);
 }, [src]);
 
 useEffect(() => {

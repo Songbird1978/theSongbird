@@ -9,7 +9,7 @@ function Bird2() {
     useEffect(() => {
         const flying = new Audio(birdFlying);
         flying.loop = true;
-        flying.volume = 0.4;
+        flying.volume = 0.2;
         flying.preload = "auto";
         flying.play();
         // cleanup function - runs when component unmounts

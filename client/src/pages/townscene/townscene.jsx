@@ -57,28 +57,25 @@ function TownScene() {
     }, [hasAppeared, loading]);
 
     const loadLeafState = () => {
-        console.log(
-            "local storage exists?",
-            localStorage.getItem("leaf-state")
-        );
+        //console.log("local storage exists?",localStorage.getItem("leaf-state"));
         try {
             const result = localStorage.getItem("leaf-state");
-            console.log("loaded result:", result);
+            //console.log("loaded result:", result);
             if (result) {
                 setHasAppeared(JSON.parse(result));
             }
         } catch (error) {
-            console.log("No saved state yet", error);
+            console.error("No saved state yet", error);
         } finally {
             setLoading(false);
         }
     };
 
     const saveLeafState = () => {
-        console.log("trying to save:", hasAppeared);
+        //console.log("trying to save:", hasAppeared);
         try {
             localStorage.setItem("leaf-state", JSON.stringify(hasAppeared));
-            console.log("save successful!", hasAppeared);
+            //console.log("save successful!", hasAppeared);
         } catch (error) {
             console.error("Failed to save state:", error);
         }
@@ -91,7 +88,7 @@ function TownScene() {
     };
 
     const dropAllLeaves = () => {
-        console.log("drop all leaves was clicked");
+        //console.log("drop all leaves was clicked");
 
         const allLeafIds = hotspots.map((leaf) => leaf.id);
         // Shuffle but keep consistent timing
@@ -105,7 +102,7 @@ function TownScene() {
     };
 
     const resetLeaves = () => {
-        console.log("reset leaves was clicked");
+        //console.log("reset leaves was clicked");
         setHasAppeared([]);
         gustOwind.play();
         try {

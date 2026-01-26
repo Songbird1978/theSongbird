@@ -103,10 +103,7 @@ function Sites() {
                                     setSelectedRecord(record);
                                     handleRecordClick(record);
 
-                                    console.log(
-                                        "selected card is:",
-                                        record.title
-                                    );
+                                    //console.log( "selected card is:",record.title );
                                 }}
                             >
                                 <CardContent>

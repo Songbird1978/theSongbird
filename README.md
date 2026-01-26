@@ -48,7 +48,7 @@ Some of the views from the project
 </div>
 
 ---
-**Contact:** [LinkedIn](https://www.linkedin.com/in/hayley-thesongbird) | [GitHub](https://Songbird1978) 
+**Contact:** [LinkedIn](https://www.linkedin.com/in/hayley-) | [GitHub](https://github.com/HayleyCallender) 
 
 *A portfolio that celebrates creativity in code.*
 ```

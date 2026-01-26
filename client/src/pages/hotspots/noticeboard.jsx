@@ -8,7 +8,6 @@ import CVButton from "../../assets/CVButton.png";
 import aboutMe from "../../assets/aboutme.png";
 import linkedIn from "../../assets/linkedIn.png";
 import github from "../../assets/github.png";
-import soundcloud from "../../assets/soundcloud.png";
 import paper from "../../assets/pages.mp3";
 import badge from "../../assets/greenBadge.png";
 import click from "../../assets/clickButton.mp3";
@@ -39,7 +38,7 @@ export default function Noticeboard() {
     }, []);
 
     const handleVideoEnd = () => {
-        console.log("The video has ended");
+        //console.log("The video has ended");
         setHasPlayed(true);
     };
 
@@ -125,7 +124,7 @@ export default function Noticeboard() {
                                 whileTap={{ rotate: 5, x: 0, y: 0 }}
                                 onClick={() => {
                                     setShowPDF(true);
-                                    console.log("cv clicked", showPDF);
+                                    //console.log("cv clicked", showPDF);
                                 }}
                             />
 
@@ -171,8 +170,9 @@ export default function Noticeboard() {
                                             src="/cv.pdf"
                                             style={{
                                                 width: "100%",
-                                                height: "100%",
+                                                height: "auto",
                                                 border: "none",
+                                                overflowY: 'scroll'
                                             }}
                                             title="CV"
                                         />
@@ -248,7 +248,7 @@ export default function Noticeboard() {
                                 whileTap={{ rotate: 7, x: 0, y: 0 }}
                                 onClick={() =>
                                     window.open(
-                                        "https://github.com/Songbird1978",
+                                        "https://github.com/HayleyCallender",
                                         "_blank"
                                     )
                                 }
