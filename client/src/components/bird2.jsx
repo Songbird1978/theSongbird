@@ -25,8 +25,8 @@ function Bird2() {
                 style={{
                     height: "auto",
                     position: "absolute",
-                    top: "10%",
-                    zIndex: "9999",
+                    top: "20%",
+                    zIndex: "20000",
                 }}
                 initial={{
                     x: "calc(100vw + 400px)",

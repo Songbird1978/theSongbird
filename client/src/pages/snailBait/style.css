@@ -131,6 +131,7 @@
 
 .gridGame {
     margin: auto;
+    width: 100%;
     justify-content: center;
     display: grid;
     cursor: grab;

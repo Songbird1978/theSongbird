@@ -13,12 +13,12 @@ function DropLeaves({
             style={{ zIndex: 10000 }}
         >
             <PersonStanding />
-            <p className="text-sm overflow-hidden text-wrap text-gray-700 mb-4 font-courier">
+            <p className="text-xs overflow-hidden text-wrap text-gray-700 mb-4 font-courier">
                 Hover the shops to make leaves fall<br></br>
                 <br></br>
                 Release the leaves to visit the shops
             </p>
-            <p className="text-sm text-gray-600 mb-4 font-courier">
+            <p className="text-xs text-gray-600 mb-4 font-courier">
                 Fallen leaves: {hasAppeared.length} / {hotspots.length}
             </p>
             <div className="flex gap-4">
