@@ -67,6 +67,8 @@ function SnailBait() {
         },
     });
 
+
+
     useEffect(() => {
         const { keyz, player, g } = gameData.current;
 
@@ -117,6 +119,7 @@ function SnailBait() {
     }, []);
 
     // Game functions
+    // Create the ghost
     const createGhost = () => {
         const { g, ghosts, board } = gameData.current;
         let newGhost = g.ghost.cloneNode(true);
@@ -136,7 +139,7 @@ function SnailBait() {
         let val = [a.pos % g.size, Math.ceil(a.pos / g.size)];
         return val;
     };
-
+//changing Direction of Enemy 
     const changeDir = (enemy) => {
         const { player } = gameData.current;
         let gg = findDir(enemy);
@@ -149,7 +152,7 @@ function SnailBait() {
         }
         enemy.counter = Math.random() * 7 + 1;
     };
-
+//updating the scoreboard
     const updateScore = () => {
         const { player, g } = gameData.current;
         if (player.lives <= 0) {
@@ -164,7 +167,7 @@ function SnailBait() {
             setLives(player.lives);
         }
     };
-
+//the position of the player at start of game
     const startPosPlayer = (val) => {
         const { myBoard } = gameData.current;
         if (myBoard[val].t != 1) {
@@ -172,7 +175,7 @@ function SnailBait() {
         }
         return startPosPlayer(val + 1);
     };
-
+//
     const startPos = () => {
         const { player, ghosts, g, myBoard } = gameData.current;
         player.pause = false;
@@ -220,7 +223,8 @@ function SnailBait() {
         if (startBtnRef.current) startBtnRef.current.style.display = "block";
         if (g.gridGame) g.gridGame.style.display = "none";
     };
-
+    
+//moving in play
     const move = () => {
         const { player, g, myBoard, ghosts, keyz } = gameData.current;
 
@@ -361,7 +365,7 @@ function SnailBait() {
             player.play = requestAnimationFrame(move);
         }
     };
-
+// creating and naming the different types of square on the board 
     const createSquare = (val) => {
         const { g, myBoard } = gameData.current;
         const div = document.createElement("div");
@@ -497,7 +501,10 @@ function SnailBait() {
                 <button
                     className="btn"
                     ref={startBtnRef}
-                    onClick={boardBuilder}
+                    onClick={() => {
+                        boardBuilder();
+                        //console.log('the game has started', gameStarted);
+                    }}
                 >
                     Start Game
                 </button>

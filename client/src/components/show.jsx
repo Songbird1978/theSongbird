@@ -15,10 +15,11 @@ import Nav from "../components/nav.jsx";
 import Loading from "../components/loading.jsx";
 
 function Show() {
+
     const audioRef = useRef(null);
-    const { selectedRecord } = useRecord();
+    const { selectedRecord } = useRecord(); //which design, site or record has been selected to show more info
     const [isLoading, setIsLoading] = useState(true);
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false); 
 
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
@@ -36,6 +37,33 @@ function Show() {
         if (emblaApi) emblaApi.scrollNext();
     }, [emblaApi]);
 
+    //AUDIO ELEMENTS
+    useEffect(() => {
+       if (!selectedRecord?.audioUrl) return;
+
+        audioRef.current = new Audio(selectedRecord?.audioUrl);
+        audioRef.volume = 0.5;
+        audioRef.preload = "auto";
+
+        return () => {
+            audioRef.current.pause();
+            audioRef.current = null;
+        }
+    }, [selectedRecord])
+
+    function togglePlayPause() {
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        if (!isPlaying) {
+            audio.play();
+            setIsPlaying(true);
+        } else {
+            audio.pause();
+            setIsPlaying(false);
+        }
+    }
+
     useEffect(() => {
         // Give localStorage time to load
         const timer = setTimeout(() => {
@@ -43,20 +71,6 @@ function Show() {
         }, 100);
         return () => clearTimeout(timer);
     }, []);
-
-    const audio = new Audio(selectedRecord?.audioUrl);
-    audio.volume = 0.5;
-    audio.preload = "auto";
-
-    //PLAYING OR NOT
-    const togglePlay = () => {
-        if (isPlaying) {
-            audio.pause();
-        } else {
-            audio.play();
-        }
-        setIsPlaying(!isPlaying);
-    };
 
     useEffect(() => {
         if (!isLoading && !selectedRecord) {
@@ -268,10 +282,11 @@ function Show() {
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent className="w-50 h-auto audioCardContent flex justify-center">
+                               
                                     {isPlaying ? (
                                         <PauseCircleIcon
                                             className="pauseIcon p-0"
-                                            onClick={togglePlay}
+                                            onClick={togglePlayPause}
                                             size={80}
                                             weight="bold"
                                             label="Pause Audio Icon"
@@ -284,7 +299,7 @@ function Show() {
                                     ) : (
                                         <PlayCircleIcon
                                             className="playIcon p-0"
-                                            onClick={togglePlay}
+                                            onClick={togglePlayPause}
                                             size={80}
                                             weight="bold"
                                             label="Play Audio Icon"
