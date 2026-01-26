@@ -103,10 +103,7 @@ function Discover() {
                                 className="max-w-100 flex-col-reverse mb-10 bg-stone-100 p-2"
                                 onClick={() => {
                                     handleRecordClick(record);
-                                    console.log(
-                                        "selected card is:",
-                                        record.title
-                                    );
+                                   // console.log("selected card is:",record.title );
                                 }}
                             >
                                 <CardContent>

@@ -14,7 +14,7 @@ import BackToTop from "../../components/backToTop/backToTop.jsx";
 import Nav from '../../components/nav.jsx';
 import "../townscene/townscene.css";
 import "../home/home.css";
-import UseImagePreloader from '../../components/useImagePreloader.jsx';
+//import UseImagePreloader from '../../components/useImagePreloader.jsx';
 
 
 const designOptionCards = [
@@ -35,22 +35,20 @@ const designOptionCards = [
 ];
 
 function SongbirdDesigns() {
-    const [designs, setDesigns] = useState([]);
     const [clicked, setClicked] = useState();
     const [complete, setComplete] = useState(false);
-    const [loading, setLoading] = useState(true);
     const [showingProjects, setShowingProjects] = useState(false);
-    const bgImageUrl = 'https://res.cloudinary.com/djajtxjpr/image/upload/f_auto,q_auto,w_1920/v1769088583/SongbirdDesigns_jito0m.png';
-    const imageLoaded = UseImagePreloader(bgImageUrl);
-    const navigate = useNavigate();
+    //const bgImageUrl = 'https://res.cloudinary.com/djajtxjpr/image/upload/f_auto,q_auto,w_1920/v1769088583/SongbirdDesigns_jito0m.png';
+    //const imageLoaded = UseImagePreloader(bgImageUrl);
+    
 
-    const handleGreetingComplete = () => {
+    const handleGreetingComplete = () => {  //STORING LOCAL STORAGE GREETINGS
         setComplete(true);
         localStorage.setItem("greetingComplete", "true");
       };
 
       useEffect(() => {
-        const stored = localStorage.getItem("greetingComplete");
+        const stored = localStorage.getItem("greetingComplete"); //RETRIEVING GREETINGS STATE
         if (stored === "true") {
           setComplete(true);
         }
@@ -77,12 +75,9 @@ function SongbirdDesigns() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <div className={`designContainer transition-opacity duration-500
-              ${imageLoaded ? 'opacity-100' : 'opacity-0'}`} //container with background image and conditional fade-in
-              style={{ backgroundImage: `url(${bgImageUrl})`}}
+            <div className="designContainer" 
             
             >
-                {imageLoaded ? (
                 <motion.div
                     className="backdrop scrollbar-hide"
                     initial={{ y: 500 }}
@@ -160,9 +155,6 @@ function SongbirdDesigns() {
                     </div>
                     <Nav />
                 </motion.div>
-                ) : (
-                    <Loading />
-                )}
             </div>
             <BackToTop containerSelector=".App" />
         </motion.div>

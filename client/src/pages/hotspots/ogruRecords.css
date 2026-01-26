@@ -1,3 +1,10 @@
+.page {
+    display: flex;
+    min-height: 100svh;
+    overflow-y: auto;
+}
+
+
 .ogruContainer {
     display: flex;
     width: 100vw;
@@ -195,6 +202,4 @@
     }
 }
 
-.page {
-    display: flex;
-}
+

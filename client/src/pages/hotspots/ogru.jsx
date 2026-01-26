@@ -16,7 +16,7 @@ function Ogru() {
                 <Typewriter
                     className="topicText ogruText"
                     lines={[
-                        "Welcome to Ogru Records. This is the place where I bring all my musical endeavours together under one roof.  Ogru refers to a state of mind. A love connection with music and a deep sense of belonging, family and partnership that music has provided for me over the years.  ",
+                        "Welcome to Ogru Records. A place to showcase my musical endeavours under one roof.  This is a love connection with music and a deep sense of belonging, family and partnership that music has provided over the years.  ",
                         "I have been involved in many amazing projects and my musical family continues to grow and evolve with new compositions, projects and collaborations. ",
                         "I studied classical music and piano from an early age and continued my musical journey to study sound technology and music production. ", 
                         "Each project contained here showcases, songwriting and composition, sometimes full compositions and sometimes top-lines for other bands and collaborations. ", 

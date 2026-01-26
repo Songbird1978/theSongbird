@@ -155,7 +155,7 @@ function TownScene() {
                             hasAppeared={hasAppeared.includes(id)}
                             onHover={() => dropLeaf(id)}
                             onClick={() => {
-                                console.log({ label }, "was clicked");
+                                //console.log({ label }, "was clicked");
                                 handleNavigation(id);
                                 door.play();
                             }}
@@ -225,7 +225,7 @@ function HotspotButton({
             whileFocus={{ backgroundColor: "rgba(24, 239, 67, 0.256)" }}
             whileHover={{ backgroundColor: "rgba(24, 239, 67, 0.256)" }}
             onMouseEnter={() => {
-                console.log("Hovered", label);
+                //console.log("Hovered", label);
                 onHover();
             }}
             onAnimationStart={() => leafFall.play()}

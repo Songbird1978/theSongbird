@@ -14,9 +14,16 @@ import "./pages/hotspots/hotspots.css";
 import { AnimatePresence } from "framer-motion";
 import { SoundProvider } from "./contexts/SoundContext";
 import { RecordProvider } from "./contexts/RecordContext";
+import Background from './components/background';
 
 function App() {
     const location = useLocation();
+
+    const backgrounds =  {
+        "/ogruRecords": "https://res.cloudinary.com/djajtxjpr/image/upload/w_2000,h_2000,c_fill,f_auto,q_auto,dpr_auto/v1769088596/ogruRecords_tzeohb.png",
+        "/songbirdDesigns": "https://res.cloudinary.com/djajtxjpr/image/upload/w_2000,h_2000,c_fill,f_auto,q_auto,dpr_auto/v1769088583/SongbirdDesigns_jito0m.png",
+        "/songbirdSites" : "https://res.cloudinary.com/djajtxjpr/image/upload/w_2000,h_2000,c_fill,f_auto,q_auto,dpr_auto/v1769088588/SongbirdSites_bybkpr.png"
+    };
 
     return (
         <>
@@ -24,6 +31,7 @@ function App() {
                 <AnimatePresence mode="wait">
                     <SoundProvider>
                         <RecordProvider>
+                            <Background bgImage={backgrounds[location.pathname]} />
                             <Routes location={location} key={location.pathname}>
                                 <Route path="/" element={<StartScreen />} />
                                 <Route path="/garden" element={<Home />} />

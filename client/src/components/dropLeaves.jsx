@@ -9,19 +9,19 @@ function DropLeaves({
 }) {
     return (
         <div
-            className="dropLeaves absolute pointer-events-auto cursor-pointer z-10000 top-4 left-4 bg-white/90 opacity-70 p-4 rounded-lg shadow-lg max-w-sm "
+            className="dropLeaves fixed pointer-events-auto cursor-pointer z-10000 top-4 left-4 bg-white/90 opacity-95 p-4 rounded-lg shadow-lg max-w-sm "
             style={{ zIndex: 10000 }}
         >
             <PersonStanding />
-            <p className="text-xs overflow-hidden text-wrap text-gray-700 mb-2 font-courier">
-                Hover the town to make leaves fall<br></br>
+            <p className="text-sm overflow-hidden text-wrap text-gray-700 mb-4 font-courier">
+                Hover the shops to make leaves fall<br></br>
                 <br></br>
                 Release the leaves to visit the shops
             </p>
-            <p className="text-xs text-gray-600 mb-3 font-courier">
+            <p className="text-sm text-gray-600 mb-4 font-courier">
                 Fallen leaves: {hasAppeared.length} / {hotspots.length}
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-4">
                 <button
                     onClick={dropAllLeaves}
                     className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors text-xs font-gothic"

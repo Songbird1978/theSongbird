@@ -2,9 +2,6 @@
     display: flex;
     width: 100vw;
     min-height: 100vh;
-    background-size: cover;
-    background-repeat: none;
-    background-attachment: fixed;
     justify-content: center;
 }
 
@@ -15,3 +12,10 @@
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 }
+
+.page {
+    display: flex;
+    min-height: 100svh;
+    overflow-y: auto;
+}
+
