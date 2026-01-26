@@ -143,8 +143,8 @@ function Show() {
 
                     {selectedRecord?.imageUrl?.length > 0 && ( //FIRST CAROUSEL - GENERAL - FOR ALL
                         <div className="embla w-full">
-                            <div
-                                className="embla__viewport border max-w-lg max-h-[30rem]  mt-6 mb-6 w-full mx mx-auto"
+                            <div //VIEWPORT FOR EMBLA SETS THE SIZE OF EACH SLIDE
+                                className="embla__viewport border max-w-lg max-h-[40rem]  mt-6 mb-6 w-full mx mx-auto"
                                 ref={emblaRef}
                                 style={{
                                     overflow: "hidden",

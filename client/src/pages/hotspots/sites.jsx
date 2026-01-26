@@ -42,32 +42,6 @@ function Sites() {
         },
     };
 
-    /*
-
-    useEffect(() => {
-        fetch("/api/sites")
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status:, ${res.status}`);
-                }
-                return res.json(); //parse as JSON
-            })
-            .then((data) => {
-                console.log("response", data, Array.isArray(data));
-                setSites(Array.isArray(data) ? data : []); //make sure it's an array
-                console.log("sites is:", sites);
-                setLoading(false);
-            })
-            .catch((error) => {
-                setError(error.message);
-                console.error("fetch error:", error);
-                setLoading(false);
-            });
-    }, []);
-
-    */
-
-
     useEffect(() => {
         const loadSites = async () => {
             try {
@@ -91,10 +65,9 @@ function Sites() {
                 setLoading(false);
             }
         };
-    
+
         loadSites();
     }, [isDev]);
-    
 
     useEffect(() => {
         localStorage.setItem("webDevStoreView", "projects");
