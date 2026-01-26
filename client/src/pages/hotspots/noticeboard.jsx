@@ -170,7 +170,7 @@ export default function Noticeboard() {
                                             src="/cv.pdf"
                                             style={{
                                                 width: "100%",
-                                                height: "auto",
+                                                height: "100%",
                                                 border: "none",
                                                 overflowY: 'scroll'
                                             }}
@@ -221,7 +221,7 @@ export default function Noticeboard() {
                                 whileTap={{ rotate: -5, x: 0, y: 0 }}
                                 onClick={() =>
                                     window.open(
-                                        "https://uk.linkedin.com/in/hayley-callender-4b8409204",
+                                        "https://uk.linkedin.com/in/hayley-callender",
                                         "_blank"
                                     )
                                 }
