@@ -16,9 +16,11 @@ function Ogru() {
                 <Typewriter
                     className="topicText ogruText"
                     lines={[
-                        "Ogru Records was born from a state of mind. A love connection with music and a deep sense of belonging, family and partnership. ",
-                        "Over the years, The Songbird has been involved in many amazing projects and her musical family continues to grow and evolve with new compositions, projects and collaborations being created all the time. ",
-                        "Hayley is a pianist and singer. She studied music and sound technology and production. Each project contained here incorporates one or more of her skills. You can read more about individual projects and follow the links to external sites. "
+                        "Welcome to Ogru Records. This is the place where I bring all my musical endeavours together under one roof.  Ogru refers to a state of mind. A love connection with music and a deep sense of belonging, family and partnership that music has provided for me over the years.  ",
+                        "I have been involved in many amazing projects and my musical family continues to grow and evolve with new compositions, projects and collaborations. ",
+                        "I studied classical music and piano from an early age and continued my musical journey to study sound technology and music production. ", 
+                        "Each project contained here showcases, songwriting and composition, sometimes full compositions and sometimes top-lines for other bands and collaborations. ", 
+                        "You can read more about individual projects and follow the links to external sites above by clicking DISCOVER. "
                     ]}
                     speed={50}
                     pauseBetween={1000}

@@ -270,14 +270,14 @@ function Show() {
                                         <CardTitle className="audioCardTitlePlay">
                                             Play:{" "}
                                             <span className="font-weight: 600 text-xl">
-                                                {selectedRecord.songName}
+                                                {selectedRecord.audioName}
                                             </span>
                                         </CardTitle>
                                         <br></br>
                                         From: {selectedRecord.title}
                                         <CardTitle className="audioCardTitle2">
                                             <br></br>
-                                            By: {selectedRecord.artist.name}
+                                            By: {selectedRecord.name}
                                         </CardTitle>
                                     </CardTitle>
                                 </CardHeader>
