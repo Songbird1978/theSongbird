@@ -11,6 +11,7 @@ import github from "../../assets/github.png";
 import paper from "../../assets/pages.mp3";
 import badge from "../../assets/greenBadge.png";
 import click from "../../assets/clickButton.mp3";
+import Bee from '../../assets/bumblebee.png';
 
 export default function Noticeboard() {
     const navigate = useNavigate();
@@ -103,7 +104,7 @@ export default function Noticeboard() {
                                     }, 600);
                                 }}
                             />
-
+                            
                             <motion.img
                                 src={CVButton}
                                 alt="CV Button"
@@ -169,10 +170,9 @@ export default function Noticeboard() {
                                         <iframe
                                             src="/cv.pdf"
                                             style={{
-                                                width: "100%",
-                                                height: "100%",
+                                                width: "100svw",
+                                                height: "100svh",
                                                 border: "none",
-                                                overflowY: 'scroll'
                                             }}
                                             title="CV"
                                         />
