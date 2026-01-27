@@ -17,8 +17,6 @@ function SnailBait() {
     const livesRef = useRef(null);
     const winLoseRef = useRef(null);
     const startBtnRef = useRef(null);
-    const joystickBaseRef = useRef(null);
-    const joystickKnobRef = useRef(null);
 
     // Game state
     const [gameStarted, setGameStarted] = useState(false);
@@ -75,6 +73,8 @@ function SnailBait() {
     
     });
 
+
+
     useEffect(() => {
         const { keyz, joystick, player, g } = gameData.current;
 
@@ -93,8 +93,6 @@ function SnailBait() {
         if (g.ghost) g.ghost.style.display = "none";
         if (g.pacman) g.pacman.style.display = "none";
 
-
-        //KEYBOARD STUFF
         // Keydown handler
         const handleKeyDown = (e) => {
             if (e.code in keyz) {
@@ -112,76 +110,21 @@ function SnailBait() {
             }
         };
      
+  
+
+
         document.addEventListener("keydown", handleKeyDown);
         document.addEventListener("keyup", handleKeyUp);
 
-        //JOYSTICK STUFF
-
-        const base = joystickBaseRef.current;
-            const knob = joystickKnobRef.current;
-            if (!base || !knob) return;
-
-            // Pointer down
-            const onPointerDown = (e) => {
-            e.preventDefault();
-            base.setPointerCapture(e.pointerId);
-
-            joystick.active = true;
-            joystick.origin = { x: e.clientX, y: e.clientY };
-            joystick.vector = { x: 0, y: 0 };
-
-            if (!g.inplay && !player.pause) {
-                player.play = requestAnimationFrame(move);
-                g.inplay = true;
-            }
-            };
-
-            // Pointer move
-            const onPointerMove = (e) => {
-            if (!joystick.active) return;
-
-            const dx = e.clientX - joystick.origin.x;
-            const dy = e.clientY - joystick.origin.y;
-
-            const MAX = 30;
-            const dist = Math.hypot(dx, dy);
-            const scale = dist > MAX ? MAX / dist : 1;
-
-            joystick.vector = {
-                x: dx * scale,
-                y: dy * scale,
-            };
-
-            knob.style.transform = `translate(${joystick.vector.x}px, ${joystick.vector.y}px)`;
-            };
-
-            // Pointer up / cancel
-            const onPointerUp = () => {
-            joystick.active = false;
-            joystick.vector = null;
-            knob.style.transform = `translate(0px, 0px)`;
-            };
-
-            base.addEventListener("pointerdown", onPointerDown);
-            window.addEventListener("pointermove", onPointerMove);
-            window.addEventListener("pointerup", onPointerUp);
-            window.addEventListener("pointercancel", onPointerUp);
-
+      
 
         // Cleanup
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
             document.removeEventListener("keyup", handleKeyUp);
-            base.removeEventListener("pointerdown", onPointerDown);
-            window.removeEventListener("pointermove", onPointerMove);
-            window.removeEventListener("pointerup", onPointerUp);
-            window.removeEventListener("pointercancel", onPointerUp);
-
-
             if (player.play) {
                 cancelAnimationFrame(player.play);
             }
-
         };
     }, []);
 
@@ -290,37 +233,7 @@ function SnailBait() {
         if (startBtnRef.current) startBtnRef.current.style.display = "block";
         if (g.gridGame) g.gridGame.style.display = "none";
     };
-   
-    //helper function - get direction - which direction??
-    function getDirection(gameData) {
-        const { keyz, joystick } = gameData.current;
-      
-        // Keyboard has priority
-        if (keyz.ArrowRight) return "right";
-        if (keyz.ArrowLeft)  return "left";
-        if (keyz.ArrowUp)    return "up";
-        if (keyz.ArrowDown)  return "down";
-
-    // 1️⃣ Joystick wins while active
-        if (joystick.active && joystick.vector) {
-          const { x, y } = joystick.vector;
-      
-
-    // Dead Zone (preventing jitter)
-    const DEAD = 14;
-    if (Math.abs(x) < DEAD && Math.abs(y) < DEAD) return null;       
-
-    // Axis dominance (Pac-Man style) - grid direction - convert vector
-          if (Math.abs(x) > Math.abs(y)) {
-            return x > 0 ? "right" : "left";
-          } else {
-            return y > 0 ? "down" : "up";
-          }
-        }
-      
-        return null;
-      };
-
+    
 //moving in play
     const move = () => {
         const { player, g, myBoard, ghosts, keyz, joystick } = gameData.current;
@@ -405,35 +318,21 @@ function SnailBait() {
                 });
 
                 let tempPos = player.pos;
-                const dir = getDirection(gameData);
-              
-                let playerMoved = false;
-
-
-                if (dir === "right") {
+                if (keyz.ArrowRight) {
                     player.pos += 1;
-                    playerMoved = true;
-                  }
-                  else if (dir === "left") {
+                    g.eye.style.left = "20%";
+                    g.mouth.style.left = "60%";
+                } else if (keyz.ArrowLeft) {
                     player.pos -= 1;
-                    playerMoved = true;
-                  }
-                  else if (dir === "up") {
+                    g.eye.style.left = "60%";
+                    g.mouth.style.left = "0%";
+                } else if (keyz.ArrowUp) {
                     player.pos -= g.size;
-                    playerMoved = true;
-                  }
-                  else if (dir === "down") {
+                } else if (keyz.ArrowDown) {
                     player.pos += g.size;
-                    playerMoved = true;
-                  }
+                }
 
                 let newPlace = myBoard[player.pos];
-
-                if (!newPlace) {
-                    console.warn("Invalid player.pos", player.pos);
-                    player.pos = tempPos;
-                    return;
-                  }
                 if (newPlace.t == 1 || newPlace.t == 4) {
                     player.pos = tempPos;
                 }
@@ -475,13 +374,7 @@ function SnailBait() {
             myBoard[player.pos].append(g.pacman);
             player.play = requestAnimationFrame(move);
         }
-           // Prevent leaving the board
-        if (player.pos < 0 || player.pos >= myBoard.length) {
-            player.pos = tempPos;
-        }
     };
-
-
 // creating and naming the different types of square on the board 
     const createSquare = (val) => {
         const { g, myBoard } = gameData.current;
@@ -629,15 +522,15 @@ function SnailBait() {
             {/*JOYSTICK */}
             <div className="joystick fixed bottom-12 place-self-center">
                     {/*Outer base */}
-                    <div ref={joystickBaseRef}
+                    <div
                         className="base relative w-32 h-32 rounded-full
                             bg-purple-700/80
                             border-4 border-purple-400
                             shadow-lg shadow-purple-900/40
-                            flex items-center justify-center  touch-none select-none">
+                            flex items-center justify-center">
 
                         {/*Inner thumb*/}
-                        <div ref={joystickKnobRef}
+                        <div
                         className="stick w-10 h-10 rounded-full
                                 bg-green-400
                                 border-4 border-green-200
